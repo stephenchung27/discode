@@ -13,3 +13,472 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Font Import */
+
+@font-face {
+  font-family: "Whitney";
+  src: url("fonts/Whitney.woff2")format("woff2");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: url("fonts/Whitney-Medium.otf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: url("fonts/Whitney-Bold.woff2")format("woff2");
+  font-weight: 700;
+}
+
+/* keyFrames */
+
+@keyframes UpAndDown {
+  0%, 100% {
+    transform: translate(0px, -5px);
+  }
+  50% {
+    transform: translate(0px, 5px)
+  }
+}
+
+/* CSS Reset */
+
+html, body, div, span, h1, h2, h3, h4, h5, h6, p,
+a, form, label, article, aside, canvas, figure, footer,
+header, nav, section, ul, ol, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Body */
+
+body {
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.15;
+  min-width: 1000px;
+}
+
+.page-wrapper {
+  background: #26262b;
+}
+
+/* Header */
+
+header {
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 14px;
+  height: 72px;
+  padding: 8px 0;
+  width: 100%;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 1600px;
+  padding: 0 30px;
+}
+
+.header-logo {
+  width: 131px;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.header-logo img {
+  position: absolute;
+  width:100%;
+  left: -5px;
+  bottom: -23px;
+}
+
+.header-nav {
+  display: flex;
+  list-style: none;
+  min-height: 56px;
+  align-items: center;
+}
+
+.header-nav li{
+  transition: 0.1s ease-out;
+  padding: 15px 10px;
+  text-decoration: none;
+  margin-right: 8px;
+  opacity: .8;
+  position: relative;
+}
+
+.header-nav li:hover {
+  transition: 0.1s ease-in;
+  opacity: 1;
+  color: #fff;
+}
+
+.drop-down-arrow {
+  margin-left: 5px;
+  position: relative;
+  top: -1px;
+}
+
+#wiki-page-link {
+  cursor: default;
+}
+
+.wiki-drop-down-hidden {
+  opacity: 0; 
+  transform: scale(.9) translateY(-10px);
+  visibility: hidden;
+}
+
+#wiki-drop-down {
+  list-style: none;
+  background: #fff;
+  border-radius: 4px;
+  font-size: 13px;
+  left: 0;
+  min-width: 150px; 
+  position: absolute;
+  top: 45px;
+  transform-origin: 50% 0;
+  transition: opacity .125s,transform .125s,visibility .125s,-webkit-transform .125s;
+  cursor: pointer;
+}
+
+#wiki-drop-down li {
+  color: black;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 4px;
+  color: #99AAB5;
+}
+
+#wiki-drop-down li:hover {
+  background-color: #eee;
+  color: #2C2F33;
+}
+
+.header-nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  list-style: none;
+}
+
+.header-nav-right li {
+  cursor: pointer;
+  padding: 15px 10px 15px 0;
+  margin-right: 8px;
+  opacity: .8;
+  transition: 0.1s ease-in;
+}
+
+.header-nav-right li i {
+  font-size: 18px;
+}
+
+.header-nav-right li:hover {
+  opacity: 1;
+  transition: 0.1s ease-in;
+}
+
+.app-button {
+  border: 2px solid hsla(0,0%,100%,.8);
+  border-radius: 20px;
+  color: #fff;
+  line-height: 24px;
+  padding: 5px 17px 7px;
+}
+
+.app-academy {
+  padding: 13px 0;
+}
+
+.line {
+  display: block;
+  background-color: hsla(0, 0%, 100%, .2);
+  border-radius: 1px;
+  height: 14px;
+  margin-right: 12px;
+  width: 2px;
+}
+
+/* Section - Content */
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.content {
+  box-sizing: border-box;
+  padding: 72px 50px 0;
+  color: #fff;
+}
+
+.theme-header {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 44px;
+}
+
+.blurb {
+  opacity: .6;
+  font-size: 16px;
+  line-height: 24px;
+  margin-top: 12px;
+  margin-bottom: 30px;
+  max-width: 710px;
+}
+
+.buttons-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 15px;
+  height: 45px;
+  margin-right: 40px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: #18191c;
+  width: 250px;
+  text-decoration: none;
+  transform: translateY(-1px);
+  transition: all .35s cubic-bezier(.25,.25,.315,1.35);
+}
+
+.download:hover {
+  transform: translateY(0);
+}
+
+.open-discord {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+  font-size: 15px;
+  background-color: #7289da;
+  color: #fff;
+  font-weight: 500;
+  height: 45px;
+  width: 250px;
+  cursor: pointer;
+  transform: translateY(-1px);
+  transition: all .35s cubic-bezier(.25,.25,.315,1.35);
+}
+
+.open-discord:hover {
+  transform: translateY(0);
+}
+
+/* Splash Image */
+
+.splash-image{
+  display: flex;
+  position: relative;
+  align-items: flex-end;
+  justify-content: center;
+  height: 638px;
+  width: 100%;
+}
+
+.splash-image img {
+  position: absolute;
+}
+
+.shadow {
+  background-color: rgba(0,0,0,.1);
+  border-radius: 50px;
+  height: 50px;
+  width: 1300px;  
+}
+
+.shape {
+  opacity: .3;
+}
+
+.triangle1 {
+  bottom: 300px;
+  left: 374px;
+}
+
+.triangle2 {
+  top: 50px;
+  left: 984px;
+}
+
+.triangle3 {
+  top: 152px;
+  left: 664px;
+}
+
+.dot1 {
+  top: 0px;
+  left: 634px;
+}
+
+.dot2 {
+  right: 383px;
+  top: 0px;
+}
+
+.dot3 {
+  top: 100px;
+  right: 733px;
+}
+
+.dot4 {
+  bottom: 200px;
+  left: 354px;
+}
+
+.dot5 {
+  bottom: 140px;
+  right: 293px;
+}
+
+.square1 {
+  top: 0px;
+  right: 583px;
+}
+
+.square2 {
+  top: 200px;
+  right: 483px;
+}
+
+.square3 {
+  bottom: 92px;
+  left: 970px;
+}
+
+.x1 {
+  left: 374px;
+  top: 90px;
+}
+
+.x2 {
+  bottom: 220px;
+  right: 373px;
+}
+
+.circle1 {
+  top: 70px;
+  left: 594px;
+}
+
+.circle2 {
+  right: 338px;
+  bottom: 280px;
+}
+
+.circle3 {
+  bottom: 88px;
+  left: 754px;
+}
+
+.desktop {
+  bottom: 10px;
+}
+
+.controller {
+  bottom: 10px;
+  left: 698px;
+}
+
+.coin1 {
+  animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  top: 24px;
+  right: 793px;
+}
+
+.coin2 {
+  animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  top: 253px;
+  left: 525px;
+}
+
+.bomb {
+  animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  animation-delay: .5s;
+  top: 217px;
+  left: 472px;
+}
+
+.cartridge {
+  animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
+  top: 147px;
+  right: 611px;
+}
+
+.mario {
+  top: 86px;
+  left: 714px;
+}
+
+.potion {
+  bottom: 10px;
+  left: 344px;
+}
+
+.android {
+  bottom: 10px;
+  left: 405px;
+}
+
+.iphone {
+  bottom: 10px;
+  left: 551px;  
+}
+
+.laptop {
+  bottom: 10px;
+  right: 348px;
+}
+
+.headphones {
+  height: 200px;
+  bottom: 176px;
+  right: 560px;
+}
+
+.shield {
+  bottom: 10px;
+  right: 311px;
+}
+
+/* Sections */
+
+section {
+  padding-bottom: 20px;
+}
+
+footer p {
+  font-size: 12px;
+  color: #99AAB5;
+  text-align: center;
+  padding-bottom: 20px;
+}

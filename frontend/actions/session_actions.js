@@ -18,17 +18,19 @@ const receiveErrors = (errors) => ({
   errors,
 });
 
-export const register = (user) => {
+export const register = (user) => dispatch => {
   return SessionApiUtil.register(user)
-    .then(user => dispatch(receiveCurrentUser(user)));
+    .then(user => dispatch(receiveCurrentUser(user)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
-export const login = (user) => {
+export const login = (user) => dispatch => {
   return SessionApiUtil.login(user)
-    .then(user => dispatch(receiveCurrentUser(user)));
+    .then(user => dispatch(receiveCurrentUser(user)))
+    .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
-export const logout = () => {
+export const logout = () => dispatch => {
   return SessionApiUtil.logout()
     .then(user => dispatch(logoutCurrentUser(user)));
 };

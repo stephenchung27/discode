@@ -26,14 +26,14 @@ class SessionForm extends React.Component {
   message() {
     if (this.props.formType === 'login') {
       return (
-        <div className='form-message'>
+        <div className='session-form-message'>
           <h1>Welcome back!</h1>
           <h2>We're so excited to see you again!</h2>
         </div>
       )
     } else if (this.props.formType === 'register') {
       return (
-        <div className='form-message'>
+        <div className='session-form-message'>
           <h1>Create an account</h1>
         </div>
       )
@@ -43,9 +43,9 @@ class SessionForm extends React.Component {
   requireUsername() {
     if (this.props.formType === 'register') {
       return (
-        <div className='input-block'>
+        <div className='session-input-block'>
           <h3>USERNAME</h3>
-          <input type='text' onChange={this.update('username')} />
+          <input type='text' onChange={this.update('username')} className="session-input" />
         </div>
       )
     }
@@ -54,39 +54,53 @@ class SessionForm extends React.Component {
   switchForms() {
     if (this.props.formType === 'login') {
       return (
-        <p>
+        <p className="session-other">
           Need an account? <Link to="/register">Register</Link>
         </p>
       )
     } else if (this.props.formType === 'register') {
       return (
-        <p>
+        <p className="session-other">
           <Link to="/login">Already have an account?</Link>
-          <span className="register-disclaimer">By registering, you acknowledge that this is just a clone.</span>
         </p>
       )
     }
   }
 
+  renderErrors() {
+    return (
+      <ul className="session-errors">
+        {this.props.errors.map((error, index) => (
+          <li key={index}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        {this.message()}
-        <div className='login-form'>
-          <div className='input-block'>
-            <h3>EMAIL</h3>
-            <input type='text' onChange={this.update('email')} />
-          </div>
-          {this.requireUsername()}
-          <div className='input-block'>
-            <h3>PASSWORD</h3>
-            <input type='password' onChange={this.update('password')} />
+      <div className="session-page-wrapper">
+        <form onSubmit={this.handleSubmit}>
+          {this.message()}
+          {this.renderErrors()}
+          <div className='session-login-form'>
+            <div className='session-input-block'>
+              <h3>EMAIL</h3>
+              <input type='text' onChange={this.update('email')} className="session-input" />
+            </div>
+            {this.requireUsername()}
+            <div className='session-input-block'>
+              <h3>PASSWORD</h3>
+              <input type='password' onChange={this.update('password')} className="session-input" />
 
+            </div>
+            <input type='submit' value={this.props.formType === 'login' ? "Login" : "Continue"} className="session-button" />
           </div>
-          <input type='submit' value={this.props.formType === 'login' ? "Login" : "Continue"} />
-        </div>
-        {this.switchForms()}
-      </form>
+          {this.switchForms()}
+        </form>
+      </div>
     )
   }
 }

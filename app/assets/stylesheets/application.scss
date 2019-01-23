@@ -18,19 +18,19 @@
 
 @font-face {
   font-family: "Whitney";
-  src: url("fonts/Whitney.woff2")format("woff2");
+  src: font-url("Whitney.woff2")format("woff2");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "Whitney";
-  src: url("fonts/Whitney-Medium.otf");
+  src: font-url("Whitney-Medium.otf");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "Whitney";
-  src: url("fonts/Whitney-Bold.woff2")format("woff2");
+  src: font-url("Whitney-Bold.woff2")format("woff2");
   font-weight: 700;
 }
 
@@ -104,8 +104,8 @@ header {
 .header-logo img {
   position: absolute;
   width:100%;
-  left: -5px;
-  bottom: -23px;
+  left: 0px;
+  bottom: -21px;
 }
 
 .header-nav {

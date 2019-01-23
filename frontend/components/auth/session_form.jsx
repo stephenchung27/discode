@@ -12,6 +12,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearSessionErrors();
+  }
+
   update(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
@@ -45,7 +49,7 @@ class SessionForm extends React.Component {
       return (
         <div className='session-input-block'>
           <h3>USERNAME</h3>
-          <input type='text' onChange={this.update('username')} className="session-input" />
+          <input required type='text' onChange={this.update('username')} className="session-input" />
         </div>
       )
     }
@@ -88,12 +92,12 @@ class SessionForm extends React.Component {
           <div className='session-login-form'>
             <div className='session-input-block'>
               <h3>EMAIL</h3>
-              <input type='text' onChange={this.update('email')} className="session-input" />
+              <input required type='text' onChange={this.update('email')} className="session-input" />
             </div>
             {this.requireUsername()}
             <div className='session-input-block'>
               <h3>PASSWORD</h3>
-              <input type='password' onChange={this.update('password')} className="session-input" />
+              <input required type='password' onChange={this.update('password')} className="session-input" />
 
             </div>
             <input type='submit' value={this.props.formType === 'login' ? "Login" : "Continue"} className="session-button" />

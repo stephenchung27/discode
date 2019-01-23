@@ -65,10 +65,10 @@ body {
   font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 400;
   line-height: 1.15;
-  min-width: 1000px;
 }
 
-.page-wrapper {
+.splash-page-wrapper {
+  min-width: 1000px;
   background: #26262b;
 }
 
@@ -83,7 +83,7 @@ header {
   width: 100%;
 }
 
-.header-inner {
+.splash-header-inner {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -93,7 +93,7 @@ header {
   padding: 0 30px;
 }
 
-.header-logo {
+.splash-header-logo {
   width: 131px;
   margin-right: 12px;
   display: flex;
@@ -101,21 +101,21 @@ header {
   position: relative;
 }
 
-.header-logo img {
+.splash-header-logo img {
   position: absolute;
   width:100%;
   left: 0px;
   bottom: -21px;
 }
 
-.header-nav {
+.splash-header-nav {
   display: flex;
   list-style: none;
   min-height: 56px;
   align-items: center;
 }
 
-.header-nav li{
+.splash-header-nav li{
   transition: 0.1s ease-out;
   padding: 15px 10px;
   text-decoration: none;
@@ -124,29 +124,29 @@ header {
   position: relative;
 }
 
-.header-nav li:hover {
+.splash-header-nav li:hover {
   transition: 0.1s ease-in;
   opacity: 1;
   color: #fff;
 }
 
-.drop-down-arrow {
+.splash-drop-down-arrow {
   margin-left: 5px;
   position: relative;
   top: -1px;
 }
 
-#wiki-page-link {
+#splash-wiki-page-link {
   cursor: default;
 }
 
-.wiki-drop-down-hidden {
+.splash-wiki-drop-down-hidden {
   opacity: 0; 
   transform: scale(.9) translateY(-10px);
   visibility: hidden;
 }
 
-#wiki-drop-down {
+#splash-wiki-drop-down {
   list-style: none;
   background: #fff;
   border-radius: 4px;
@@ -160,7 +160,7 @@ header {
   cursor: pointer;
 }
 
-#wiki-drop-down li {
+#splash-wiki-drop-down li {
   color: black;
   padding: 5px 10px;
   margin: 5px;
@@ -168,19 +168,19 @@ header {
   color: #99AAB5;
 }
 
-#wiki-drop-down li:hover {
+#splash-wiki-drop-down li:hover {
   background-color: #eee;
   color: #2C2F33;
 }
 
-.header-nav-right {
+.splash-header-nav-right {
   display: flex;
   align-items: center;
   margin-left: auto;
   list-style: none;
 }
 
-.header-nav-right li {
+.splash-header-nav-right li {
   cursor: pointer;
   padding: 15px 10px 15px 0;
   margin-right: 8px;
@@ -188,16 +188,16 @@ header {
   transition: 0.1s ease-in;
 }
 
-.header-nav-right li i {
+.splash-header-nav-right li i {
   font-size: 18px;
 }
 
-.header-nav-right li:hover {
+.splash-header-nav-right li:hover {
   opacity: 1;
   transition: 0.1s ease-in;
 }
 
-.app-button {
+.splash-app-button {
   border: 2px solid hsla(0,0%,100%,.8);
   border-radius: 20px;
   color: #fff;
@@ -205,11 +205,11 @@ header {
   padding: 5px 17px 7px;
 }
 
-.app-academy {
+.splash-app-academy {
   padding: 13px 0;
 }
 
-.line {
+.splash-line {
   display: block;
   background-color: hsla(0, 0%, 100%, .2);
   border-radius: 1px;
@@ -225,21 +225,22 @@ section {
   align-items: center;
   justify-content: center;
   text-align: center;
+  padding-bottom: 20px;
 }
 
-.content {
+.splash-content {
   box-sizing: border-box;
   padding: 72px 50px 0;
   color: #fff;
 }
 
-.theme-header {
+.splash-theme-header {
   font-size: 36px;
   font-weight: 700;
   line-height: 44px;
 }
 
-.blurb {
+.splash-blurb {
   opacity: .6;
   font-size: 16px;
   line-height: 24px;
@@ -248,12 +249,12 @@ section {
   max-width: 710px;
 }
 
-.buttons-wrapper {
+.splash-buttons-wrapper {
   display: flex;
   justify-content: center;
 }
 
-.download {
+.splash-download {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -270,11 +271,11 @@ section {
   transition: all .35s cubic-bezier(.25,.25,.315,1.35);
 }
 
-.download:hover {
+.splash-download:hover {
   transform: translateY(0);
 }
 
-.open-discord {
+.splash-open-discord {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -290,7 +291,7 @@ section {
   transition: all .35s cubic-bezier(.25,.25,.315,1.35);
 }
 
-.open-discord:hover {
+.splash-open-discord:hover {
   transform: translateY(0);
 }
 
@@ -309,172 +310,168 @@ section {
   position: absolute;
 }
 
-.shadow {
+.splash-shadow {
   background-color: rgba(0,0,0,.1);
   border-radius: 50px;
   height: 50px;
   width: 1300px;  
 }
 
-.shape {
+.splash-shape {
   opacity: .3;
 }
 
-.triangle1 {
+.splash-triangle1 {
   bottom: 300px;
   left: 374px;
 }
 
-.triangle2 {
+.splash-striangle2 {
   top: 50px;
   left: 984px;
 }
 
-.triangle3 {
+.splash-striangle3 {
   top: 152px;
   left: 664px;
 }
 
-.dot1 {
+.splash-sdot1 {
   top: 0px;
   left: 634px;
 }
 
-.dot2 {
+.splash-sdot2 {
   right: 383px;
   top: 0px;
 }
 
-.dot3 {
+.splash-sdot3 {
   top: 100px;
   right: 733px;
 }
 
-.dot4 {
+.splash-sdot4 {
   bottom: 200px;
   left: 354px;
 }
 
-.dot5 {
+.splash-sdot5 {
   bottom: 140px;
   right: 293px;
 }
 
-.square1 {
+.splash-square1 {
   top: 0px;
   right: 583px;
 }
 
-.square2 {
+.splash-square2 {
   top: 200px;
   right: 483px;
 }
 
-.square3 {
+.splash-square3 {
   bottom: 92px;
   left: 970px;
 }
 
-.x1 {
+.splash-x1 {
   left: 374px;
   top: 90px;
 }
 
-.x2 {
+.splash-x2 {
   bottom: 220px;
   right: 373px;
 }
 
-.circle1 {
+.splash-circle1 {
   top: 70px;
   left: 594px;
 }
 
-.circle2 {
+.splash-circle2 {
   right: 338px;
   bottom: 280px;
 }
 
-.circle3 {
+.splash-circle3 {
   bottom: 88px;
   left: 754px;
 }
 
-.desktop {
+.splash-desktop {
   bottom: 10px;
 }
 
-.controller {
+.splash-controller {
   bottom: 10px;
   left: 698px;
 }
 
-.coin1 {
+.splash-coin1 {
   animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   top: 24px;
   right: 793px;
 }
 
-.coin2 {
+.splash-coin2 {
   animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   top: 253px;
   left: 525px;
 }
 
-.bomb {
+.splash-bomb {
   animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   animation-delay: .5s;
   top: 217px;
   left: 472px;
 }
 
-.cartridge {
+.splash-cartridge {
   animation: UpAndDown 3s cubic-bezier(0.445, 0.05, 0.55, 0.95) infinite;
   top: 147px;
   right: 611px;
 }
 
-.mario {
+.splash-mario {
   top: 86px;
   left: 714px;
 }
 
-.potion {
+.splash-potion {
   bottom: 10px;
   left: 344px;
 }
 
-.android {
+.splash-android {
   bottom: 10px;
   left: 405px;
 }
 
-.iphone {
+.splash-iphone {
   bottom: 10px;
   left: 551px;  
 }
 
-.laptop {
+.splash-laptop {
   bottom: 10px;
   right: 348px;
 }
 
-.headphones {
+.splash-headphones {
   height: 200px;
   bottom: 176px;
   right: 560px;
 }
 
-.shield {
+.splash-shield {
   bottom: 10px;
   right: 311px;
 }
 
 /* Sections */
-
-section {
-  padding-bottom: 20px;
-}
 
 footer p {
   font-size: 12px;

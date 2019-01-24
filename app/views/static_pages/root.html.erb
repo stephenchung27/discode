@@ -4,6 +4,10 @@
       "api/users/user.json.jbuilder",
       user: current_user
     ).html_safe %>
+    window.servers = <%= render(
+      "api/servers/servers.json.jbuilder",
+      servers: current_user.servers
+    ).html_safe %>
   </script>
 <% end %>
 

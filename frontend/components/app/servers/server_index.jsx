@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../../actions/session_actions';
 import ServerIndexItem from './server_index_item';
+import { Link } from 'react-router-dom';
 
 class ServerIndex extends React.Component {
   constructor(props) {
@@ -18,11 +19,20 @@ class ServerIndex extends React.Component {
     ));
 
     return (
-      <ul>
-        {serverMap}
-
-        <button onClick={this.props.logout}>Log out</button>
-      </ul>
+      <div className="server-sidebar">
+        <Link to="" className="home-link"></Link>
+        <div className="friends-online">0 online</div>
+        <div className="server-separator"></div>
+        <ul>
+          {serverMap}
+        </ul>
+        <button className="server-add"><span>+</span></button>
+        <div className="logout-separator"></div>
+        <div className="logout-button">
+        <button onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i></button>
+        <p className="logout-word">Logout</p>
+        </div>
+      </div>
     )
   }
 }

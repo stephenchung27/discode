@@ -3,9 +3,5 @@ json.currentUser do
 end
 
 json.servers do
-  @user.servers.each do |server|
-    json.set! server.id do
-      json.extract! server, :id, :server_name, :path, :image_url
-    end
-  end
+  json.partial! "api/servers/servers", servers: @user.servers
 end

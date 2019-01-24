@@ -17,7 +17,7 @@
   border-radius: 50%;
   height: 50px;
   width: 50px;
-  // transition: 
+  outline: none;
 }
 
 .home-link:hover {
@@ -53,6 +53,7 @@
   color: #fff;
   line-height: 50px;
   text-align: center;
+  outline: none;
 }
 
 .server-item:hover .server-name{
@@ -88,6 +89,7 @@
   transition: border-color .25s ease, color .25s ease, opacity .25s ease;
   width: 50px;
   color: #535559;
+  outline: none;
 }
 
 .server-add:hover {
@@ -108,6 +110,10 @@
   width: 30px;
 }
 
+.logout-button {
+  cursor: pointer;
+}
+
 .logout-button > button {
   width: 50px;
   height: 50px;
@@ -115,12 +121,14 @@
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, .3);
   position: relative;
+  outline: none;
+  cursor: inherit;
 }
 
 .logout-button > button > i {
   position: absolute;
   top: 9px;
-  left: 11px;
+  left: 7px;
   color: #f04747;
   font-size: 29px;
 }

@@ -1,15 +1,30 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../../actions/session_actions';
-import ServerIndexItem from './server_index_item';
 import { Link } from 'react-router-dom';
+import { logout } from '../../../actions/session_actions';
+
+import ServerIndexItem from './server_index_item';
+import ServerModal from './server_modal';
 
 class ServerIndex extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
       activeServer: null,
+      modalIsOpen: false,
     }
+
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+  }
+
+  openModal() {
+    this.setState({modalIsOpen: true});
+  }
+
+  closeModal() {
+    this.setState({modalIsOpen: false});
   }
 
   render() {
@@ -26,12 +41,13 @@ class ServerIndex extends React.Component {
         <ul>
           {serverMap}
         </ul>
-        <button className="server-add"><span>+</span></button>
+        <button className="server-add" onClick={this.openModal}><span>+</span></button>
         <div className="logout-separator"></div>
         <div className="logout-button">
-        <button onClick={this.props.logout}><i className="fas fa-sign-out-alt"></i></button>
+          <button onClick={this.props.logout}><i className="fas fa-sign-out-alt fa-rotate-180"></i></button>
         <p className="logout-word">Logout</p>
         </div>
+        <ServerModal isOpen={this.state.modalIsOpen} closeModal={this.closeModal} />
       </div>
     )
   }

@@ -1,13 +1,5 @@
 import React from 'react';
 
-// const { server } = this.props;
-
-// const showAvatar = () => {
-//   if (server.image_url) {
-
-//   }
-// }
-
 const ServerIndexItem = ({ server }) => {
   return (
     <li className="server-item">

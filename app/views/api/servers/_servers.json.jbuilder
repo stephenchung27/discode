@@ -1,5 +1,5 @@
 servers.each do |server|
   json.set! server.id do
-    json.extract! server, :id, :server_name, :path, :image_url
+    json.partial! "api/servers/server.json.jbuilder", server: server
   end
 end

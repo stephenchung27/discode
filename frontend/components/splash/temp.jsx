@@ -4,6 +4,7 @@ import { logout } from '../../actions/session_actions';
 
 class Temp extends React.Component {
   render() {
+    debugger
     return (
       <p>
         User: {this.props.user.username}{this.props.user.discriminator}

@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
     @user = User.find_by_credentials(email, password)
     if @user
       login!(@user)
-      render "api/users/show"
+      render :create
     else
       render json: ["Invalid username or password."], status: 401
     end

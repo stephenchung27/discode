@@ -6,6 +6,7 @@ import Root from './components/root';
 
 // TESTING START
 import { register, login, logout } from './util/session_api_util';
+import { fetchServer, createServer } from './util/server_api_util';
 // TESTING END
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,6 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.logout = logout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
+  window.fetchServer = fetchServer;
+  window.createServer = createServer;
   // TESTING END
 
   ReactDOM.render(<Root store={store} />, root);

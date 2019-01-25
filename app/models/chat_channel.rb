@@ -5,6 +5,7 @@ class ChatChannel < ApplicationRecord
   belongs_to :server
 
   after_initialize :create_identifier
+  after_initialize :randomize_path
 
   private
 
@@ -13,5 +14,12 @@ class ChatChannel < ApplicationRecord
       identifier = rand(36**5).to_s(36)
     end while ChatChannel.exists?(identifier: identifier)
     self.identifier ||= identifier
+  end
+
+  def randomize_path
+    begin
+      path = "%.18i" % SecureRandom.random_number(999999999999999999)
+    end while Server.where(path: path).exists?
+    self.path ||= path
   end
 end

@@ -17,7 +17,7 @@ class AppView extends React.Component {
         <Route path="/channels/:serverPath" component={ServerIndex} />
         <Switch>
           <Route path="/channels/@me" component={Me} />
-          <Route path="/channels/:serverPath" component={ChatChannelIndex} />
+          <Route path="/channels/:serverPath/:channelPath" component={ChatChannelIndex} />
         </Switch>
       </div>
     )

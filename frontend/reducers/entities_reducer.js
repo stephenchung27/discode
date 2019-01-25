@@ -6,7 +6,7 @@ import chatChannelsReducer from './chat_channels_reducer';
 const entitiesReducer = combineReducers({
   users: usersReducer,
   servers: serversReducer,
-  channels: chatChannelsReducer,
+  chatChannels: chatChannelsReducer,
 });
 
 export default entitiesReducer;

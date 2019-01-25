@@ -1,6 +1,4 @@
-import {
-  LOGOUT_CURRENT_USER,
-} from '../actions/session_actions';
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 
 import { RECEIVE_SERVER, RECEIVE_SERVERS } from '../actions/server_actions';
 

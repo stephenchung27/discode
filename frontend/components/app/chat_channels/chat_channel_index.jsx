@@ -25,7 +25,6 @@ class ChatChannelIndex extends React.Component {
       />)
     });
 
-
     return (
       <div className="channel-sidebar">
         <div className="server-header">

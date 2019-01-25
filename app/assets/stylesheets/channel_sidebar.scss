@@ -3,3 +3,115 @@
   height: 100%;
   background: #2f3136;
 }
+
+.server-header {
+  height: 48px;
+  padding: 0 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+  border-bottom: 1px solid #232428;
+  transition: background-color .15s ease;
+}
+
+.server-header:hover {
+  background-color: rgba(0,0,0,.1);
+}
+
+.channel-list {
+  color: #72767d;
+  overflow-y: scroll;
+  height: 100%;
+  margin-top: -1px;
+}
+
+.category-wrapper {
+  padding-top: 28px;
+}
+
+.category {
+  font-size: 12px;
+  text-transform: uppercase;
+  padding-left: 18px;
+  padding-right: 8px;
+  position: relative;
+  transition: color .2s ease-in-out;
+}
+
+.category:hover {
+  color: #fff;
+}
+
+.down-arrow {
+  transform: rotate3d(0,0,-1,0deg);
+  position: absolute;
+  left: 3px;
+  top: 4px;
+}
+
+.category span {
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.chat-channel {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: space-between;
+  border-radius: 3px;
+  margin: 1px 0 1px 8px;
+  padding: 0 8px;
+  color: #72767d;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.chat-channel:hover {
+  background-color: #36393f;
+  font-weight: 500;
+}
+
+.chat-channel:hover .channel-name {
+  color: #fff;
+}
+
+.chat-channel > div {
+  display: flex;
+  align-items: center;
+}
+
+.chat-channel > div svg {
+  margin-right: 4px;
+}
+
+.chat-channel:last-child {
+  justify-self: flex-end;
+}
+
+.channel-list::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.channel-list::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 5px;
+	background-color: #24272A;
+  visibility: hidden;
+}
+
+.channel-list:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
+}
+
+.force-overflow {
+  min-height: 3000px;
+}

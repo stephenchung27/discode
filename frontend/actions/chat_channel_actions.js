@@ -3,14 +3,14 @@ import * as ChannelApiUtil from '../util/channel_api_utils';
 export const RECEIVE_CHAT_CHANNEL = "RECEIVE_CHAT_CHANNEL";
 export const RECEIVE_SERVER_CHAT_CHANNELS = "RECEIVE_SERVER_CHAT_CHANNELS";
 
-const receiveChatChannel = chat_channel => ({
+const receiveChatChannel = chatChannel => ({
   type: RECEIVE_CHAT_CHANNEL,
-  chat_channel
+  chatChannel
 });
 
-const receiveServerChatChannels = chat_channels => ({
+const receiveServerChatChannels = chatChannels => ({
   type: RECEIVE_SERVER_CHAT_CHANNELS,
-  chat_channels
+  chatChannels
 });
 
 export const fetchServerChatChannels = serverId => dispatch => {

@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: "Whitney";
-  src: font-url("Whitney.woff2")format("woff2");
+  src: font-url("Whitney.woff2") format("woff2");
   font-weight: 400;
 }
 
@@ -30,7 +30,13 @@
 
 @font-face {
   font-family: "Whitney";
-  src: font-url("Whitney-Bold.woff2")format("woff2");
+  src: font-url("Whitney-Semibold.eot") format('embedded-opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "Whitney";
+  src: font-url("Whitney-Bold.woff2") format("woff2");
   font-weight: 700;
 }
 
@@ -52,6 +58,7 @@ header, nav, section, ul, ol, li {
 
 html, body {
   height: 100%;
+  background: #000;
 }
 
 body {

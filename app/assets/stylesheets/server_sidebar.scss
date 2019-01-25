@@ -13,16 +13,26 @@
 
 .home-link {
   display: block;
-  background-color: #2f3136;
   border-radius: 50%;
   height: 50px;
   width: 50px;
   outline: none;
+  background-color: #2f3136;
+  background-image: image_url("users/bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 33px, 33px;
+  transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  position: relative;
 }
 
 .home-link:hover {
   background-color: rgb(114, 137, 218);
   border-radius: 15px;
+}
+
+.home-link:hover .server-name{
+  visibility: visible;
 }
 
 .friends-online {
@@ -37,9 +47,9 @@
 .server-separator {
   background: #2f3136;
   height: 2px;
-  margin-bottom: 10px;
   width: 30px;
   margin: 11px auto;
+  margin-bottom: 10px;
 }
 
 .server-item {
@@ -67,7 +77,6 @@
 }
 
 .active-server {
-  position: relative;
   border-radius: 15px;
   background-color: rgb(114, 137, 218);
 }

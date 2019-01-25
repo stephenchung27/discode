@@ -21,7 +21,7 @@ const serversReducer = (oldState = _nullServers, action) => {
     // we will have ONLY that user's servers
     case RECEIVE_SERVER:
       newState = merge({}, oldState, { [action.server.id]: action.server });
-      newState["index"].push(action.server.id)
+      newState["index"].push(action.server.id);
       return newState;
     case LOGOUT_CURRENT_USER:
       return _nullServers;

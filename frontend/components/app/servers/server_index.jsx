@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router'
 import { logout } from '../../../actions/session_actions';
 import { fetchUserServers } from '../../../actions/server_actions';
 
@@ -46,6 +45,7 @@ class ServerIndex extends React.Component {
         <Link to="/channels/@me">
           <div
             className={"home-link" + (match.params.serverPath === "@me" ? " active-server" : "")}>
+            <div className="server-name">Home</div>
           </div>
         </Link>
         <div className="friends-online">0 online</div>
@@ -55,7 +55,7 @@ class ServerIndex extends React.Component {
         </ul>
         <button className="server-add" onClick={this.openModal}><span>+</span></button>
         <div className="logout-separator"></div>
-        <div className="logout-button" onClick={this.props.logout}>
+        <div className="logout-button" onClick={logout}>
           <button><i className="fas fa-sign-out-alt fa-rotate-180"></i></button>
           <p className="logout-word">Logout</p>
         </div>

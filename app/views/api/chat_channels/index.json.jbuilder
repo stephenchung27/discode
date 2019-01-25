@@ -3,3 +3,5 @@
     json.partial! "api/chat_channels/chat_channel", chat_channel: chat_channel
   end
 end
+
+json.index @server.chat_channel_index

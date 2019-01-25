@@ -2,12 +2,6 @@ import * as ServerApiUtil from '../util/server_api_util';
 
 export const RECEIVE_SERVER = "RECEIVE_SERVER";
 export const RECEIVE_SERVERS = "RECEIVE_SERVERS";
-export const ENTER_SERVER = "ENTER_SERVER";
-
-export const enterServer = server => ({
-  type: ENTER_SERVER,
-  serverId: server.id,
-});
 
 const receiveServer = (server) => ({
   type: RECEIVE_SERVER,

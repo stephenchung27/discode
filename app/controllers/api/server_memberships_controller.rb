@@ -6,7 +6,7 @@ class Api::ServerMembershipsController < ApplicationController
       current_user.servers << @server
       render "api/servers/server", server: @server
     else
-      render json: ['Server does not exist'], status; 404
+      render json: ['Server does not exist'], status: 404
     end
   end
 

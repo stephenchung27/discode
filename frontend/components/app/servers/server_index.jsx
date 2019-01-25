@@ -35,7 +35,6 @@ class ServerIndex extends React.Component {
 
   render() {
     const { servers } = this.props;
-    debugger
     const serverMap = servers["index"].map(id => (
       <Link key={id} to={`/channels/${servers[id].path}`} >
         <ServerIndexItem server={servers[id]} />

@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router';
 
-const ServerIndexItem = ({ server }) => {
+const ServerIndexItem = ({ server, match }) => {
   debugger
   return (
     <li className={"server-item" + (match.params.serverPath === server.path ? " active-server" : "")}>
@@ -11,4 +12,4 @@ const ServerIndexItem = ({ server }) => {
   )
 }
 
-export default ServerIndexItem;
+export default withRouter(ServerIndexItem);

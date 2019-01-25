@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 import { logout } from '../../../actions/session_actions';
-import { enterServer } from '../../../actions/server_actions';
 import { fetchUserServers } from '../../../actions/server_actions';
 
 import ServerIndexItem from './server_index_item';
@@ -34,7 +34,7 @@ class ServerIndex extends React.Component {
   }
 
   render() {
-    const { servers } = this.props;
+    const { servers, logout, match } = this.props;
     const serverMap = servers["index"].map(id => (
       <Link key={id} to={`/channels/${servers[id].path}`} >
         <ServerIndexItem server={servers[id]} />
@@ -44,9 +44,8 @@ class ServerIndex extends React.Component {
     return (
       <div className="server-sidebar">
         <Link to="/channels/@me">
-          <div 
-          className={"home-link" + (this.props.currentServer === "@me" ? " active-server" : "")}
-          onClick={this.props.enterServer("@me")}>
+          <div
+            className={"home-link" + (match.params.serverPath === "@me" ? " active-server" : "")}>
           </div>
         </Link>
         <div className="friends-online">0 online</div>
@@ -69,12 +68,10 @@ class ServerIndex extends React.Component {
 const mapStateToProps = state => ({
   currentUserId: state.session.id,
   servers: state.entities.servers,
-  currentServer: state.ui.server.id,
 });
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
-  enterServer: server => () => dispatch(enterServer(server)),
   fetchUserServers: currentUserId => dispatch(fetchUserServers(currentUserId)),
 });
 

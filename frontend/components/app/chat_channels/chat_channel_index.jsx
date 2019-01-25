@@ -7,11 +7,17 @@ class ChatChannelIndex extends React.Component {
   componentDidMount() {
     this.props.fetchServerChatChannels(this.props.match.params.serverPath);
   }
+
+  componentDidUpdate(oldProps) {
+    if (oldProps.match.params.serverPath !== this.props.match.params.serverPath) {
+      this.props.fetchServerChatChannels(this.props.match.params.serverPath);
+    }
+  }
   
   render() {
     return (
       <div className="channel-sidebar">
-
+        
       </div>
     )
   }

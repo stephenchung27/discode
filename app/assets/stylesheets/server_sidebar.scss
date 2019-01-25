@@ -43,21 +43,45 @@
 }
 
 .server-item {
-  background-color: rgb(114, 137, 218);
   height: 50px;
   width: 50px;
   margin-top: 8px;
-  border-radius: 15px;
   position: relative;
   font-size: 18px;
   color: #fff;
   line-height: 50px;
   text-align: center;
   outline: none;
+  background-color: #2f3136;
+  border-radius: 50%;
+  transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+}
+
+.server-item:hover {
+  border-radius: 15px;
+  background-color: rgb(114, 137, 218);
 }
 
 .server-item:hover .server-name{
   visibility: visible;
+}
+
+.active-server {
+  position: relative;
+  border-radius: 15px;
+  background-color: rgb(114, 137, 218);
+}
+
+.active-server::after {
+  content: '';
+  position: absolute;
+  left: -15px;
+  margin-top: -20px;
+  top: 50%;
+  background: #fff;
+  border-radius: 20px;
+  height: 40px;
+  width: 10px;
 }
 
 .server-notifications {

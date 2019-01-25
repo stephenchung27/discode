@@ -1,7 +1,1 @@
-json.currentUser do
-  json.partial! "api/users/user", user: @user
-end
-
-json.servers do
-  json.partial! "api/servers/servers", servers: @user.servers
-end
+json.partial! "api/users/current_user", current_user: @user

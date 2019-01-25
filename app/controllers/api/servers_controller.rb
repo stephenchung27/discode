@@ -1,7 +1,6 @@
 class Api::ServersController < ApplicationController
   def index
-    @servers = current_user.servers
-    render :index
+    render "api/servers/_user_servers", current_user: current_user
   end
 
   def show
@@ -17,9 +16,13 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.admin = current_user
-
     if @server.save
       @server.members << current_user
+      # Saves automatically due to association Rails magic
+      
+      add_self_to_user_index(@server)
+      create_default_channel(@server)
+
       render :show
     else
       render json: @server.errors.full_messages, status: 422
@@ -37,6 +40,18 @@ class Api::ServersController < ApplicationController
   end
 
   private
+
+  def create_default_channel(server)
+    default_channel = ChatChannel.create(channel_name: "general", server_id: server.id)
+    server.chat_channels << default_channel
+    server.chat_channel_index << default_channel.id
+    server.save
+  end
+
+  def add_self_to_user_index(server)
+    current_user.server_index << server.id
+    current_user.save!
+  end
 
   def server_params
     params.require(:server).permit(:server_name)

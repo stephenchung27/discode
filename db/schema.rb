@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_23_204338) do
+ActiveRecord::Schema.define(version: 2019_01_25_014230) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "chat_channels", force: :cascade do |t|
+    t.string "channel_name", null: false
+    t.integer "server_id", null: false
+    t.string "identifier", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_name", "server_id"], name: "index_chat_channels_on_channel_name_and_server_id", unique: true
+  end
 
   create_table "server_memberships", force: :cascade do |t|
     t.integer "member_id", null: false
@@ -30,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_01_23_204338) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "path", null: false
+    t.integer "chat_channel_index", default: [], array: true
     t.index ["server_name"], name: "index_servers_on_server_name"
   end
 
@@ -42,7 +52,10 @@ ActiveRecord::Schema.define(version: 2019_01_23_204338) do
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "server_index", default: [], array: true
+    t.integer "private_server_id"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["private_server_id"], name: "index_users_on_private_server_id", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username", "discriminator"], name: "index_users_on_username_and_discriminator", unique: true
   end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resources :servers, only: [:index, :show, :create, :update]
     resources :server_memberships, only: [:create, :destroy]
+    resources :chat_channels, only: [:index, :create, :update, :destroy]
     resource :session, only: [:create, :destroy]
   end
 end

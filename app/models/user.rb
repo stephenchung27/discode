@@ -1,16 +1,18 @@
 class User < ApplicationRecord
   validates :username, :discriminator, :email, :session_token, :password_digest,
-            presence: true
+    presence: true
   validates :email, :session_token, uniqueness: true
   validates :discriminator, uniqueness: {scope: :username}
   validates :password, length: {minimum: 6, allow_nil: true}
 
   after_initialize :ensure_discriminator
   after_initialize :ensure_session_token
+  after_create :ensure_private_server
 
   has_many :adminned_servers,
     foreign_key: :admin_id,
-    class_name: :Server
+    class_name: :Server,
+    dependent: :destroy
 
   has_many :server_memberships,
     foreign_key: :member_id,
@@ -19,6 +21,11 @@ class User < ApplicationRecord
   has_many :servers,
     through: :server_memberships,
     source: :server
+
+  belongs_to :private_server,
+    foreign_key: :private_server_id,
+    class_name: :Server,
+    optional: true
 
   attr_reader :password
 
@@ -49,6 +56,11 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
+  end
+
+  def ensure_private_server
+    server = Server.create!(admin_id: self.id, server_name: "Home", path: "@me")
+    self.update({private_server_id: server.id})
   end
 
   def ensure_discriminator

@@ -4,11 +4,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-// TESTING START
-import { register, login, logout } from './util/session_api_util';
-import { fetchServer, createServer } from './util/server_api_util';
-// TESTING END
-
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
 
@@ -16,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (window.currentUser) {
     const preloadedState = {
       entities: {
-        users: { [window.currentUser.id]: window.currentUser },
-        servers: window.servers,
+        users: { [window.currentUser.id]: window.currentUser }
       },
       session: { id: window.currentUser.id }
     };
@@ -29,13 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   
   // TESTING START
-  window.register = register;
-  window.login = login;
-  window.logout = logout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchServer = fetchServer;
-  window.createServer = createServer;
   // TESTING END
 
   ReactDOM.render(<Root store={store} />, root);

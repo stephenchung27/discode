@@ -1,0 +1,1 @@
+json.extract! current_user, :id, :username, :discriminator, :image_url, :private_server_id

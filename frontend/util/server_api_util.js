@@ -1,7 +1,8 @@
-export const fetchServers = () => {
+export const fetchUserServers = user_id => {
   return $.ajax({
     method: "GET",
-    url: `api/servers`,
+    url: "api/servers",
+    data: { user_id }
   })
 };
 
@@ -20,3 +21,5 @@ export const updateServer = (server) => {
     data: { server },
   })
 };
+
+export const joinServer = () => {};

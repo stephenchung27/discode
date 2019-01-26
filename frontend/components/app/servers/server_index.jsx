@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router'
 import { logout } from '../../../actions/session_actions';
 import { fetchUserServers } from '../../../actions/server_actions';
 

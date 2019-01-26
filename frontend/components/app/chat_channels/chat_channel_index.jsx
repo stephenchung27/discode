@@ -16,7 +16,6 @@ class ChatChannelIndex extends React.Component {
       this.props.fetchServerChatChannels(this.props.match.params.serverPath);
     }
   }
-
   render() {
     const renderChannels = this.props.chatChannels["index"].map(chatChannelId => {
       return (<ChatChannelItem

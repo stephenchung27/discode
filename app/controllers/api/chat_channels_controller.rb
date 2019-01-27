@@ -1,6 +1,6 @@
 class Api::ChatChannelsController < ApplicationController
   def index
-    @server = Server.find_by(path: params[:server_path])
+    @server = current_user.servers.find_by(path: params[:server_path])
     @chat_channels = @server.chat_channels
     render :index
   end

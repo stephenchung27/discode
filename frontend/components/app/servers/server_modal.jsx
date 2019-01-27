@@ -45,7 +45,7 @@ class ServerModal extends React.Component {
         isOpen={this.props.isOpen}
         onRequestClose={this.props.closeModal}
         className="server-modal"
-        overlayClassName="server-modal-overlay"
+        overlayClassName="modal-overlay"
         ariaHideApp={false}
       >
         {this.renderFormType()}

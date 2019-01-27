@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router'
+import { withRouter } from 'react-router';
 import { logout } from '../../../actions/session_actions';
 import { fetchUserServers } from '../../../actions/server_actions';
 
@@ -25,6 +25,12 @@ class ServerIndex extends React.Component {
     this.props.fetchUserServers(this.props.currentUserId);
   }
 
+  componentWillUpdate(oldProps) {
+    if (this.props.match.params.serverPath !== oldProps.match.params.serverPath) {
+      this.props.fetchUserServers(this.props.currentUserId);
+    }
+  }
+
   openModal() {
     this.setState({ modalIsOpen: true });
   }
@@ -35,8 +41,9 @@ class ServerIndex extends React.Component {
 
   render() {
     const { servers, logout, match } = this.props;
+
     const serverMap = servers["index"].map(id => (
-      <Link key={id} to={`/channels/${servers[id].path}`} >
+      <Link key={id} to={`/channels/${servers[id].path}/${servers[id].default_channel}`} >
         <ServerIndexItem server={servers[id]} />
       </Link>
     ));
@@ -69,6 +76,7 @@ class ServerIndex extends React.Component {
 const mapStateToProps = state => ({
   currentUserId: state.session.id,
   servers: state.entities.servers,
+  chatChannels: state.entities.chatChannels,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -77,4 +85,4 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ServerIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerIndex));

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import Typed from 'typed.js';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ class SessionForm extends React.Component {
       password: '',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   componentWillUnmount() {
@@ -20,6 +22,32 @@ class SessionForm extends React.Component {
     return (e) => {
       this.setState({ [field]: e.target.value });
     }
+  }
+
+  demoLogin() {
+    const email = {
+      strings: ["demo@demo.com"],
+      typeSpeed: 50,
+    }
+
+    const password = {
+      strings: ["starwars"],
+      typeSpeed: 50,
+    }
+
+    this.setState({
+      email: '',
+      password: ''
+    })
+
+    new Typed(".email", email);
+    setTimeout(() => {
+      new Typed(".password", password);
+    }, 1500);
+
+    setTimeout(() => {
+      this.props.processForm({email: "demo@demo.com", password: "starwars"});
+    }, 3000);
   }
 
   handleSubmit(e) {
@@ -60,6 +88,7 @@ class SessionForm extends React.Component {
       return (
         <p className="session-other">
           Need an account? <Link to="/register">Register</Link>
+          <button onClick={this.demoLogin}>Demo Login</button>
         </p>
       )
     } else if (this.props.formType === 'register') {
@@ -92,12 +121,12 @@ class SessionForm extends React.Component {
           <div className='session-login-form'>
             <div className='session-input-block'>
               <h3>EMAIL</h3>
-              <input required type='text' onChange={this.update('email')} className="session-input" />
+              <input required type='text' onChange={this.update('email')} className="session-input email" />
             </div>
             {this.requireUsername()}
             <div className='session-input-block'>
               <h3>PASSWORD</h3>
-              <input required type='password' onChange={this.update('password')} className="session-input" />
+              <input required type='password' onChange={this.update('password')} className="session-input password" />
 
             </div>
             <input type='submit' value={this.props.formType === 'login' ? "Login" : "Continue"} className="session-button" />

@@ -5,3 +5,5 @@
 end
 
 json.index @server.chat_channel_index
+
+json.server @server, :id, :server_name

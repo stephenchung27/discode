@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   width: 240px; 
-  // height: px;
   background: #2f3136;
 }
 
@@ -26,7 +25,8 @@
 
 .channel-list {
   color: #72767d;
-  // overflow-y: scroll;
+  overflow-y: scroll;
+  overflow-x:hidden;
   height: 100%;
   margin-top: -1px;
 }
@@ -154,6 +154,10 @@
   width: 18px;
 }
 
+.channel-buttons:hover {
+  color: #AEB0B2;
+}
+
 .channel-buttons:hover .button-description {
   visibility: visible;
 }
@@ -209,13 +213,21 @@
 
 .channel-modal {
   width: 440px;
-  height: 382px;
+  height: fit-content;
   position: absolute;
   margin-left: -220px;
-  margin-top: -186px;
+  transform: translateY(-50%);
   left: 50%;
   top: 50%;
   border-radius: 5px;
   background-color: #36393f;
   outline: none;
+}
+
+.create-channel {
+  position: relative;
+}
+
+.create-channel:hover .button-description {
+  visibility: visible;
 }

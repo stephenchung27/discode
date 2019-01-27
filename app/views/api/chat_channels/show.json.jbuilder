@@ -1,0 +1,1 @@
+json.partial! "api/chat_channels/chat_channel", chat_channel: @chat_channel

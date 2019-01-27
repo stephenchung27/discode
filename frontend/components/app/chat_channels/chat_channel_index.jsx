@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import Modal from 'react-modal';
+import CreateChatModal from './create_channel_modal';
 
 import ChatChannelItem from './chat_channel_item';
 import UserInfo from './user_info';
@@ -28,12 +29,12 @@ class ChatChannelIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchServerChatChannels(this.props.match.params.serverPath);
+    this.props.fetchServerChatChannels(this.props.match.params.serverPath)
   }
 
   componentDidUpdate(oldProps) {
     if (this.props.match.params.serverPath !== oldProps.match.params.serverPath) {
-      this.props.fetchServerChatChannels(this.props.match.params.serverPath);
+      this.props.fetchServerChatChannels(this.props.match.params.serverPath)
     }
   }
 
@@ -46,11 +47,11 @@ class ChatChannelIndex extends React.Component {
           />
         </Link>);
     });
-
+    // debugger
     return (
       <div className="channel-sidebar">
         <div className="server-header">
-          <span>Server Name</span>
+          <span>{this.props.chatChannels.server ? this.props.chatChannels.server.server_name : ""}</span>
         </div>
         <div className="channel-list">
           <div className="category-wrapper">
@@ -75,7 +76,7 @@ class ChatChannelIndex extends React.Component {
           overlayClassName="modal-overlay"
           ariaHideApp={false}
         >
-          <div>HELLO!</div>
+          <CreateChatModal closeModal={this.closeModal} server={this.props.chatChannels.server}/>
         </Modal>
       </div>
     )

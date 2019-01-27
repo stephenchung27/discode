@@ -47,7 +47,7 @@ class SessionForm extends React.Component {
 
     setTimeout(() => {
       this.props.processForm({email: "demo@demo.com", password: "starwars"});
-    }, 3000);
+    }, 2000);
   }
 
   handleSubmit(e) {

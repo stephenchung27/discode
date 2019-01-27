@@ -14,7 +14,6 @@ class ServerIndex extends React.Component {
 
     this.state = {
       modalIsOpen: false,
-      serverIndex: this.props.servers.serverIndex,
     };
 
     this.openModal = this.openModal.bind(this);

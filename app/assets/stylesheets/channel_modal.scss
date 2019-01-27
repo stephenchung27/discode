@@ -1,0 +1,99 @@
+.create-channel-form {
+  header {
+    padding: 20px 20px;
+
+    h1 {
+    color: #f6f6f7;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+    font-weight: 600;
+    line-height: 20px;
+    font-size: 16px;
+    }
+  
+    h5 {
+      color: #b9bbbe;
+      line-height: 16px;
+      font-size: 12px;
+    }
+  }
+
+  .channel-name-box {
+    padding: 0 20px;
+    h4 {
+      text-transform: uppercase;
+      color: #b9bbbe;
+      letter-spacing: .5px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 16px;
+      margin-bottom: 8px;
+    }
+
+    input[type=text] {
+      background-color: rgba(0,0,0,.1);
+      border-color: rgba(0,0,0,.3);
+      color: #f6f6f7;
+      height: 40px;
+      padding: 10px;
+      border-radius: 3px;
+      font-size: 16px;
+      border-style: solid;
+      border-width: 1px;
+      box-sizing: border-box;
+      transition: background-color .15s ease,border .15s ease;
+      width: 100%;
+      outline: 0;
+      margin-bottom: 20px;
+    }
+
+    input[type=text]:hover {
+      border-color: #040405;
+    }
+
+    input[type=text]:focus {
+      border-color: #7289da;
+    }
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #2f3136;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+
+    input[type=submit] {
+      background-color: #7289da;
+      color: #fff;
+      height: 38px;
+      padding: 2px 16px;
+      border-radius: 3px;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16px;
+      border: none;
+      transition: background-color .17s ease;
+      font-family: inherit;
+    }
+
+    input[type=submit]:hover {
+      background-color: #677bc4;
+    }
+
+    button {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 16px;
+      padding: 2px 16px;
+      border: none;
+      background: none;
+      font-family: inherit;
+    }
+
+    button:hover {
+      text-decoration: underline;
+    }
+  }
+}

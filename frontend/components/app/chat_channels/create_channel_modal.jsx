@@ -42,7 +42,7 @@ class CreateChannelModal extends React.Component {
           <label htmlFor="voice-channel">Voice Channel</label>
         </div> */}
         <div className="modal-buttons">
-          <button onClick={this.props.closeModal}>Cancel</button>
+          <button type="button" onClick={this.props.closeModal}>Cancel</button>
           <input type="submit" value="Create Channel" />
         </div>
       </form>

@@ -54,6 +54,11 @@ header, nav, section, ul, ol, li {
   color: inherit;
 }
 
+button, input {
+  outline: none;
+  font-family: inherit;
+}
+
 /* Body */
 
 html, body {

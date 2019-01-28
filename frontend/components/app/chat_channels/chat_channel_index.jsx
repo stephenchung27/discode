@@ -39,29 +39,40 @@ class ChatChannelIndex extends React.Component {
   }
 
   render() {
-    const renderChannels = this.props.chatChannels["index"].map(chatChannelId => {
-      return (
-        <Link key={chatChannelId} to={`/channels/${this.props.match.params.serverPath}/${this.props.chatChannels[chatChannelId].path}`}>
-          <ChatChannelItem
-            chatChannel={this.props.chatChannels[chatChannelId]}
-          />
-        </Link>);
-    });
-    // debugger
-    return (
-      <div className="channel-sidebar">
+    const renderChannels = this.props.chatChannelIndex.map(
+      chatChannelId => {
+        return (
+          <Link
+            key={chatChannelId}
+            to={`/channels/${this.props.match.params.serverPath}/${
+              this.props.chatChannels[chatChannelId].path
+            }`}
+          >
+            <ChatChannelItem
+              chatChannel={this.props.chatChannels[chatChannelId]}
+            />
+          </Link>
+        );
+      }
+    );
+    
+    return <div className="channel-sidebar">
         <div className="server-header">
-          <span>{this.props.chatChannels.server ? this.props.chatChannels.server.server_name : ""}</span>
+          <span>
+            {this.props.server.name ? this.props.server.name : ""}
+          </span>
         </div>
         <div className="channel-list">
           <div className="category-wrapper">
             <div className="category">
               <svg className="down-arrow" width="12" height="12" viewBox="0 0 24 24">
-                <path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 10L12 15 17 10"></path>
+                <path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 10L12 15 17 10" />
               </svg>
               <span>Category</span>
               <div className="create-channel" onClick={this.openModal}>
-                <svg width="18" height="18" viewBox="0 0 18 18"><polygon fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8"></polygon></svg>
+                <svg width="18" height="18" viewBox="0 0 18 18">
+                  <polygon fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8" />
+                </svg>
                 <div className="button-description">Create Channel</div>
               </div>
             </div>
@@ -69,22 +80,17 @@ class ChatChannelIndex extends React.Component {
           {renderChannels}
         </div>
         <UserInfo />
-        <Modal 
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          className="channel-modal"
-          overlayClassName="modal-overlay"
-          ariaHideApp={false}
-        >
-          <CreateChatModal closeModal={this.closeModal} server={this.props.chatChannels.server}/>
+        <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
+          <CreateChatModal closeModal={this.closeModal} server={this.props.server} />
         </Modal>
-      </div>
-    )
+      </div>;
   }
 }
 
 const mapStateToProps = state => ({
   chatChannels: state.entities.chatChannels,
+  chatChannelIndex: state.ui.channel.index,
+  server: state.ui.server,
 });
 
 const mapDispatchToProps = dispatch => ({

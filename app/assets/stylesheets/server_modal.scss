@@ -209,7 +209,7 @@
 }
 
 .server-name-form {
-  height: 218px;
+  // height: 218px;
   width: 236px;
 
   label {
@@ -248,8 +248,11 @@
 }
 
 .create-server-menu {
+  display: flex;
+  justify-content: space-between;
   padding: 18px 40px;
   border-radius: 0 0 5px 5px;
+  background-color: #f6f6f7;
 
   input[type=submit] {
     background-color: #7289da;
@@ -257,9 +260,32 @@
     font-size: 14px;
     font-weight: 500;
     padding: 2px 16px;
-    background: none;
+    min-width: 96px;
     border: none;
     border-radius: 3px;
-        height: 38px;
+    height: 38px;
+  }
+
+  input[type=submit]:hover {
+    background-color: #677bc4;
+  }
+
+  button {
+    background: transparent;
+    color: #99aab5;
+    font-size: 14px;
+    font-weight: 400;
+    display: flex;
+    border: 2px solid transparent;
+    align-items: center;
+    padding: 0;
+    img {
+      width: 18px;
+      margin-right: 10px;
+    }
+  }
+
+  button:hover {
+    border-bottom: 2px solid #949494;
   }
 }

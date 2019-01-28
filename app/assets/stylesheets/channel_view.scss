@@ -1,0 +1,45 @@
+.messages-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.channel-bar {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #292C30;
+  height: 51px;
+  background-color: #36393f;
+  padding: 0 8px 0 12px; 
+}
+
+.messages-main {
+  display: flex;
+  height: 100%;
+}
+
+.messages-inner {
+  background-color: #36393f;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.messages-index {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  li {
+    
+  }
+}
+
+.messages-form {
+  border-top: 1px solid hsla(0,0%,100%,.06);
+  width: 100%;
+  margin: 0 20px 30px;
+  padding-top: 20px;
+}

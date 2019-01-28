@@ -4,11 +4,7 @@ import { RECEIVE_SERVER, RECEIVE_SERVERS } from '../actions/server_actions';
 
 import { merge } from 'lodash';
 
-const _nullServers = Object.freeze({
-  index: [],
-});
-
-const serversReducer = (oldState = _nullServers, action) => {
+const serversReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   let newState;
 
@@ -19,10 +15,9 @@ const serversReducer = (oldState = _nullServers, action) => {
     // we will have ONLY that user's servers
     case RECEIVE_SERVER:
       newState = merge({}, oldState, { [action.server.id]: action.server });
-      newState["index"].push(action.server.id);
       return newState;
     case LOGOUT_CURRENT_USER:
-      return _nullServers;
+      return {};
     // Once someone logs out, the servers will not persist
     default:
       return oldState;

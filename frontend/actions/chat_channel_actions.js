@@ -5,12 +5,14 @@ export const RECEIVE_SERVER_CHAT_CHANNELS = "RECEIVE_SERVER_CHAT_CHANNELS";
 
 const receiveChatChannel = chatChannel => ({
   type: RECEIVE_CHAT_CHANNEL,
-  chatChannel
+  chatChannel,
 });
 
-const receiveServerChatChannels = chatChannels => ({
+const receiveServerChatChannels = ({chatChannels, index, server}) => ({
   type: RECEIVE_SERVER_CHAT_CHANNELS,
-  chatChannels
+  chatChannels,
+  index,
+  server,
 });
 
 export const fetchServerChatChannels = serverId => dispatch => {

@@ -3,7 +3,7 @@ export const fetchServerChatChannels = (server_path) => {
     method: "GET",
     url: "api/chat_channels",
     data: { server_path },
-  })
+  });
 };
 
 export const createChatChannel = (chat_channel) => {
@@ -11,5 +11,5 @@ export const createChatChannel = (chat_channel) => {
     method: "POST",
     url: "api/chat_channels",
     data: { chat_channel },
-  })
-}
+  });
+};

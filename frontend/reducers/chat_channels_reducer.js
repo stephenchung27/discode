@@ -16,7 +16,6 @@ const chatChannelsReducer = (oldState = _nullChatChannels, action) => {
       return action.chatChannels;
     case RECEIVE_CHAT_CHANNEL:
       newState = merge({}, oldState, { [action.chatChannel.id]: action.chatChannel });
-      newState["index"].push(action.chatChannel.id);
       return newState;
     case LOGOUT_CURRENT_USER:
       return _nullChatChannels;

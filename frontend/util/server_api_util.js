@@ -3,7 +3,7 @@ export const fetchUserServers = user_id => {
     method: "GET",
     url: "api/servers",
     data: { user_id }
-  })
+  });
 };
 
 export const createServer = (server) => {
@@ -11,7 +11,7 @@ export const createServer = (server) => {
     method: "POST",
     url: "api/servers",
     data: { server },
-  })
+  });
 };
 
 export const updateServer = (server) => {
@@ -19,7 +19,7 @@ export const updateServer = (server) => {
     method: "PATCH",
     url: `api/servers/${server.id}`,
     data: { server },
-  })
+  });
 };
 
 export const joinServer = () => {};

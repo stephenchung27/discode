@@ -133,7 +133,7 @@
 
 .server-add > span {
   position: relative;
-  top: -4px;
+  top: 0px;
 }
 
 .logout-separator {
@@ -158,12 +158,12 @@
   cursor: inherit;
 }
 
-.logout-button > button > i {
+.logout-button > button > img {
   position: absolute;
   top: 9px;
-  left: 7px;
-  color: #f04747;
-  font-size: 29px;
+  left: 6px;
+  width: 29px;
+  transform: scaleX(-1);
 }
 
 .logout-button > p {

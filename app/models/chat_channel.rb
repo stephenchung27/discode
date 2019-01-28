@@ -4,6 +4,10 @@ class ChatChannel < ApplicationRecord
 
   belongs_to :server
 
+  has_many :channel_messages,
+           foreign_key: :channel_id,
+           class_name: :ChannelMessage
+
   after_initialize :create_identifier
   after_initialize :randomize_path
 
@@ -11,7 +15,7 @@ class ChatChannel < ApplicationRecord
 
   def create_identifier
     begin
-      identifier = rand(36**5).to_s(36)
+      identifier = rand(36 ** 5).to_s(36)
     end while ChatChannel.exists?(identifier: identifier)
     self.identifier ||= identifier
   end

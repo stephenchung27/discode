@@ -29,16 +29,21 @@ class CreateModal extends React.Component {
   render() {
     const { backToDefault } = this.props;
     return (
-      <div id="server-modal">
-        <h5>CREATE YOUR SERVER</h5>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" onChange={this.update} value={this.state.server_name} />
+      <form onSubmit={this.handleSubmit} id="create-server-modal">
+        <div className="create-server-main">
+          <h2>CREATE YOUR SERVER</h2>
+          <h3>By creating a server, you will have access to free voice and text chat to use amongst your friends.</h3>
+          <div className="server-name-form">
+            <label for="name">Server Name</label>
+            <input id="name" type="text" onChange={this.update} value={this.state.server_name}
+              placeholder="Enter a server name" />
+          </div>
+        </div>
+        <div className="create-server-menu">
           <input type="submit" value="Create" />
-        </form>
-        <button onClick={backToDefault}>
-          Back
-        </button>
-      </div>
+          <button onClick={backToDefault}>Back</button>
+        </div>
+      </form>
     )
   }
 }

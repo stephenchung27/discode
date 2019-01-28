@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { CSSTransitionGroup } from 'react-transition-group';
+
 import DefaultModal from './default_modal';
 import JoinModal from './join_modal';
 import CreateModal from './create_modal';
@@ -26,29 +28,36 @@ class ServerModal extends React.Component {
   }
 
   backToDefault() {
-    this.setState({ formType: "default"});
+    this.setState({ formType: "default" });
   }
 
   renderFormType() {
     if (this.state.formType === "default") {
       return (<DefaultModal createServer={this.createServer} joinServer={this.joinServer} />);
-    } else if(this.state.formType === "create") {
-      return (<CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal}/>);
-    } else if(this.state.formType === "join") {
-      return (<JoinModal backToDefault={this.backToDefault}/>);
+    } else if (this.state.formType === "create") {
+      return (<CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />);
+    } else if (this.state.formType === "join") {
+      return (<JoinModal backToDefault={this.backToDefault} />);
     }
   }
 
   render() {
     return (
-      <Modal 
+      <Modal
         isOpen={this.props.isOpen}
         onRequestClose={this.props.closeModal}
-        className="server-modal"
+        className="none"
         overlayClassName="modal-overlay"
         ariaHideApp={false}
       >
-        {this.renderFormType()}
+        <CSSTransitionGroup
+          transitionName="server-modal"
+          transitionAppear={true}
+          transitionAppearTimeout={125}
+          transitionLeave={false}
+          transitionEnter={false}>
+          {this.renderFormType()}
+        </CSSTransitionGroup>
       </Modal>
     );
   }

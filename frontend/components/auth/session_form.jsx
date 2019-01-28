@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import Typed from 'typed.js';
+import { CSSTransitionGroup } from 'react-transition-group';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -12,6 +14,8 @@ class SessionForm extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
+    this.goToLogin = this.goToLogin.bind(this);
+    this.goToRegister = this.goToRegister.bind(this);
   }
 
   componentWillUnmount() {
@@ -43,11 +47,11 @@ class SessionForm extends React.Component {
     new Typed(".email", email);
     setTimeout(() => {
       new Typed(".password", password);
-    }, 1500);
+    }, 1200);
 
     setTimeout(() => {
-      this.props.processForm({email: "demo@demo.com", password: "starwars"});
-    }, 2000);
+      this.props.processForm({ email: "demo@demo.com", password: "starwars" });
+    }, 2500);
   }
 
   handleSubmit(e) {
@@ -87,17 +91,26 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'login') {
       return (
         <p className="session-other">
-          Need an account? <Link to="/register">Register</Link>
-          <button onClick={this.demoLogin}>Demo Login</button>
+          Need an account? <button onClick={this.goToRegister}>Register</button>
         </p>
       )
     } else if (this.props.formType === 'register') {
       return (
         <p className="session-other">
-          <Link to="/login">Already have an account?</Link>
+          <button onClick={this.goToLogin}>Already have an account?</button>
         </p>
       )
     }
+  }
+
+  goToLogin() {
+    $('#session-page-wrapper form').addClass('session-form-appear-leave');
+    setTimeout(() => { this.props.history.push("/login") }, 50);
+  }
+
+  goToRegister() {
+    $('#session-page-wrapper form').addClass('session-form-appear-leave');
+    setTimeout(() => { this.props.history.push("/register") }, 50);
   }
 
   renderErrors() {
@@ -114,28 +127,36 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div className="session-page-wrapper">
-        <form onSubmit={this.handleSubmit}>
-          {this.message()}
-          {this.renderErrors()}
-          <div className='session-login-form'>
-            <div className='session-input-block'>
-              <h3>EMAIL</h3>
-              <input required type='text' onChange={this.update('email')} className="session-input email" />
-            </div>
-            {this.requireUsername()}
-            <div className='session-input-block'>
-              <h3>PASSWORD</h3>
-              <input required type='password' onChange={this.update('password')} className="session-input password" />
+      <div id="session-page-wrapper">
+        <CSSTransitionGroup
+          transitionName="session-form"
+          transitionAppear={true}
+          transitionAppearTimeout={125}
+          transitionLeave={false}
+          transitionEnter={false}>
+          <form onSubmit={this.handleSubmit}>
+            {this.message()}
+            {this.renderErrors()}
+            <div className='session-login-form'>
+              <div className='session-input-block'>
+                <h3>EMAIL</h3>
+                <input required type='text' onChange={this.update('email')} className="session-input email" />
+              </div>
+              {this.requireUsername()}
+              <div className='session-input-block'>
+                <h3>PASSWORD</h3>
+                <input required type='password' onChange={this.update('password')} className="session-input password" />
 
+              </div>
+              <input type='submit' value={this.props.formType === 'login' ? "Login" : "Continue"} className="session-button" />
+              {this.props.formType === 'login' ? <button onClick={this.demoLogin} className="demo-login">Demo Login</button> : null}
             </div>
-            <input type='submit' value={this.props.formType === 'login' ? "Login" : "Continue"} className="session-button" />
-          </div>
-          {this.switchForms()}
-        </form>
+            {this.switchForms()}
+          </form>
+        </CSSTransitionGroup>
       </div>
     )
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

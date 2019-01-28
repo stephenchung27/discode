@@ -35,7 +35,9 @@ class ServerIndex extends React.Component {
   }
 
   closeModal() {
-    this.setState({ modalIsOpen: false });
+    // const modalWindow = document.getElementById('server-modal');
+    $('#server-modal').addClass('.session-form-appear-leave');
+    setTimeout(() => {this.setState({ modalIsOpen: false })}, 125);
   }
 
   render() {

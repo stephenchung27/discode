@@ -1,4 +1,4 @@
-.session-page-wrapper {
+#session-page-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
   overflow: hidden;
 }
 
-.session-page-wrapper form {
+#session-page-wrapper form {
   background: #36393f;
   border-radius: 5px;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,.2);
@@ -20,16 +20,17 @@
   width: 480px;
   text-align: center;
   font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  position: relative;
 }
 
-.session-page-wrapper form h1 {
+#session-page-wrapper form h1 {
   font-size: 26px;
   line-height: 32px;
   margin-bottom: 8px;
   color: #fff;
 }
 
-.session-page-wrapper form h2 {
+#session-page-wrapper form h2 {
   color: #72767d;
   font-size: 18px;
   line-height: 22px;
@@ -105,9 +106,22 @@
   text-align: left;
 }
 
-.session-other a {
+.session-other button {
+  font-family: inherit;
+  background: none;
   color: #7289da;
   font-weight: 500;
+  font-size: 14px;
+  margin-left: 4px;
+  padding: 0px;
+  margin: 0px;
+  border: none;
+  outline: 0;
+  cursor: pointer;
+}
+
+.session-other button:hover {
+  text-decoration: underline;
 }
 
 .session-errors {
@@ -119,4 +133,66 @@
 
 .session_errors li {
   transition: all 0.5s ease;
+}
+
+.session-form-appear {
+  transform: translate(0px, -20px) scale(1.1);
+  opacity: 0;
+}
+
+.session-form-appear-active {
+  opacity: 1;
+  transform: translate(0px, 0px) scale(1);
+  transition: opacity .125s, transform .125s, scale .125s;
+}
+
+.session-form-appear-leave {
+  opacity: 0;
+  transform: translate(0px, -20px) scale(1.1);
+  transition: opacity .125s, transform .125s, scale .125s;
+}
+
+@keyframes pulse
+{
+    0% { transform: scale(1) }
+    50% { transform: scale(.95) }
+    100% { transform: scale(1) }
+}
+
+.demo-login {
+  position: absolute;
+  right: -90px;
+  bottom: 71px;
+  padding: 10px 15px;
+  background-color: #D45113;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+  animation: pulse 2s linear infinite;
+}
+
+.demo-login:hover {
+  background-color: #ea5a16;
+  animation: none;
+}
+
+.demo-login:hover::before {
+  border-right: 5px solid #ea5a16;
+}
+
+.demo-login::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -10px;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid #D45113;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
 }

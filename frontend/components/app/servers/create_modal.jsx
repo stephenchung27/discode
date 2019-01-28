@@ -29,7 +29,7 @@ class CreateModal extends React.Component {
   render() {
     const { backToDefault } = this.props;
     return (
-      <div>
+      <div id="server-modal">
         <h5>CREATE YOUR SERVER</h5>
         <form onSubmit={this.handleSubmit}>
           <input type="text" onChange={this.update} value={this.state.server_name} />

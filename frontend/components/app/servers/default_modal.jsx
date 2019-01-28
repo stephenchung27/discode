@@ -2,7 +2,7 @@ import React from 'react';
 
 const DefaultModal = ({ createServer, joinServer }) => {
   return (
-    <div>
+    <div id="server-modal">
       <h1>Oh, another server huh?</h1>
       <div className="server-actions">
         <div className="server-action-create">

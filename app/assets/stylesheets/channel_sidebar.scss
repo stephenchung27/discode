@@ -26,7 +26,7 @@
 .channel-list {
   color: #72767d;
   overflow-y: scroll;
-  overflow-x:hidden;
+  overflow-x: hidden;
   height: 100%;
   margin-top: -1px;
 }
@@ -91,6 +91,7 @@
   font-weight: 500;
   line-height: 32px;
   cursor: pointer;
+  position:relative;
 }
 
 .chat-channel:hover {

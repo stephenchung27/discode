@@ -7,7 +7,7 @@
   background-color: rgba(0, 0, 0, .85);
 }
 
-.server-modal {
+#server-modal {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -27,7 +27,7 @@
   box-sizing: border-box;
 }
 
-.server-modal h1 {
+#server-modal h1 {
   color: #7289da;
   font-size: 18px;
   font-weight: 700;
@@ -148,4 +148,20 @@
   line-height: 415px;
   text-align: center;
   color: #99aab5;
+}
+
+.server-modal-appear {
+  transform: scale(0);
+  opacity: 0;
+}
+
+.server-modal-appear-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity .125s, transform .125s;
+}
+
+.server-modal-leave-active {
+  transform: scale(0);
+  transition: transform .125s;
 }

@@ -43,7 +43,7 @@ class CreateModal extends React.Component {
           </div>
         </div>
         <div className="create-server-menu">
-          <button onClick={backToDefault}>
+          <button type="button" onClick={backToDefault}>
             <img src="https://s3.amazonaws.com/discode/back_arrow.svg" />
           Back
           </button>

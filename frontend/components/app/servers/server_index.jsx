@@ -29,10 +29,11 @@ class ServerIndex extends React.Component {
   }
 
   closeModal() {
-    $("#create-server-modal").addClass(".session-form-appear-active");
+    $("#server-modal").addClass("server-modal-leave");
     setTimeout(() => {
       this.setState({ modalIsOpen: false });
     }, 125);
+    // $("#server-modal").removeClass("server-modal-leave");
   }
 
   render() {

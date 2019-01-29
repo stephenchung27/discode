@@ -22,4 +22,10 @@ export const updateServer = (server) => {
   });
 };
 
-export const joinServer = () => {};
+export const joinServer = (identifier) => {
+  return $.ajax({
+    method: "POST",
+    url: "api/server_memberships",
+    data: { identifier },
+  });
+};

@@ -7,7 +7,7 @@ import CreateChatModal from './create_channel_modal';
 
 import ChatChannelItem from './chat_channel_item';
 import UserInfo from './user_info';
-import { fetchServerChatChannels } from '../../../actions/chat_channel_actions';
+import { fetchServerChatChannels, fetchServerMembers } from '../../../actions/chat_channel_actions';
 
 class ChatChannelIndex extends React.Component {
   constructor(props) {
@@ -17,42 +17,46 @@ class ChatChannelIndex extends React.Component {
     }
 
     this.openCreateModal = this.openCreateModal.bind(this);
-    this.closeJoinModal = this.closeJoinModal.bind(this);
+    this.closeCreateModal = this.closeCreateModal.bind(this);
   }
 
   openCreateModal() {
     this.setState({ createModalIsOpen: true });
   }
 
-  closeJoinModal() {
+  closeCreateModal() {
     this.setState({ createModalIsOpen: false });
   }
 
   componentDidMount() {
-    this.props.fetchServerChatChannels(this.props.match.params.serverPath)
+    this.props.fetchServerMembers(this.props.match.params.serverPath)
+      .then(() => this.props.fetchServerChatChannels(this.props.match.params.serverPath));
   }
 
   componentDidUpdate(oldProps) {
     if (this.props.match.params.serverPath !== oldProps.match.params.serverPath) {
-      this.props.fetchServerChatChannels(this.props.match.params.serverPath)
+      this.props.fetchServerMembers(this.props.match.params.serverPath)
+      .then(() => this.props.fetchServerChatChannels(this.props.match.params.serverPath));
     }
   }
 
   render() {
     const renderChannels = this.props.chatChannelIndex.map(
       chatChannelId => {
-        return (
-          <Link
-            key={chatChannelId}
-            to={`/channels/${this.props.match.params.serverPath}/${
-              this.props.chatChannels[chatChannelId].path
-              }`}
-          >
-            <ChatChannelItem
-              chatChannel={this.props.chatChannels[chatChannelId]}
-            />
-          </Link>
-        );
+        if (this.props.chatChannels[chatChannelId]) {
+          return (
+            <Link
+              key={chatChannelId}
+              to={`/channels/${this.props.match.params.serverPath}/${
+                this.props.chatChannels[chatChannelId].path
+                }`}
+            >
+              <ChatChannelItem
+                chatChannel={this.props.chatChannels[chatChannelId]}
+              />
+            </Link>
+          );
+        }
       }
     );
 
@@ -79,13 +83,20 @@ class ChatChannelIndex extends React.Component {
       </div>
       <UserInfo />
 
-      <Modal isOpen={this.state.createModalIsOpen} onRequestClose={this.closeJoinModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
-        <CreateChatModal closeJoinModal={this.closeJoinModal} server={this.props.server} />
+      <Modal
+        isOpen={this.state.createModalIsOpen}
+        onRequestClose={this.closeCreateModal}
+        className="channel-modal"
+        overlayClassName="modal-overlay"
+        ariaHideApp={false}
+        closeTimeoutMS={250}
+      >
+        <CreateChatModal closeModal={this.closeCreateModal} server={this.props.server} />
       </Modal>
 
-      <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
+      {/* <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
         <CreateChatModal closeModal={this.closeModal} server={this.props.server} />
-      </Modal>
+      </Modal> */}
 
     </div>;
   }
@@ -99,6 +110,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchServerChatChannels: serverId => dispatch(fetchServerChatChannels(serverId)),
+  fetchServerMembers: serverPath => dispatch(fetchServerMembers(serverPath)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChatChannelIndex));

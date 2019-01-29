@@ -9,6 +9,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def index
+    server = Server.find_by(path: params[:server_path])
+    @users = server.members
+    render :index
+  end
+
   private
 
   def user_params

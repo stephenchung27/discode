@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from 'react-modal';
-import { CSSTransitionGroup } from 'react-transition-group';
 
 import DefaultModal from './default_modal';
 import JoinModal from './join_modal';
@@ -12,7 +11,7 @@ class ServerModal extends React.Component {
 
     this.state = {
       formType: "default", // [default, create, join]
-    }
+    };
 
     this.createServer = this.createServer.bind(this);
     this.joinServer = this.joinServer.bind(this);
@@ -46,18 +45,12 @@ class ServerModal extends React.Component {
       <Modal
         isOpen={this.props.isOpen}
         onRequestClose={this.props.closeModal}
-        className="none"
+        className="server-modal"
         overlayClassName="modal-overlay"
         ariaHideApp={false}
+        closeTimeoutMS={250}
       >
-        <CSSTransitionGroup
-          transitionName="server-modal"
-          transitionAppear={true}
-          transitionAppearTimeout={125}
-          transitionLeave={false}
-          transitionEnter={false}>
-          {this.renderFormType()}
-        </CSSTransitionGroup>
+        {this.renderFormType()}
       </Modal>
     );
   }

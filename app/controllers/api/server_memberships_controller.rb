@@ -1,12 +1,15 @@
 class Api::ServerMembershipsController < ApplicationController
   def create
-    identifier = params[:identifier]
-    @server = Server.find_by(identifier: identifier)
-    if @server
+    chat_channel = ChatChannel.find_by(identifier: params[:identifier])
+
+    if chat_channel
+      @server = chat_channel.server
       current_user.servers << @server
-      render "api/servers/server", server: @server
+      current_user.server_index << @server.id
+      current_user.save!
+      render "api/servers/show"
     else
-      render json: ['Server does not exist'], status: 404
+      render json: ['Invalid invite'], status: 404
     end
   end
 

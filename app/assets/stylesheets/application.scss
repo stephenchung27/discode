@@ -80,3 +80,31 @@ body {
   height: 100%;
   box-sizing: border-box;
 }
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
+
+.ReactModal__Content {
+  position: relative;
+  outline: none;
+  transform: scale(0);
+  transition: transform 250ms ease-in-out;
+}
+
+.ReactModal__Content--after-open{
+  transform: scale(1.0);
+}
+
+.ReactModal__Content--before-close{
+  transform: scale(0);
+}

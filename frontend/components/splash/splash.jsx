@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class Splash extends React.Component {
   componentDidMount() {
@@ -40,7 +41,9 @@ class Splash extends React.Component {
               <li><a href="https://github.com/stephenchung27"><i className="fab fa-github"></i></a></li>
               <li><a href=""><i className="fab fa-linkedin"></i></a></li>
               <li><a href=""><i className="fab fa-angellist"></i></a></li>
-              <li><Link to="/login" className="splash-app-button">Login</Link></li>
+              <li><Link to="/login" className="splash-app-button">
+              {this.props.loggedIn ? "Open" : "Login"}
+              </Link></li>
             </ul>
             <div className="splash-app-academy">
               <span className="splash-line"></span>
@@ -55,7 +58,9 @@ class Splash extends React.Component {
           Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.</p>
             <div className="splash-buttons-wrapper">
               <a className="splash-download" href="">Login as a Demo User</a>
-              <div className="splash-open-discord">Open Discord in your browser</div>
+              <div className="splash-open-discord">
+                {this.props.loggedIn ? "Open Discode" : "Open Discode in your browser"}
+              </div>
             </div>
           </div>
           <div className="splash-image">
@@ -99,4 +104,8 @@ class Splash extends React.Component {
   }
 }
 
-export default Splash;
+const mapStateToProps = state => ({
+  loggedIn: Boolean(state.session.id),
+});
+
+export default connect(mapStateToProps)(Splash);

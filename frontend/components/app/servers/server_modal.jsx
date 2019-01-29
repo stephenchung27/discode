@@ -9,36 +9,33 @@ class ServerModal extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      formType: "default", // [default, create, join]
-    };
-
     this.createServer = this.createServer.bind(this);
     this.joinServer = this.joinServer.bind(this);
     this.backToDefault = this.backToDefault.bind(this);
   }
 
   createServer() {
-    this.setState({ formType: "create" });
+    $("#modal-move").addClass("move-to-right");
   }
-
+  
   joinServer() {
-    this.setState({ formType: "join" });
+    $("#modal-move").addClass("move-to-left");
   }
 
   backToDefault() {
-    this.setState({ formType: "default" });
+    $("#modal-move").removeClass("move-to-left");
+    $("#modal-move").removeClass("move-to-right");
   }
 
-  renderFormType() {
-    if (this.state.formType === "default") {
-      return (<DefaultModal createServer={this.createServer} joinServer={this.joinServer} />);
-    } else if (this.state.formType === "create") {
-      return (<CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />);
-    } else if (this.state.formType === "join") {
-      return (<JoinModal backToDefault={this.backToDefault} />);
-    }
-  }
+  // renderFormType() {
+  //   if (this.state.formType === "default") {
+  //     return (<DefaultModal createServer={this.createServer} joinServer={this.joinServer} />);
+  //   } else if (this.state.formType === "create") {
+  //     return (<CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />);
+  //   } else if (this.state.formType === "join") {
+  //     return (<JoinModal backToDefault={this.backToDefault} />);
+  //   }
+  // }
 
   render() {
     return (
@@ -50,7 +47,11 @@ class ServerModal extends React.Component {
         ariaHideApp={false}
         closeTimeoutMS={250}
       >
-        {this.renderFormType()}
+        <div id="modal-move">
+          <CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />
+          <DefaultModal createServer={this.createServer} joinServer={this.joinServer} />
+          <JoinModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />
+        </div>
       </Modal>
     );
   }

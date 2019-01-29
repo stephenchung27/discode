@@ -15,7 +15,8 @@ class ChannelMessageForm extends React.Component {
     this.setState({ body: e.target.value });
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     // this.props.createChannelMessage();
     App.cable.subscriptions.subscriptions[0].speak({
       author_id: this.props.currentUserId,

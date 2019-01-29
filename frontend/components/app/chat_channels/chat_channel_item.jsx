@@ -36,7 +36,7 @@ class ChatChannelItem extends React.Component {
           <svg name="Invite" width="18" height="18" viewBox="0 0 18 18"><path transform="translate(18 0) scale(-1 1)" fill="currentColor" fillRule="nonzero" d="M11.5,9 C13.1575,9 14.5,7.6575 14.5,6 C14.5,4.3425 13.1575,3 11.5,3 C9.8425,3 8.5,4.3425 8.5,6 C8.5,7.6575 9.8425,9 11.5,9 Z M4,7 L4,5 L3,5 L3,7 L1,7 L1,8 L3,8 L3,10 L4,10 L4,8 L6,8 L6,7 L4,7 Z M11.5,10 C9.4975,10 6,11.005 6,13 L6,15 L17,15 L17,13 C17,11.005 13.5025,10 11.5,10 Z"></path></svg>
           <div className="button-description">Create Instant Invite</div>
         </div>
-        <Modal isOpen={this.state.isModalOpen} onRequestClose={this.closeModal} className="invite-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
+        <Modal isOpen={this.state.isModalOpen} onRequestClose={this.closeModal} className="invite-modal" overlayClassName="modal-overlay" ariaHideApp={false} closeTimeoutMS={250}>
           <InviteChannelModal closeModal={this.closeModal} chatChannel={chatChannel} />
         </Modal>
       </div>

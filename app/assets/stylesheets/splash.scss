@@ -207,6 +207,7 @@ section {
   text-decoration: none;
   transform: translateY(-1px);
   transition: all .35s cubic-bezier(.25,.25,.315,1.35);
+  cursor: pointer;
 }
 
 .splash-download:hover {

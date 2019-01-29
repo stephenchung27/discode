@@ -9,7 +9,7 @@ class CreateModal extends React.Component {
 
     this.state = {
       server_name: "",
-    }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -26,7 +26,7 @@ class CreateModal extends React.Component {
       .then(this.props.closeModal())
       .then(({ server })=> {
         this.props.history.push(`/channels/${server.path}/${server.default_channel}`);
-      })
+      });
   }
 
   render() {

@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { login } from '../../actions/session_actions';
 
 class Splash extends React.Component {
+  constructor(props) {
+    super(props);
+    this.demoLogin = this.demoLogin.bind(this);
+  }
+
   componentDidMount() {
     const wikiPageLink = document.getElementById('splash-wiki-page-link');
     const wikiDropDown = document.getElementById('splash-wiki-drop-down');
@@ -14,6 +21,13 @@ class Splash extends React.Component {
     wikiPageLink.addEventListener("mouseout", () => {
       wikiDropDown.classList.add('splash-wiki-drop-down-hidden');
     });
+  }
+
+  demoLogin() {
+    this.props.login({ email: "demo@demo.com", password: "starwars" })
+      .then(() => {
+        this.props.history.push("/channels/@me");
+      });
   }
 
   render() {
@@ -42,7 +56,7 @@ class Splash extends React.Component {
               <li><a href=""><i className="fab fa-linkedin"></i></a></li>
               <li><a href=""><i className="fab fa-angellist"></i></a></li>
               <li><Link to="/login" className="splash-app-button">
-              {this.props.loggedIn ? "Open" : "Login"}
+                {this.props.loggedIn ? "Open" : "Login"}
               </Link></li>
             </ul>
             <div className="splash-app-academy">
@@ -57,7 +71,7 @@ class Splash extends React.Component {
               and phone.
           Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.</p>
             <div className="splash-buttons-wrapper">
-              <a className="splash-download" href="">Login as a Demo User</a>
+              <button type="button" className="splash-download" onClick={this.demoLogin}>Login as a Demo User</button>
               <div className="splash-open-discord">
                 {this.props.loggedIn ? "Open Discode" : "Open Discode in your browser"}
               </div>
@@ -108,4 +122,8 @@ const mapStateToProps = state => ({
   loggedIn: Boolean(state.session.id),
 });
 
-export default connect(mapStateToProps)(Splash);
+const mapDispatchToProps = dispatch => ({
+  login: userInfo => dispatch(login(userInfo)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Splash));

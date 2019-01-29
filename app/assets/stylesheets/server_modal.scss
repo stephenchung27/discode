@@ -1,23 +1,36 @@
 .modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  width: 100%;
+  height: 100%;
   background-color: rgba(0, 0, 0, .85);
 }
 
-#server-modal {
+#modal-move {
   position: absolute;
-  left: 50%;
-  top: 50%;
+  display: flex;
+  left: -55px;
+  transition: transform 400ms ease;
+  box-sizing: border-box;
+}
+
+.move-to-left {
+  transform: translateX(-33.33%);
+}
+
+.move-to-right {
+  transform: translateX(33.33%);
+}
+
+#default-server-modal {
   background: #fff;
-  transform: translate(-50%, -50%);
   width: 536px;
   height: 420px;
   outline: none;
   padding: 34px 40px;
-  box-sizing: border-box;
   border-radius: 5px;
   background-image: image_url("modal/background_1.png"), image_url("modal/background_2.png");
   background-position: 0 100%,100% 100%;
@@ -26,7 +39,7 @@
   box-sizing: border-box;
 }
 
-#server-modal h1 {
+#default-server-modal h1 {
   color: #7289da;
   font-size: 18px;
   font-weight: 700;
@@ -151,22 +164,21 @@
 }
 
 .server-modal {
-  top: 50%;
+  position: absolute;
+  left: 25%;
+  top: 25%;
+  width: 536px;
+  height: 420px;
+  overflow: hidden;
 }
 
 #create-server-modal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
+  display: flex;
   background: #fff;
-  transform: translate(-50%, -50%);
   width: 536px;
   height: 420px;
   outline: none;
-  box-sizing: border-box;
   border-radius: 5px;
-  box-sizing: border-box;
-  display: flex;
   flex-direction: column;
   justify-content: space-between;
 
@@ -276,11 +288,7 @@
 }
 
 #join-server-modal {
-  position: absolute;
-  left: 50%;
-  top: 50%;
   background: #fff;
-  transform: translate(-50%, -50%);
   width: 536px;
   height: 420px;
   outline: none;
@@ -290,6 +298,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 250ms ease;
 
   .join-server-main {
     padding: 28px 40px 0px;

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const DefaultModal = ({ createServer, joinServer }) => {
-  return <div id="server-modal">
+  return <div id="default-server-modal">
       <h1>Oh, another server huh?</h1>
       <div className="server-actions">
         <div className="server-action server-action-create" onClick={createServer}>

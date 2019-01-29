@@ -13,9 +13,14 @@ class JoinModal extends React.Component {
     this.handleUpdate = this.handleUpdate.bind(this);
   }
 
-  handleSubmit() {
+  handleSubmit(e) {
+    e.preventDefault();
     const identifier = this.state.identifier.slice(-5);
-    this.props.joinServer(identifier);
+    this.props.joinServer(identifier)
+      .then(this.props.closeModal())
+      .then(({ server }) => {
+        this.props.history.push(`/channels/${server.path}/${server.default_channel}`);
+      });
   }
 
   handleUpdate(e) {

@@ -6,6 +6,7 @@ const ChannelMessagesItem = ({ messages, users }) => {
     <li key={index}>{message.body}</li>
   ));
 
+  if (users[messages[0].author_id]) {
   return (
     <li className="message-item">
       <div className="user-avatar"></div>
@@ -16,7 +17,9 @@ const ChannelMessagesItem = ({ messages, users }) => {
       <ul className="message-group">{groupMessages}</ul>
       <hr className="message-divider" />
     </li>
-  );
+  );} else {
+    return null;
+  }
 };
 
 export default ChannelMessagesItem;

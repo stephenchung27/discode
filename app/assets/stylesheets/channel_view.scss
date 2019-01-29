@@ -31,7 +31,7 @@
   background-color: #36393f;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: calc(100% - 240px);
   height: 100%;
 }
 
@@ -41,12 +41,17 @@
   flex-direction: column;
   list-style: none;
   overflow-y: scroll;
+  margin-bottom: -1px;
+}
+
+.message-form-wrapper {
+  padding: 0 20px;
 }
 
 .messages-form {
   display: flex;
-  border-top: 1px solid hsla(0,0%,100%,.06);
-  padding: 20px 20px 30px 20px;
+  border-top: 1px solid #42454A;
+  padding: 20px 0px 30px;
 
   input[type=text] {
     width: 100%;
@@ -88,7 +93,11 @@
   .message-divider {
     margin: 20px 20px -20px;
     border: none;
-    border-bottom: 1px solid hsla(0,0%,100%,.04);
+    border-bottom: 1px solid #3E4147;
+  }
+
+  .message-divider:last-of-type {
+    border-bottom: none;
   }
 
   .message-group {

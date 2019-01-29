@@ -4,7 +4,7 @@ class ChannelMessageForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      body: "",
+      body: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -20,17 +20,24 @@ class ChannelMessageForm extends React.Component {
     App.cable.subscriptions.subscriptions[0].speak({
       author_id: this.props.currentUserId,
       body: this.state.body,
-      channel_id: this.props.channel.id,
+      channel_id: this.props.channel.id
     });
     this.setState({ body: "" });
   }
 
   render() {
     return (
-      <form className="messages-form" onSubmit={this.handleSubmit}>
-        <input type="text" onChange={this.handleChange} value={this.state.body} placeholder={`Message #${this.props.channel.name}`}/>
-        {/* <input type="submit" value="Send" /> */}
-      </form>
+      <div className="message-form-wrapper">
+        <form className="messages-form" onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            onChange={this.handleChange}
+            value={this.state.body}
+            placeholder={`Message #${this.props.channel.name}`}
+          />
+          {/* <input type="submit" value="Send" /> */}
+        </form>
+      </div>
     );
   }
 }

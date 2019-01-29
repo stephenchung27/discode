@@ -1,15 +1,18 @@
 import React from "react";
 import ChannelMessagesIndex from "./channel_messages_index";
 import ChannelBar from "./channel_bar";
+import FriendList from "./friend_list";
 
 const ChannelMessagesView = () => {
-  return <div className="messages-container">
+  return (
+    <div className="messages-container">
       <ChannelBar />
       <div className="messages-main">
-          <ChannelMessagesIndex />
-        {/* user list */}
+        <ChannelMessagesIndex />
+        <FriendList />
       </div>
-    </div>;
+    </div>
+  );
 };
 
 export default ChannelMessagesView;

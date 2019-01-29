@@ -9,7 +9,7 @@ const receiveChannelMessages = ({ channel_messages, chat_channel }) => ({
   chatChannel: chat_channel,
 });
 
-const receiveChannelMessage = channelMessage => ({
+export const receiveChannelMessage = channelMessage => ({
   type: RECEIVE_CHANNEL_MESSAGE,
   channelMessage
 });

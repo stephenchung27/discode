@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     resources :channel_messages, only: [:index, :create, :destroy]
     resource :session, only: [:create, :destroy]
   end
+
+  mount ActionCable.server, at: "/cable"
 end

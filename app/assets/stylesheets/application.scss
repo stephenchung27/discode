@@ -77,4 +77,6 @@ body {
 
 .app-view-wrapper {
   display: flex;
+  height: 100%;
+  box-sizing: border-box;
 }

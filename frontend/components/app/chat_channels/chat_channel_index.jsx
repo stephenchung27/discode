@@ -14,7 +14,7 @@ class ChatChannelIndex extends React.Component {
     super(props);
     this.state = {
       createModalIsOpen: false,
-    }
+    };
 
     this.openCreateModal = this.openCreateModal.bind(this);
     this.closeCreateModal = this.closeCreateModal.bind(this);
@@ -93,10 +93,6 @@ class ChatChannelIndex extends React.Component {
       >
         <CreateChatModal closeModal={this.closeCreateModal} server={this.props.server} />
       </Modal>
-
-      {/* <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
-        <CreateChatModal closeModal={this.closeModal} server={this.props.server} />
-      </Modal> */}
 
     </div>;
   }

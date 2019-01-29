@@ -1,1 +1,1 @@
-json.extract! chat_channel, :id, :channel_name, :path
+json.extract! chat_channel, :id, :channel_name, :path, :identifier

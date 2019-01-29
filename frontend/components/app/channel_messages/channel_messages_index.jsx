@@ -22,8 +22,6 @@ class ChannelMessagesIndex extends React.Component {
       { channel: "ChattingChannel" },
       {
         received: data => {
-          debugger;
-
           receiveChannelMessage({
             id: data.id,
             body: data.body,
@@ -61,7 +59,7 @@ class ChannelMessagesIndex extends React.Component {
         if (msgs[i + 1] && msgs[i].author_id === msgs[i + 1].author_id) {
           groups[index] ? groups[index].push(msgs[i]) : groups.push([msgs[i]]);
         } else {
-          groups[index].push(msgs[i]);
+          groups[index] ? groups[index].push(msgs[i]) : groups.push([msgs[i]]);
           index++;
         }
       }

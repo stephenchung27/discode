@@ -178,7 +178,8 @@
 .server-name {
   visibility: hidden;
   position: absolute;
-  top: 9px;
+  top: 50%;
+  transform: translateY(-50%);
   left: 58px;
   border-radius: 5px;
   font-size: 14px;
@@ -186,14 +187,17 @@
   line-height: 14px;
   padding: 8px 11px;
   background-color: #000;
-  color: hsla(0, 0%, 100%, .9)
+  color: hsla(0, 0%, 100%, .9);
+  white-space: nowrap;
+  z-index: 2;
 }
 
 .server-name::before {
   content: '';
   position: absolute;
   left: -5px;
-  top: 11px;
+  top: 50%;
+  transform: translateY(-50%);
   width: 0; 
   height: 0; 
   border-top: 5px solid transparent;

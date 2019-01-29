@@ -13,19 +13,19 @@ class ChatChannelIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalIsOpen: false,
+      createModalIsOpen: false,
     }
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openCreateModal = this.openCreateModal.bind(this);
+    this.closeJoinModal = this.closeJoinModal.bind(this);
   }
 
-  openModal() {
-    this.setState({ modalIsOpen: true });
+  openCreateModal() {
+    this.setState({ createModalIsOpen: true });
   }
 
-  closeModal() {
-    this.setState({ modalIsOpen: false });
+  closeJoinModal() {
+    this.setState({ createModalIsOpen: false });
   }
 
   componentDidMount() {
@@ -46,7 +46,7 @@ class ChatChannelIndex extends React.Component {
             key={chatChannelId}
             to={`/channels/${this.props.match.params.serverPath}/${
               this.props.chatChannels[chatChannelId].path
-            }`}
+              }`}
           >
             <ChatChannelItem
               chatChannel={this.props.chatChannels[chatChannelId]}
@@ -55,35 +55,39 @@ class ChatChannelIndex extends React.Component {
         );
       }
     );
-    
+
     return <div className="channel-sidebar">
-        <div className="server-header">
-          <span>
-            {this.props.server.name ? this.props.server.name : ""}
-          </span>
-        </div>
-        <div className="channel-list">
-          <div className="category-wrapper">
-            <div className="category">
-              <svg className="down-arrow" width="12" height="12" viewBox="0 0 24 24">
-                <path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 10L12 15 17 10" />
-              </svg>
-              <span>Category</span>
-              <div className="create-channel" onClick={this.openModal}>
-                <svg width="18" height="18" viewBox="0 0 18 18">
-                  <polygon fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8" />
-                </svg>
-                <div className="button-description">Create Channel</div>
-              </div>
-            </div>
+      <div className="server-header">
+        <span>
+          {this.props.server.name ? this.props.server.name : ""}
+        </span>
+      </div>
+      <div className="channel-list">
+        <div className="category">
+          <svg className="down-arrow" width="12" height="12" viewBox="0 0 24 24">
+            <path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 10L12 15 17 10" />
+          </svg>
+          <span>Category</span>
+          <div className="create-channel" onClick={this.openCreateModal}>
+            <svg width="18" height="18" viewBox="0 0 18 18">
+              <polygon fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8" />
+            </svg>
+            <div className="button-description">Create Channel</div>
           </div>
-          {renderChannels}
         </div>
-        <UserInfo />
-        <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
-          <CreateChatModal closeModal={this.closeModal} server={this.props.server} />
-        </Modal>
-      </div>;
+        {renderChannels}
+      </div>
+      <UserInfo />
+
+      <Modal isOpen={this.state.createModalIsOpen} onRequestClose={this.closeJoinModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
+        <CreateChatModal closeJoinModal={this.closeJoinModal} server={this.props.server} />
+      </Modal>
+
+      <Modal isOpen={this.state.modalIsOpen} onRequestClose={this.closeModal} className="channel-modal" overlayClassName="modal-overlay" ariaHideApp={false}>
+        <CreateChatModal closeModal={this.closeModal} server={this.props.server} />
+      </Modal>
+
+    </div>;
   }
 }
 

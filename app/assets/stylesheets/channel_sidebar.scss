@@ -26,14 +26,28 @@
 
 .channel-list {
   color: #72767d;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  // overflow-y: scroll;
+  padding-right: 8px;
   height: 100%;
   margin-top: -1px;
+  padding-top: 28px;
 }
 
-.category-wrapper {
-  padding-top: 28px;
+.channel-list::-webkit-scrollbar {
+  width: 8px;
+  background-color: transparent;
+}
+
+.channel-list::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 5px;
+	background-color: #24272A;
+  visibility: hidden;
+}
+
+.channel-list:hover::-webkit-scrollbar-thumb {
+  visibility: visible;
 }
 
 .category {
@@ -114,23 +128,6 @@
   margin-right: 4px;
 }
 
-.channel-list::-webkit-scrollbar {
-  width: 8px;
-  background-color: transparent;
-}
-
-.channel-list::-webkit-scrollbar-thumb {
-  background-clip: padding-box;
-  border: 2px solid transparent;
-  border-radius: 5px;
-	background-color: #24272A;
-  visibility: hidden;
-}
-
-.channel-list:hover::-webkit-scrollbar-thumb {
-  visibility: visible;
-}
-
 .force-overflow {
   min-height: 3000px;
 }
@@ -198,6 +195,7 @@
   color: hsla(0, 0%, 100%, .9);
   text-transform: none;
   pointer-events: none;
+  z-index: 2;
 }
 
 .button-description::before {

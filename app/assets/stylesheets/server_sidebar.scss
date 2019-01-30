@@ -15,7 +15,7 @@
   background-color: #2f3136;
   background-image: image_url("users/bg.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 8px 13px;
   background-size: 33px, 33px;
   transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
   position: relative;
@@ -34,6 +34,7 @@
   color: #fff;
   opacity: .3;
   font-size: 10px;
+  font-weight: 500;
   margin: 11px 0;
   text-align: center;
   text-transform: uppercase;

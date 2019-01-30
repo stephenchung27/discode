@@ -1,5 +1,6 @@
 import React from 'react';
 import MeList from './me_list';
+import UserInfo from '../chat_channels/user_info';
 
 const Me = () => {
   return (
@@ -9,6 +10,7 @@ const Me = () => {
         <div className="under-construction">Under Construction...</div>
       </div>
       <MeList />
+      <UserInfo />
     </div>
   )
 }

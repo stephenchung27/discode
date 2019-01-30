@@ -12,8 +12,4 @@ class Api::ServerMembershipsController < ApplicationController
       render json: ['Invalid invite'], status: 404
     end
   end
-
-  def destroy
-
-  end
 end

@@ -21,6 +21,14 @@ class User < ApplicationRecord
     through: :server_memberships,
     source: :server
 
+  has_many :channel_subscriptions,
+    foreign_key: :user_id,
+    class_name: :ChannelSubscription
+
+  has_many :chat_channels,
+    through: :channel_subscriptions,
+    source: :chat_channel
+
   has_one_attached :avatar
 
   attr_reader :password

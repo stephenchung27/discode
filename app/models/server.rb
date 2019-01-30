@@ -15,7 +15,13 @@ class Server < ApplicationRecord
            through: :memberships,
            source: :member
 
-  has_many :chat_channels
+  has_many :server_channels,
+           foreign_key: :server_id,
+           class_name: :ServerChannel
+
+  has_many :chat_channels,
+           through: :server_channels,
+           source: :chat_channel
 
   def randomize_path
     begin

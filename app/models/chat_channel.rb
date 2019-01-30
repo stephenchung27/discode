@@ -1,12 +1,17 @@
 class ChatChannel < ApplicationRecord
-  validates :channel_name, :server_id, :identifier, presence: true
-  validates :channel_name, uniqueness: {scope: :server_id}
+  validates :channel_name, :identifier, presence: true
 
-  belongs_to :server
+  has_one :server_channel_memberships,
+            foreign_key: :chat_channel_id,
+            class_name: :ServerChannel
+
+  has_one :server,
+            through: :server_channel_memberships,
+            source: :server
 
   has_many :channel_messages,
-           foreign_key: :channel_id,
-           class_name: :ChannelMessage
+            foreign_key: :channel_id,
+            class_name: :ChannelMessage
 
   after_initialize :create_identifier
   after_initialize :randomize_path

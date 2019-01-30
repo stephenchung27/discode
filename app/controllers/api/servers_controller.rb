@@ -16,12 +16,13 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.admin = current_user
+
     if @server.save
       @server.members << current_user
+
       # Saves automatically due to association Rails magic
-      
-      add_self_to_user_index(@server)
-      create_default_channel(@server)
+      self.add_self_to_user_index
+      self.create_default_channel
 
       render :show
     else
@@ -39,21 +40,22 @@ class Api::ServersController < ApplicationController
     end
   end
 
-  private
+  def create_default_channel
+    default_channel = ChatChannel.create!(channel_name: "general")
 
-  def create_default_channel(server)
-    default_channel = ChatChannel.create(channel_name: "general", server_id: server.id)
-    server.chat_channels << default_channel
-    server.chat_channel_index << default_channel.id
-    server.save
+    @server.chat_channels << default_channel
+    @server.chat_channel_index << default_channel.id
+    @server.save!
   end
 
-  def add_self_to_user_index(server)
-    current_user.server_index << server.id
+  def add_self_to_user_index
+    current_user.server_index << @server.id
     current_user.save!
   end
 
+  private
+
   def server_params
     params.require(:server).permit(:server_name)
-  end
+  end 
 end

@@ -30,10 +30,7 @@ class ServerIndex extends React.Component {
  
   closeModal() {
     $("#server-modal").addClass("server-modal-leave");
-    setTimeout(() => {
-      this.setState({ modalIsOpen: false });
-    }, 125);
-    // $("#server-modal").removeClass("server-modal-leave");
+    this.setState({ modalIsOpen: false });
   }
 
   render() {

@@ -1,1 +1,1 @@
-json.extract! current_user, :id, :username, :discriminator, :private_server_id
+json.extract! current_user, :id, :username, :discriminator

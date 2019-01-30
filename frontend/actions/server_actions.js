@@ -8,11 +8,10 @@ const receiveServer = server => ({
   server,
 });
 
-const receiveServers = ({ servers, server_index, private_server }) => ({
+const receiveServers = ({ servers, server_index }) => ({
   type: RECEIVE_SERVERS,
   servers,
   server_index,
-  private_server,
 });
 
 export const fetchUserServers = currentUser => dispatch => {

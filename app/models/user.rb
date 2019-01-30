@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   after_initialize :ensure_discriminator
   after_initialize :ensure_session_token
-  after_create :ensure_private_server
 
   has_many :adminned_servers,
     foreign_key: :admin_id,
@@ -21,11 +20,6 @@ class User < ApplicationRecord
   has_many :servers,
     through: :server_memberships,
     source: :server
-
-  belongs_to :private_server,
-    foreign_key: :private_server_id,
-    class_name: :Server,
-    optional: true
 
   has_one_attached :avatar
 
@@ -58,11 +52,6 @@ class User < ApplicationRecord
 
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
-  end
-
-  def ensure_private_server
-    server = Server.create!(admin_id: self.id, server_name: "Home", path: "@me")
-    self.update({private_server_id: server.id})
   end
 
   def ensure_discriminator

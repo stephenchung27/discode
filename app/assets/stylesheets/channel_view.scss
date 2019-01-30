@@ -52,6 +52,7 @@
   display: flex;
   border-top: 1px solid #42454A;
   padding: 20px 0px 30px;
+  z-index: 3;
 
   input[type=text] {
     width: 100%;
@@ -96,10 +97,6 @@
     border-bottom: 1px solid #3E4147;
   }
 
-  .message-divider:last-of-type {
-    border-bottom: none;
-  }
-
   .message-group {
     margin-top: 8px;
     margin-left: 80px;
@@ -132,8 +129,10 @@
   position: absolute;
   top: 20px;
   left: 20px;
-  background-image: image_url("users/user_bg.png");
-  background-size: 100%;
+  background-color: #6579BA;
+  background-image: image_url("users/bg.png");
+  background-size: 30px;
+  background-repeat: no-repeat;
   border-radius: 50%;
   background-position: 50%;
   height: 40px;
@@ -143,12 +142,16 @@
 .invite-modal {
   position: absolute;
   width: 440px;
-  top: calc(50% - 54px);
-  margin: 0 auto;
+  top: 50%;
+  left: 50%;
+  margin-left: -220px;
+  margin-top: -85.5px;
+
   div {
     border-radius: 5px;
     padding: 20px;
     background-color: #36393f;
+
     h1 {
       text-transform: uppercase;
       color: #f6f6f6;
@@ -166,7 +169,7 @@
       display: flex;
       align-items: center;
       background-color: #2B2E33;
-      border:1px solid #040405;
+      border:1px solid rgba(0, 0, 0, .3);
       color: #f6f6f7;
       border-radius: 3px;
       font-size: 16px;
@@ -201,13 +204,14 @@
       button:hover { 
         background-color: #677bc4;
       }
-      input[type=text]:focus .input-box {
-        border:1px solid #7289da;
-      }
-
+      
       .button-copied {
         background-color: #43b581;
       }
+    }
+
+    .input-box:hover {
+      border-color: #040405;
     }
 
     .text-copied {
@@ -223,4 +227,8 @@
       margin-top: 8px;
     }
   }
+}
+
+.input-box input[type=text]:focus .input-box {
+  border-color: #7289da;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router';
-import Typed from 'typed.js';
+import Typed from 'typed.js'; //npm install --save typed.js
 import { CSSTransitionGroup } from 'react-transition-group';
 
 class SessionForm extends React.Component {
@@ -41,16 +41,17 @@ class SessionForm extends React.Component {
     this.setState({
       email: '',
       password: ''
-    })
+    });
 
     new Typed(".email", email);
+
     setTimeout(() => {
       new Typed(".password", password);
     }, 1200);
 
     setTimeout(() => {
       this.props.processForm({ email: "demo@demo.com", password: "starwars" });
-    }, 2500);
+    }, 2500); 
   }
 
   handleSubmit(e) {

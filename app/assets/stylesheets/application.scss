@@ -73,13 +73,13 @@ body {
 
 #root {
   height: 100%;
-  background-color: #2F3136;
+  background-color: #36393F;
 }
 
 .app-view-wrapper {
   display: flex;
   height: 100%;
-  box-sizing: border-box;
+  // box-sizing: border-box;
 }
 
 .ReactModal__Overlay {
@@ -96,7 +96,6 @@ body {
 }
 
 .ReactModal__Content {
-  position: relative;
   outline: none;
   transform: scale(0);
   transition: transform 250ms ease-in-out;

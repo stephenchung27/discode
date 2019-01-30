@@ -15,27 +15,20 @@ class ServerModal extends React.Component {
   }
 
   createServer() {
-    $("#modal-move").addClass("move-to-right");
+    $("#default-server-modal").addClass("move-to-left");
+    $("#create-server-modal").addClass("move-to-left");
   }
-  
+
   joinServer() {
-    $("#modal-move").addClass("move-to-left");
+    $("#default-server-modal").addClass("move-to-left");
+    $("#join-server-modal").addClass("move-to-left");
   }
 
   backToDefault() {
-    $("#modal-move").removeClass("move-to-left");
-    $("#modal-move").removeClass("move-to-right");
+    $("#default-server-modal").removeClass("move-to-left");
+    $("#join-server-modal").removeClass("move-to-left");
+    $("#create-server-modal").removeClass("move-to-left");
   }
-
-  // renderFormType() {
-  //   if (this.state.formType === "default") {
-  //     return (<DefaultModal createServer={this.createServer} joinServer={this.joinServer} />);
-  //   } else if (this.state.formType === "create") {
-  //     return (<CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />);
-  //   } else if (this.state.formType === "join") {
-  //     return (<JoinModal backToDefault={this.backToDefault} />);
-  //   }
-  // }
 
   render() {
     return (
@@ -47,11 +40,9 @@ class ServerModal extends React.Component {
         ariaHideApp={false}
         closeTimeoutMS={250}
       >
-        <div id="modal-move">
-          <CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />
-          <DefaultModal createServer={this.createServer} joinServer={this.joinServer} />
-          <JoinModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />
-        </div>
+        <DefaultModal createServer={this.createServer} joinServer={this.joinServer} />
+        <CreateModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />
+        <JoinModal backToDefault={this.backToDefault} closeModal={this.props.closeModal} />
       </Modal>
     );
   }

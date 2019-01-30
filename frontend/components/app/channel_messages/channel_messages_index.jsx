@@ -6,6 +6,7 @@ import {
   createChannelMessage,
   receiveChannelMessage
 } from "../../../actions/channel_message_actions";
+import { fetchUser } from '../../../actions/chat_channel_actions';
 import ChannelMessageForm from "./channel_message_form";
 import ChannelMessagesItem from "./channel_messages_item";
 
@@ -17,11 +18,16 @@ class ChannelMessagesIndex extends React.Component {
 
   componentDidMount() {
     const receiveChannelMessage = this.props.receiveChannelMessage.bind(this);
+    const fetchUser = this.props.fetchUser.bind(this);
+    const users = this.props.users;
 
     App.cable.subscriptions.create(
       { channel: "ChattingChannel" },
       {
         received: data => {
+          if (!users[data.author_id]) {
+            fetchUser(data.author_id);
+          }
           receiveChannelMessage({
             id: data.id,
             body: data.body,
@@ -102,7 +108,9 @@ const mapDispatchToProps = dispatch => ({
   createChannelMessage: channelMessage =>
     dispatch(createChannelMessage(channelMessage)),
   receiveChannelMessage: channelMessage =>
-    dispatch(receiveChannelMessage(channelMessage))
+    dispatch(receiveChannelMessage(channelMessage)),
+  fetchUser: user_id =>
+    dispatch(fetchUser(user_id)),
 });
 
 export default withRouter(

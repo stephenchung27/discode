@@ -168,9 +168,6 @@
 
 .chat-channel:hover .channel-buttons {
   visibility: visible;
-}
-
-.chat-channel .create-channel {
   cursor: pointer;
 }
 
@@ -217,9 +214,9 @@
   height: fit-content;
   position: absolute;
   margin-left: -220px;
-  // transform: translateY(-50%);
+  margin-top: -119px;
   left: 50%;
-  top: 25%;
+  top: 50%;
   border-radius: 5px;
   background-color: #36393f;
   outline: none;

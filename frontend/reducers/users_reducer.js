@@ -4,7 +4,8 @@ import {
 } from '../actions/session_actions';
 
 import {
-  RECEIVE_SERVER_MEMBERS
+  RECEIVE_SERVER_MEMBERS,
+  RECEIVE_USER,
 } from '../actions/chat_channel_actions';
 
 import { merge } from 'lodash';
@@ -17,6 +18,8 @@ const usersReducer = (oldState = {}, action) => {
       return merge({}, oldState, {[action.currentUser.id]: action.currentUser});
     case RECEIVE_SERVER_MEMBERS:
       return merge({}, oldState, action.members);
+    case RECEIVE_USER:
+      return merge({}, oldState, {[action.user.id]: action.user});
     case LOGOUT_CURRENT_USER:
       return {};
     default:

@@ -21,3 +21,10 @@ export const createChatChannel = (chat_channel) => {
     data: { chat_channel },
   });
 };
+
+export const fetchUser = (user_id) => {
+  return $.ajax({
+    method: "GET",
+    url: `api/users/${user_id}`,
+  });
+};

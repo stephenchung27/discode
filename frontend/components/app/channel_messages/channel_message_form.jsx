@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 class ChannelMessageForm extends React.Component {
   constructor(props) {
@@ -26,14 +27,22 @@ class ChannelMessageForm extends React.Component {
   }
 
   render() {
+    const channelMessage = () => {
+      if (this.props.channelType) {
+        return `#${this.props.channel.name}`;
+      } else {
+        return (this.props.dmChannels[this.props.channel.id] ? `@${this.props.dmChannels[this.props.channel.id].username}` : "");
+      }
+    };
+
     return (
-      <div className="message-form-wrapper">
+      <div className="message-form-wrapper" >
         <form className="messages-form" onSubmit={this.handleSubmit}>
           <input
             type="text"
             onChange={this.handleChange}
             value={this.state.body}
-            placeholder={`Message ${this.props.channel}`}
+            placeholder={`Message ${channelMessage()}`}
           />
           {/* <input type="submit" value="Send" /> */}
         </form>
@@ -42,4 +51,8 @@ class ChannelMessageForm extends React.Component {
   }
 }
 
-export default ChannelMessageForm;
+const mapStateToProps = state => ({
+  dmChannels: state.entities.dmChannels || null,
+});
+
+export default connect(mapStateToProps)(ChannelMessageForm);

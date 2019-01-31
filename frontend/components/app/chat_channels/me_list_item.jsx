@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const MeListItem = ({ dmChannel, users, currentPath}) => {
-  debugger
   return <Link to={`/channels/@me/${dmChannel.path}`}>
     <li className={currentPath === dmChannel.path ? "active-dm" : ""}>
       <div className="dm-info">

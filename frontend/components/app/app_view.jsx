@@ -6,11 +6,24 @@ import ChatChannelIndex from './chat_channels/chat_channel_index';
 import ChannelMessagesView from './channel_messages/channel_messages_view';
 import DirectMessagesView from './channel_messages/direct_messages_view';
 import Me from './chat_channels/me';
-import { stopLoading } from '../../actions/session_actions';
+import { stopLoading, startLoading } from '../../actions/session_actions';
+import FriendsView from '../app/channel_messages/friends_view';
 
 class AppView extends React.Component {
+  componentWillMount() {
+    this.props.startLoading();
+  }
+
   componentDidMount() {
-    this.props.stopLoading();
+    setTimeout(() => {
+      $(".progress").html("READY");
+      setTimeout(() => {
+        $(".loading-screen").addClass("stop-loading");
+        setTimeout(() => {
+          this.props.stopLoading();
+        }, 500);
+      }, 1000);
+    }, 1500);
   }
 
   render() {
@@ -23,6 +36,7 @@ class AppView extends React.Component {
       <Switch>
         <Route path="/channels/@me/:chatChannelPath" component={DirectMessagesView} />
         <Route path="/channels/:serverPath/:chatChannelPath" component={ChannelMessagesView} />
+        <Route path="/channels/@me" component={FriendsView} />
       </Switch>
     </div>;
   }
@@ -30,6 +44,7 @@ class AppView extends React.Component {
 
 const mapDispatchToProps = dispatch => ({
   stopLoading: () => dispatch(stopLoading()),
+  startLoading: () => dispatch(startLoading()),
 });
 
 export default connect(null, mapDispatchToProps)(AppView);

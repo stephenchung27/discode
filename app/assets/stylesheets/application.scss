@@ -109,3 +109,32 @@ body {
 .ReactModal__Content--before-close{
   transform: scale(0);
 }
+
+.loading-screen {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2A2B30;
+  opacity: 1;
+  height: 100%;
+  width: 100%;
+  z-index: 5;
+  transition: opacity 500ms ease;
+  .quote {
+    color: #fff;
+    font-style: italic;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .progress {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+}
+
+.stop-loading {
+  opacity: 0;
+}

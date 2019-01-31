@@ -5,8 +5,8 @@ import RegisterFormContainer from './auth/register_form_container';
 import Splash from './splash/splash';
 import AppView from './app/app_view';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
-import { connect } from 'react-redux';
 import LoadingScreen from './app/loading_screen';
+import AcceptInvite from './accept_invite';
 
 const App = () => (
   <>
@@ -15,6 +15,7 @@ const App = () => (
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/register" component={RegisterFormContainer} />
       <ProtectedRoute path="/channels/" component={AppView} />
+      <ProtectedRoute path="/:inviteId" component={AcceptInvite} />
       <Route exact path="/" component={Splash} />
     </Switch>
   </>

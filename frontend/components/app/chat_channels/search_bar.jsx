@@ -30,7 +30,6 @@ class SearchBar extends React.Component {
   render() {
     return <form className="search-bar" onSubmit={this.handleSubmit}>
       <input type="text" placeholder="Find or start a conversation" onChange={this.handleChange} value={this.state.recipient_id} />
-      {/* <div className="under-construction">Under Construction...</div> */}
     </form>
   }
 }

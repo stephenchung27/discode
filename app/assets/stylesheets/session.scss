@@ -4,6 +4,7 @@
   align-items: center;
   background-image: image-url("session_images/background.jpg");
   background-position: center bottom;
+  background-size: 100%;
   width: 100%;
   height: 100%;
   overflow: hidden;
@@ -162,7 +163,7 @@
 
 .demo-login {
   position: absolute;
-  right: -90px;
+  right: -70px;
   bottom: 71px;
   padding: 10px 15px;
   background-color: #D45113;

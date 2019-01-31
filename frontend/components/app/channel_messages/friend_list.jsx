@@ -3,13 +3,13 @@ import FriendListItem from './friend_list_item';
 import { connect } from 'react-redux';
 
 const FriendList = ({users}) => {
-  const renderUsers = users.map(user => {
-    return <FriendListItem user={user}/>
+  const renderUsers = users.map((user, index )=> {
+    return <FriendListItem key={index} user={user}/>
   });
 
   return (
     <div className="friend-list">
-      <div className="friends-category">ONLINE</div>
+      <div className="friends-category">MEMBERS</div>
       {renderUsers}
     </div>
   )

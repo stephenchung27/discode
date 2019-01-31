@@ -61,6 +61,7 @@ class Splash extends React.Component {
             </ul>
             <div className="splash-app-academy">
               <span className="splash-line"></span>
+              <a href="https://www.appacademy.io/"><div className="splash-aa-logo"></div></a>
             </div>
           </nav>
         </header>
@@ -72,9 +73,9 @@ class Splash extends React.Component {
           Stop paying for TeamSpeak servers and hassling with Skype. Simplify your life.</p>
             <div className="splash-buttons-wrapper">
               <button type="button" className="splash-download" onClick={this.demoLogin}>Login as a Demo User</button>
-              <div className="splash-open-discord">
+              <Link to="/login" className="splash-open-discord">
                 {this.props.loggedIn ? "Open Discode" : "Open Discode in your browser"}
-              </div>
+              </Link>
             </div>
           </div>
           <div className="splash-image">
@@ -111,7 +112,14 @@ class Splash extends React.Component {
           </div>
         </section>
         <footer>
-          <p>This is Stephen Chung's full stack project for App Academy.</p>
+          <div className="splash-separator"></div>
+          <div className="join-discord">
+            <div className="splash-stats">
+              <h2>Ready to try Discode? It's free!</h2>
+              <h3>Join over 150 million players today</h3>
+            </div>
+            <Link to="/login">Open Discode</Link>
+          </div>
         </footer>
       </div>
     )

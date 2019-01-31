@@ -18,6 +18,12 @@
     padding: 8px 0;
     width: 100%;
   }
+
+  footer {
+    margin: 0 auto;
+    max-width: 1600px;
+    padding-bottom: 48px;
+  }
 }
 
 .splash-header-inner {
@@ -146,6 +152,8 @@
 
 .splash-app-academy {
   padding: 13px 0;
+  display: flex;
+  align-items: center;
 }
 
 .splash-line {
@@ -153,8 +161,21 @@
   background-color: hsla(0, 0%, 100%, .2);
   border-radius: 1px;
   height: 14px;
-  margin-right: 12px;
+  margin-right: 18px;
   width: 2px;
+}
+
+.splash-aa-logo {
+  background-image: image-url("aa-logo");
+  background-size: 23px;
+  height: 23px;
+  width: 23px;
+  opacity: 0.8;
+  transition: 0.1s ease-in;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 /* Section - Content */
@@ -416,4 +437,42 @@ footer p {
   text-align: center;
   margin-top: 20px;
   padding-bottom: 20px;
+}
+
+.splash-separator {
+  margin: 34px 0;
+  height: 1px;
+  background-color: #fff;
+  opacity: .1;
+}
+
+.join-discord {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  a {
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 16px;
+    background-color: #7289da;
+    color: #fff;
+    border: none;
+  }
+}
+
+.splash-stats {
+  h2 {
+    color: #fff;
+    font-size: 26px;
+    line-height: 34px;
+  }
+  h3 {
+    color: hsla(0,0%,100%,.6);
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 4px;
+    text-transform: uppercase;
+  }
 }

@@ -31,12 +31,12 @@ class SessionForm extends React.Component {
     const email = {
       strings: ["demo@demo.com"],
       typeSpeed: 50,
-    }
+    };
 
     const password = {
       strings: ["starwars"],
       typeSpeed: 50,
-    }
+    };
 
     this.setState({
       email: '',
@@ -140,7 +140,7 @@ class SessionForm extends React.Component {
             <div className='session-login-form'>
               <div className='session-input-block'>
                 <h3>EMAIL</h3>
-                <input required type='text' onChange={this.update('email')} className="session-input email" />
+                <input required type='email' onChange={this.update('email')} className="session-input email" />
               </div>
               {this.requireUsername()}
               <div className='session-input-block'>

@@ -82,6 +82,7 @@ class ChannelMessagesIndex extends React.Component {
     return (
       <div className="messages-inner">
         <ul className="messages-index">
+          
           {renderMessages()}
           <div ref={this.bottom} />
         </ul>

@@ -232,3 +232,35 @@
 .input-box input[type=text]:focus .input-box {
   border-color: #7289da;
 }
+
+.links {
+  color: rgb(0, 150, 207);
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.embed {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.embed-pill {
+  background-color: rgb(255, 0, 0);
+  border-radius: 3px 0 0 3px;
+  width: 4px;
+}
+
+.embed-inner {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(46,48,54,.3);
+  border: 1px solid rgba(46,48,54,.6);
+  border-radius: 0 3px 3px 0;
+  padding: 8px 10px;
+  span {
+    color: #87909c;
+    font-size: 12px;
+    margin-bottom: 8px;
+  }
+}

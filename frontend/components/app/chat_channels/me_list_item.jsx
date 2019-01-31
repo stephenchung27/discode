@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-const MeListItem = ({ dmChannel, users }) => {
+const MeListItem = ({ dmChannel, users, currentPath}) => {
+  debugger
   return <Link to={`/channels/@me/${dmChannel.path}`}>
-    <li>
+    <li className={currentPath === dmChannel.path ? "active-dm" : ""}>
       <div className="dm-info">
         <div className="dm-avatar"></div>
         <span className="username">{users[dmChannel.recipientId] ? users[dmChannel.recipientId].username : ""}</span>
@@ -23,6 +24,7 @@ const MeListItem = ({ dmChannel, users }) => {
 
 const mapStateToProps = state => ({
   users: state.entities.users,
+  currentPath: state.ui.channel.path,
 });
 
 export default connect(mapStateToProps)(MeListItem);

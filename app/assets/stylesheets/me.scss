@@ -176,4 +176,11 @@
       visibility: visible;
     }
   }
+
+  li.active-dm {
+    background-color: rgba(79,84,92,.6);
+    .username {
+      color: #f6f6f6;
+    }
+  }
 }

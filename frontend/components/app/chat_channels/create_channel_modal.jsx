@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createChatChannel } from '../../../actions/chat_channel_actions';
+import { withRouter } from 'react-router';
 
 class CreateChannelModal extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class CreateChannelModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.createChatChannel(this.state)
+      .then(chatChannel => this.props.history.push(`/channels/${this.props.match.params.serverPath}/${chatChannel.path}`))
       .then(this.props.closeModal);
   }
 
@@ -54,4 +56,4 @@ const mapDispatchToProps = dispatch => ({
   createChatChannel: chatChannel => dispatch(createChatChannel(chatChannel)),
 });
 
-export default connect(null, mapDispatchToProps)(CreateChannelModal);
+export default withRouter(connect(null, mapDispatchToProps)(CreateChannelModal));

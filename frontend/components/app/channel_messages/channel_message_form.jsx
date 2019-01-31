@@ -17,7 +17,6 @@ class ChannelMessageForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.createChannelMessage();
     App.cable.subscriptions.subscriptions[0].speak({
       author_id: this.props.currentUserId,
       body: this.state.body,
@@ -34,7 +33,7 @@ class ChannelMessageForm extends React.Component {
             type="text"
             onChange={this.handleChange}
             value={this.state.body}
-            placeholder={`Message #${this.props.channel.name}`}
+            placeholder={`Message ${this.props.channel}`}
           />
           {/* <input type="submit" value="Send" /> */}
         </form>

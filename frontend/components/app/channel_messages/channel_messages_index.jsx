@@ -79,6 +79,14 @@ class ChannelMessagesIndex extends React.Component {
       ));
     };
 
+    const isDMChannel = () => {
+      if (this.props.match.params["serverPath"]) {
+        return `#${this.props.channel.name}`;
+      } else {
+        return (this.props.dmChannels[this.props.channel.id] ? `@${this.props.dmChannels[this.props.channel.id].username}` : "");
+      }
+    };
+
     return (
       <div className="messages-inner">
         <ul className="messages-index">
@@ -87,7 +95,7 @@ class ChannelMessagesIndex extends React.Component {
           <div ref={this.bottom} />
         </ul>
         <ChannelMessageForm
-          channel={this.props.channel}
+          channel={isDMChannel()}
           createChannelMessage={this.props.createChannelMessage}
           currentUserId={this.props.currentUserId}
         />
@@ -98,6 +106,7 @@ class ChannelMessagesIndex extends React.Component {
 
 const mapStateToProps = state => ({
   channelMessages: state.entities.channelMessages || [],
+  dmChannels: state.entities.dmChannels || null,
   users: state.entities.users,
   channel: state.ui.channel,
   currentUserId: state.session.id

@@ -51,12 +51,17 @@ class SessionForm extends React.Component {
 
     setTimeout(() => {
       this.props.processForm({ email: "demo@demo.com", password: "starwars" });
-    }, 2500); 
+    }, 2500);
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.processForm(this.state);
+    this.props.processForm(this.state)
+      .then(() => {
+        if (this.props.formType === "register") {
+          this.props.createDM();
+        }
+      });
   }
 
   message() {

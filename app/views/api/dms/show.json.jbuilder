@@ -4,7 +4,7 @@ json.chat_channel do
   json.set! recipient.first.id do
     json.extract! @chat_channel, :id, :path
     json.recipientId recipient.first.id
-    json.username recipient.username
+    json.username recipient.first.username
   end
 end
 

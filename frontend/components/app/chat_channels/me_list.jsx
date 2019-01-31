@@ -9,10 +9,6 @@ class MeList extends React.Component {
     this.props.fetchAllDMs();
   }
 
-  componentDidUpdate(oldProps) {
-
-  }
-
   render() {
     const renderDMs = this.props.dmChannels.map(dmChannel => {
       return <MeListItem key={dmChannel.id} dmChannel={dmChannel} />

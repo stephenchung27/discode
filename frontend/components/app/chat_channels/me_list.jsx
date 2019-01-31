@@ -3,14 +3,11 @@ import { connect } from 'react-redux';
 
 import MeListItem from './me_list_item';
 import { fetchAllDMs } from '../../../actions/dms_actions';
+import { withRouter } from 'react-router';
 
 class MeList extends React.Component {
   componentDidMount() {
     this.props.fetchAllDMs();
-  }
-
-  componentDidUpdate(oldProps) {
-
   }
 
   render() {
@@ -39,4 +36,4 @@ const mapDispatchToProps = dispatch => ({
   fetchAllDMs: () => dispatch(fetchAllDMs()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MeList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MeList));

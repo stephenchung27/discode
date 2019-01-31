@@ -59,7 +59,8 @@ class SessionForm extends React.Component {
     this.props.processForm(this.state)
       .then(() => {
         if (this.props.formType === "register") {
-          this.props.createDM();
+          this.props.createDM()
+            .then(({ chat_channel }) => this.props.history.push(`/channels/@me/${Object.values(chat_channel)[0].path}`));
         }
       });
   }

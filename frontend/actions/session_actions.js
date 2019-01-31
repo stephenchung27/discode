@@ -37,14 +37,12 @@ export const stopLoading = () => ({
 export const register = (user) => dispatch => {
   return SessionApiUtil.register(user)
     .then(currentUser => dispatch(receiveCurrentUser(currentUser)))
-    // .then(() => dispatch(startLoading()))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const login = (user) => dispatch => {
   return SessionApiUtil.login(user)
     .then(user => dispatch(receiveCurrentUser(user)))
-    // .then(() => dispatch(startLoading()))
     .fail(errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 

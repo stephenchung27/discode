@@ -5,6 +5,7 @@ import {
 import { RECEIVE_CHANNEL_MESSAGES } from "../actions/channel_message_actions";
 import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 import { merge } from "lodash";
+import { RECEIVE_DM } from "../actions/dms_actions";
 
 const _nullChannel = {
   index: []
@@ -30,6 +31,14 @@ const uiChannelReducer = (oldState = _nullChannel, action) => {
         id: action.chatChannel.id,
         path: action.chatChannel.path,
         name: action.chatChannel.channel_name
+      });
+      return newState;
+    case RECEIVE_DM:
+      const chatChannel = Object.values(action.chat_channel)[0];
+      newState = merge({}, oldState, {
+        id: chatChannel.id,
+        path: chatChannel.path,
+        name: chatChannel.username,
       });
       return newState;
     case LOGOUT_CURRENT_USER:

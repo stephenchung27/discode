@@ -1,5 +1,5 @@
 class ChannelSubscription < ApplicationRecord
-  validates :user_id, :chat_channel_id, :is_direct_message, presence: true
+  validates :user_id, :chat_channel_id, presence: true
 
   belongs_to :user,
     foreign_key: :user_id,

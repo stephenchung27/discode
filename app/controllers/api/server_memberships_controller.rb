@@ -1,4 +1,11 @@
 class Api::ServerMembershipsController < ApplicationController
+  before_action :ensure_logged_on
+
+  def index
+    @user = Server.where(id: params[:server_id]).members
+    render "api/users/index"
+  end
+  
   def create
     chat_channel = ChatChannel.find_by(identifier: params[:identifier])
 

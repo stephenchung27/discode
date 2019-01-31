@@ -36,7 +36,7 @@ class ChatChannelIndex extends React.Component {
   componentDidUpdate(oldProps) {
     if (this.props.match.params.serverPath !== oldProps.match.params.serverPath) {
       this.props.fetchServerMembers(this.props.match.params.serverPath)
-      .then(() => this.props.fetchServerChatChannels(this.props.match.params.serverPath));
+        .then(() => this.props.fetchServerChatChannels(this.props.match.params.serverPath));
     }
   }
 
@@ -60,41 +60,43 @@ class ChatChannelIndex extends React.Component {
       }
     );
 
-    return <div className="channel-sidebar">
-      <div className="server-header">
-        <span>
-          {this.props.server.name ? this.props.server.name : ""}
-        </span>
-      </div>
-      <div className="channel-list">
-        <div className="category">
-          <svg className="down-arrow" width="12" height="12" viewBox="0 0 24 24">
-            <path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 10L12 15 17 10" />
-          </svg>
-          <span>Category</span>
-          <div className="create-channel" onClick={this.openCreateModal}>
-            <svg width="18" height="18" viewBox="0 0 18 18">
-              <polygon fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8" />
-            </svg>
-            <div className="button-description">Create Channel</div>
-          </div>
+    return (
+      <div className="channel-sidebar">
+        <div className="server-header">
+          <span>
+            {this.props.server.name ? this.props.server.name : ""}
+          </span>
         </div>
-        {renderChannels}
+        <div className="channel-list">
+          <div className="category">
+            <svg className="down-arrow" width="12" height="12" viewBox="0 0 24 24">
+              <path fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M7 10L12 15 17 10" />
+            </svg>
+            <span>Category</span>
+            <div className="create-channel" onClick={this.openCreateModal}>
+              <svg width="18" height="18" viewBox="0 0 18 18">
+                <polygon fill="currentColor" points="15 10 10 10 10 15 8 15 8 10 3 10 3 8 8 8 8 3 10 3 10 8 15 8" />
+              </svg>
+              <div className="button-description">Create Channel</div>
+            </div>
+          </div>
+          {renderChannels}
+        </div>
+        <UserInfo />
+
+        <Modal
+          isOpen={this.state.createModalIsOpen}
+          onRequestClose={this.closeCreateModal}
+          className="channel-modal"
+          overlayClassName="modal-overlay"
+          ariaHideApp={false}
+          closeTimeoutMS={250}
+        >
+          <CreateChatModal closeModal={this.closeCreateModal} server={this.props.server} />
+        </Modal>
+
       </div>
-      <UserInfo />
-
-      <Modal
-        isOpen={this.state.createModalIsOpen}
-        onRequestClose={this.closeCreateModal}
-        className="channel-modal"
-        overlayClassName="modal-overlay"
-        ariaHideApp={false}
-        closeTimeoutMS={250}
-      >
-        <CreateChatModal closeModal={this.closeCreateModal} server={this.props.server} />
-      </Modal>
-
-    </div>;
+    )
   }
 }
 

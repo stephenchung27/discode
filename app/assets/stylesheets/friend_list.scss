@@ -1,5 +1,61 @@
 .friend-list {
   width: 240px;
+  flex-shrink: 0;
   height: 100%;
   background-color: #2f3136;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    background-color: #24272A;
+    visibility: hidden;
+  }
+
+  &:hover::-webkit-scrollbar-thumb {
+    visibility: visible;
+  }
+
+  .friends-category {
+    padding: 20px 8px 0px 16px;
+    color: hsla(0,0%,100%,.4);
+    font-size: 12px;
+    font-weight: 500;
+    height: 40px;
+    letter-spacing: .08em;
+    line-height: 20px;
+    box-sizing: border-box;
+  }
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  height: 40px;
+  margin: 1px 0 1px 8px;
+  color: #b9bbbe;
+  box-sizing: border-box;
+}
+
+.friend-avatar {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: #698BD6;
+  background-image: image_url("users/bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px, 22px;
+  margin-right: 10px;
+}
+
+.friend-username {
+  font-weight: 500;
+  font-size: 16px;
 }

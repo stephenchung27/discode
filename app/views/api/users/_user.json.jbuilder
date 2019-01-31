@@ -1,1 +1,1 @@
-json.extract! user, :username, :discriminator
+json.extract! user, :id, :username, :discriminator

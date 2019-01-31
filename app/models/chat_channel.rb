@@ -1,5 +1,5 @@
 class ChatChannel < ApplicationRecord
-  validates :channel_name, :identifier, presence: true
+  validates :channel_name, presence: true
 
   has_one :server_channel_memberships,
             foreign_key: :chat_channel_id,
@@ -13,8 +13,16 @@ class ChatChannel < ApplicationRecord
             foreign_key: :channel_id,
             class_name: :ChannelMessage
 
-  after_initialize :create_identifier
-  after_initialize :randomize_path
+  has_many :channel_subscriptions,
+            foreign_key: :chat_channel_id,
+            class_name: :ChannelSubscription
+  
+  has_many :users,
+            through: :channel_subscriptions,
+            source: :user
+
+  before_create :create_identifier
+  before_create :randomize_path
 
   private
 

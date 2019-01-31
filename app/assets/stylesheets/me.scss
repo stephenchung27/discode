@@ -10,15 +10,16 @@
   display: flex;
   align-items: center;
   padding: 0 12px;
-  height: 56px;
+  height: 55px;
   border-bottom: 1px solid #232428;
+  box-sizing: border-box;
   position: relative;
   input[type="text"] {
     box-sizing: border-box;
     height: 32px;
     padding: 2px 9px 0px;
     font-size: 12px;
-    // color: rgba(0, 0, 0, .5);
+    color: rgba(255, 255, 255, .5);
     border-radius: 4px;
     background: rgba(0,0,0,.2);
     border: 1px solid rgba(0,0,0,.1);

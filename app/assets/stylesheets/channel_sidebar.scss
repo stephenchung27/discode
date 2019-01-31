@@ -3,11 +3,14 @@
   flex-direction: column;
   width: 240px; 
   background: #2f3136;
+  flex-shrink: 0;
 }
 
 .server-header {
-  width: 240px; 
-  height: 54px;
+  display: flex;
+  width: 240px;
+  box-sizing: border-box;
+  height: 55px;
   padding: 0 16px;
   font-size: 16px;
   font-weight: 500;

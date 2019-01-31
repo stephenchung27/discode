@@ -1,11 +1,11 @@
 class User < ApplicationRecord
-  validates :username, :discriminator, :email, :session_token, :password_digest,
+  validates :username, :email, :session_token, :password_digest,
     presence: true
   validates :email, :session_token, uniqueness: true
   validates :discriminator, uniqueness: {scope: :username}
   validates :password, length: {minimum: 6, allow_nil: true}
 
-  after_initialize :ensure_discriminator
+  before_save :ensure_discriminator
   after_initialize :ensure_session_token
 
   has_many :adminned_servers,
@@ -28,6 +28,10 @@ class User < ApplicationRecord
   has_many :chat_channels,
     through: :channel_subscriptions,
     source: :chat_channel
+
+  has_many :server_members,
+    through: :servers,
+    source: :members
 
   has_one_attached :avatar
 

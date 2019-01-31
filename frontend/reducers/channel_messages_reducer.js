@@ -7,7 +7,7 @@ const channelMessagesReducer = (oldState = null, action) => {
 
   switch(action.type) {
     case RECEIVE_CHANNEL_MESSAGES:
-      return action.channelMessages || [];
+      return action.channelMessages || {};
     case RECEIVE_CHANNEL_MESSAGE:
       return merge({}, oldState, {[action.channelMessage.id]: action.channelMessage});
     case LOGOUT_CURRENT_USER:

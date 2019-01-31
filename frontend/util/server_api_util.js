@@ -6,6 +6,14 @@ export const fetchUserServers = user_id => {
   });
 };
 
+export const fetchServerUsers = server_id => {
+  return $.ajax({
+    method: "GET",
+    url: "api/servers",
+    data: { server_id },
+  });
+};
+
 export const createServer = (server) => {
   return $.ajax({
     method: "POST",

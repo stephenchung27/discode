@@ -1,10 +1,13 @@
 class Api::ServersController < ApplicationController
+  before_action :ensure_logged_on
+  
   def index
-    render "api/servers/_user_servers", current_user: current_user
+    @current_user = current_user
+    render "api/servers/_user_servers", current_user: @current_user
   end
 
   def show
-    @server = Server.find_by(path: params[:id])
+    @server = Server.includes(:chat_channels).find_by(path: params[:id])
 
     if @server
       render :show

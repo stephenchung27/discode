@@ -1,7 +1,7 @@
 class Server < ApplicationRecord
-  validates :admin_id, :server_name, :path, presence: true
+  validates :admin_id, :server_name, presence: true
 
-  after_initialize :randomize_path
+  before_create :randomize_path
 
   belongs_to :admin,
              foreign_key: :admin_id,

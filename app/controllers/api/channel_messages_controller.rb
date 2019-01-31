@@ -1,4 +1,6 @@
 class Api::ChannelMessagesController < ApplicationController
+  before_action :ensure_logged_on
+
   def index
     @chat_channel = ChatChannel.find_by(path: params[:channelPath])
     if @chat_channel
@@ -12,6 +14,7 @@ class Api::ChannelMessagesController < ApplicationController
   def create
     @channel_message = ChannelMessage.new(message_params)
     @channel_message.author = current_user
+    
     if @channel_message.save
       render :show
     else

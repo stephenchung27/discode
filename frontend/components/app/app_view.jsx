@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import ServerIndex from './servers/server_index';
 import ChatChannelIndex from './chat_channels/chat_channel_index';
 import ChannelMessagesView from './channel_messages/channel_messages_view';
+import DirectMessagesView from './channel_messages/direct_messages_view';
 import Me from './chat_channels/me';
 import { stopLoading } from '../../actions/session_actions';
 
@@ -14,13 +15,16 @@ class AppView extends React.Component {
 
   render() {
     return <div className="app-view-wrapper">
-        <Route path="/channels/:serverPath" component={ServerIndex} />
-        <Switch>
-          <Route exact path="/channels/@me" component={Me} />
-          <Route path="/channels/:serverPath/:chatChannelPath" component={ChatChannelIndex} />
-        </Switch>
+      <Route path="/channels/:serverPath" component={ServerIndex} />
+      <Switch>
+        <Route path="/channels/@me" component={Me} />
+        <Route path="/channels/:serverPath/:chatChannelPath" component={ChatChannelIndex} />
+      </Switch>
+      <Switch>
+        <Route path="/channels/@me/:chatChannelPath" component={DirectMessagesView} />
         <Route path="/channels/:serverPath/:chatChannelPath" component={ChannelMessagesView} />
-      </div>;
+      </Switch>
+    </div>;
   }
 };
 

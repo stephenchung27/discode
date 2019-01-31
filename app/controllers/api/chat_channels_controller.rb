@@ -1,4 +1,6 @@
 class Api::ChatChannelsController < ApplicationController
+  before_action :ensure_logged_on
+
   def index
     @server = current_user.servers.find_by(path: params[:server_path])
     
@@ -9,17 +11,21 @@ class Api::ChatChannelsController < ApplicationController
   def create
     @chat_channel = ChatChannel.new(channel_params)
     if @chat_channel.save
-      server = Server.find(params[:chat_channel][:server_id])
-      self.add_self_to_server_index(server)
+      @server = Server.find(params[:chat_channel][:server_id])
+      self.add_self_to_server_index
+
+      @chat_channel.users << current_user
+      
       render :show
     else
       render json: @chat_channel.errors, status: 422
     end
   end
 
-  def add_self_to_server_index(server)
-    server.chat_channel_index << @chat_channel.id
-    server.save!
+  def add_self_to_server_index
+    @server.chat_channels << @chat_channel
+    @server.chat_channel_index << @chat_channel.id
+    @server.save!
   end
 
   private

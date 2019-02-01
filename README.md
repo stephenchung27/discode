@@ -21,6 +21,17 @@ Discode is a full stack live chatting application designed to resemble Discord, 
 - **SASS/CSS** for styling
 
 ## Implementation
+
+### Inviting other Users to a Server
+The invite modal pops up containing a URL path that the inviter can copy and paste to the invitee. 
+
+![Screenshot](https://github.com/stephenchung27/discode/blob/master/app/assets/images/Screen%20Shot%202019-02-01%20at%2011.45.23%20AM.png?raw=true)
+
+The invitee can either choose to click on the link and go to the path whereby joining the server automatically. Or they can copy and paste either the entire link or just the last 5 letters of the invite to the join server modal.
+
+![Screenshot](https://github.com/stephenchung27/discode/blob/master/app/assets/images/Screen%20Shot%202019-02-01%20at%2011.45.46%20AM.png?raw=true)
+![Screenshot](https://github.com/stephenchung27/discode/blob/master/app/assets/images/Screen%20Shot%202019-02-01%20at%2011.46.04%20AM.png?raw=true)
+
 ### Live Chatting: ActionCable
 ActionCable is an implementation of WebSockets that seemlessly integrates with Rails applications. It allows each User to establish a connection and "speak" with a server where the message is then "broadcasted" to the other users in real time. 
 
@@ -70,3 +81,5 @@ const parseMessage = (message, index) => {
 };
 ```
 Calling `Regex.exec(str)` on a Regex expression returns an array of values including the original string and the captured group. If there are no matches, the function returns null which allows us to use a ternary operator to selectively render our `VideoEmbed` component if a Youtube URL is passed in the message.
+
+![Screenshot](https://github.com/stephenchung27/discode/blob/master/app/assets/images/Screen%20Shot%202019-02-01%20at%2011.46.23%20AM.png?raw=true)

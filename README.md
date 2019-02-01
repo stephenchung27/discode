@@ -87,5 +87,5 @@ Calling `Regex.exec(str)` on a Regex expression returns an array of values inclu
 ## Planned Future Features
 - Real time voice chat using WebRTC
 - Online/offline status using WebSockets
-- Search functionality for sending Direct Messages
-- Ability to upload images for User avatars
+- User search functionality for sending Direct Messages
+- Ability to upload images for User avatars using ActiveStorage

@@ -83,3 +83,9 @@ const parseMessage = (message, index) => {
 Calling `Regex.exec(str)` on a Regex expression returns an array of values including the original string and the captured group. If there are no matches, the function returns null which allows us to use a ternary operator to selectively render our `VideoEmbed` component if a Youtube URL is passed in the message.
 
 ![Screenshot](https://github.com/stephenchung27/discode/blob/master/app/assets/images/Screen%20Shot%202019-02-01%20at%2011.46.23%20AM.png?raw=true)
+
+## Planned Future Features
+- Real time voice chat using WebRTC
+- Online/offline status using WebSockets
+- Search functionality for sending Direct Messages
+- Ability to upload images for User avatars

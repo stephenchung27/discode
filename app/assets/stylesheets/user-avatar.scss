@@ -1,0 +1,48 @@
+.user-avatar-global {
+  position: relative;
+  height: 30px;
+  width: 30px;
+  background-image: image_url("users/bg.png");
+  background-repeat: no-repeat;
+  background-size: 75%;
+  border-radius: 50%;
+  background-position: 4px 7px;
+}
+
+.user-avatar-global.yellow {
+  background-color: #FAA61A;
+}
+
+.user-avatar-global.green {
+  background-color: #43B581;
+}
+
+.user-avatar-global.red {
+  background-color: #F04747;
+}
+
+.user-avatar-global.gray {
+  background-color: #747F8D;
+}
+
+.user-avatar-global.purple {
+  background-color: #7289DA;
+}
+
+.user-status {
+  position: absolute;
+  border: 2px solid #2f3136;
+  border-radius: 7px;
+  bottom: -3px;
+  height: 10px;
+  right: -3px;
+  width: 10px;
+}
+
+.user-status.online {
+  background-color: #43b581;
+}
+
+.user-status.offline {
+  background-color: #2f3136;
+}

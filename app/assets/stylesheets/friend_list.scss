@@ -43,19 +43,8 @@
   box-sizing: border-box;
 }
 
-.friend-avatar {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  background-color: #698BD6;
-  background-image: image_url("users/bg.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 22px, 22px;
-  margin-right: 10px;
-}
-
 .friend-username {
+  margin-left: 10px;
   font-weight: 500;
   font-size: 16px;
 }

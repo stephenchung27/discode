@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import UserAvatar from '../../user_avatar';
+
 const MeListItem = ({ dmChannel, users, currentPath}) => {
   return <Link to={`/channels/@me/${dmChannel.path}`}>
     <li className={currentPath === dmChannel.path ? "active-dm" : ""}>
       <div className="dm-info">
-        <div className="dm-avatar"></div>
+        <UserAvatar />
         <span className="username">{users[dmChannel.recipientId] ? users[dmChannel.recipientId].username : ""}</span>
       </div>
       <button>

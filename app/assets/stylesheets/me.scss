@@ -129,16 +129,7 @@
     .dm-info {
       display: flex;
       align-items: center;
-      .dm-avatar {
-        height: 30px;
-        width: 30px;
-        background-image: image_url("users/bg.png");
-        background-repeat: no-repeat;
-        background-color: #F7A619;
-        background-size: 75%;
-        border-radius: 50%;
-        background-position: 4px 7px;
-      }
+      
       .username {
         margin-left: 10px;
         color: #72767d;

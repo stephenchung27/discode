@@ -8,7 +8,7 @@ const MeListItem = ({ dmChannel, users, currentPath}) => {
   return <Link to={`/channels/@me/${dmChannel.path}`}>
     <li className={currentPath === dmChannel.path ? "active-dm" : ""}>
       <div className="dm-info">
-        <UserAvatar />
+        <UserAvatar user={users[dmChannel.recipientId]} />
         <span className="username">{users[dmChannel.recipientId] ? users[dmChannel.recipientId].username : ""}</span>
       </div>
       <button>

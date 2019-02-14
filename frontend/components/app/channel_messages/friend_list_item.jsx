@@ -5,7 +5,7 @@ const FriendListItem = ({ user }) => {
   return (
     <div className="friend">
       {/* <div className="friend-avatar"></div> */}
-      <UserAvatar />
+      <UserAvatar user={user} />
       <div className="friend-username">{user.username}</div>
     </div>
   )

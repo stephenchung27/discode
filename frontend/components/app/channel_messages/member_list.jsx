@@ -1,10 +1,10 @@
 import React from 'react';
-import FriendListItem from './friend_list_item';
+import MemberListItem from './member_list_item';
 import { connect } from 'react-redux';
 
-const FriendList = ({users}) => {
+const MemberList = ({users}) => {
   const renderUsers = users.map((user, index )=> {
-    return <FriendListItem key={index} user={user}/>
+    return <MemberListItem key={index} user={user}/>
   });
 
   return (
@@ -19,4 +19,4 @@ export const mapStateToProps = state => ({
   users: Object.values(state.ui.serverUsers),
 });
 
-export default connect(mapStateToProps)(FriendList);
+export default connect(mapStateToProps)(MemberList);

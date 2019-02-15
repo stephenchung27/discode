@@ -1,7 +1,7 @@
 import React from 'react';
 import UserAvatar from '../../user_avatar';
 
-const FriendListItem = ({ user }) => {
+const MemberListItem = ({ user }) => {
   return (
     <div className="friend">
       {/* <div className="friend-avatar"></div> */}
@@ -11,4 +11,4 @@ const FriendListItem = ({ user }) => {
   )
 }
 
-export default FriendListItem;
+export default MemberListItem;

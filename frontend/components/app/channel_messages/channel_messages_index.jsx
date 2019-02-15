@@ -35,7 +35,7 @@ class ChannelMessagesIndex extends React.Component {
             created_at: data.created_at
           });
         },
-        speak: function(data) {
+        speak: function (data) {
           return this.perform("speak", data);
         }
       }
@@ -84,7 +84,7 @@ class ChannelMessagesIndex extends React.Component {
     return (
       <div className="messages-inner">
         <ul className="messages-index">
-          
+
           {renderMessages()}
           <div ref={this.bottom} />
         </ul>
@@ -103,7 +103,6 @@ const mapStateToProps = state => ({
   channelMessages: state.entities.channelMessages || [],
   users: state.entities.users,
   channel: state.ui.channel,
-  currentUserId: state.session.id
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -115,6 +114,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(receiveChannelMessage(channelMessage)),
   fetchUser: user_id =>
     dispatch(fetchUser(user_id)),
+  receiveCurrentServerMember: member =>
+    dispatch(receiveCurrentServerMember(member)),
 });
 
 export default withRouter(

@@ -6,6 +6,7 @@ import ChatChannelIndex from './chat_channels/chat_channel_index';
 import ChannelMessagesView from './channel_messages/channel_messages_view';
 import DirectMessagesView from './channel_messages/direct_messages_view';
 import Me from './chat_channels/me';
+import { receiveCurrentServerMember } from '../../actions/chat_channel_actions';
 import { stopLoading, startLoading } from '../../actions/session_actions';
 import FriendsView from '../app/channel_messages/friends_view';
 
@@ -15,6 +16,22 @@ class AppView extends React.Component {
   }
 
   componentDidMount() {
+    // Connect to online presence channel
+    const receiveCurrentServerMember = this.props.receiveCurrentServerMember.bind(this);
+
+    App.cable.subscriptions.create(
+      { channel: "OnlineChannel", currentUserId: this.props.currentUserId },
+      {
+        received: data => {
+          switch (data.type) {
+            case "userUpdate":
+              receiveCurrentServerMember(data.user);
+              break;
+          }
+        }
+      }
+    );
+
     setTimeout(() => {
       $(".progress").html("READY");
       setTimeout(() => {
@@ -42,9 +59,15 @@ class AppView extends React.Component {
   }
 };
 
+const mapStateToProps = state => ({
+  currentUserId: state.session.id,  
+})
+
 const mapDispatchToProps = dispatch => ({
   stopLoading: () => dispatch(stopLoading()),
   startLoading: () => dispatch(startLoading()),
+  receiveCurrentServerMember: (member) => 
+    dispatch(receiveCurrentServerMember(member)),
 });
 
-export default connect(null, mapDispatchToProps)(AppView);
+export default connect(mapStateToProps, mapDispatchToProps)(AppView);

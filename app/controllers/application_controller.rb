@@ -11,13 +11,13 @@ class ApplicationController < ActionController::Base
 
   def login!(user)
     @current_user = user
-    @current_user.online
+    @current_user.appear
     session[:session_token] = user.reset_session_token!
   end
 
   def logout!
     current_user.try(:reset_token!)
-    current_user.offline
+    current_user.disappear
     session[:session_token] = nil
   end
 

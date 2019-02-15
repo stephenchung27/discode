@@ -37,13 +37,13 @@ class User < ApplicationRecord
 
   attr_reader :password
 
-  def online
+  def appear
     self.online = true
     self.save!
   end
 
-  def offline
-    self.offline = false
+  def disappear
+    self.online = false
     self.save!
   end
 

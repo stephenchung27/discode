@@ -1,4 +1,4 @@
-.friend-list {
+.member-list {
   width: 240px;
   flex-shrink: 0;
   height: 100%;
@@ -21,7 +21,7 @@
     visibility: visible;
   }
 
-  .friends-category {
+  .members-category {
     padding: 20px 8px 0px 16px;
     color: hsla(0,0%,100%,.4);
     font-size: 12px;
@@ -33,7 +33,7 @@
   }
 }
 
-.friend {
+.member {
   display: flex;
   align-items: center;
   padding: 8px;
@@ -43,7 +43,7 @@
   box-sizing: border-box;
 }
 
-.friend-username {
+.member-username {
   margin-left: 10px;
   font-weight: 500;
   font-size: 16px;

@@ -3,10 +3,9 @@ import UserAvatar from '../../user_avatar';
 
 const MemberListItem = ({ user }) => {
   return (
-    <div className="friend">
-      {/* <div className="friend-avatar"></div> */}
+    <div className="member">
       <UserAvatar user={user} />
-      <div className="friend-username">{user.username}</div>
+      <div className="member-username">{user.username}</div>
     </div>
   )
 }

@@ -3,14 +3,24 @@ import MemberListItem from './member_list_item';
 import { connect } from 'react-redux';
 
 const MemberList = ({users}) => {
-  const renderUsers = users.map((user, index )=> {
+  const renderOnlineUsers = users.filter(user => {
+    return user["online"] === true;
+  }).map((user, index) => {
     return <MemberListItem key={index} user={user}/>
   });
 
+  const renderOfflineUsers = users.filter(user => {
+    return user["online"] === false;
+  }).map((user, index) => {
+    return <MemberListItem key={index} user={user}/>
+  });
+  
   return (
-    <div className="friend-list">
-      <div className="friends-category">MEMBERS</div>
-      {renderUsers}
+    <div className="member-list">
+      <div className="members-category">ONLINE</div>
+      {renderOnlineUsers}
+      <div className="members-category">OFFLINE</div>
+      {renderOfflineUsers}
     </div>
   )
 }

@@ -13,11 +13,13 @@ class ChatChannel < ApplicationRecord
 
   has_many :channel_messages,
            foreign_key: :channel_id,
-           class_name: :ChannelMessage
+           class_name: :ChannelMessage,
+           dependent: :destroy
 
   has_many :channel_subscriptions,
            foreign_key: :chat_channel_id,
-           class_name: :ChannelSubscription
+           class_name: :ChannelSubscription,
+           dependent: :destroy
 
   has_many :users,
            through: :channel_subscriptions,

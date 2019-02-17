@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::DmsController < ApplicationController
   before_action :ensure_logged_on
 
@@ -19,6 +21,9 @@ class Api::DmsController < ApplicationController
   end
 
   def destroy
-    @chat_channel.find()
+    chat_channel = ChatChannel.find(params[:id])
+    chat_channel.destroy!
+
+    render json: params[:id]
   end
 end

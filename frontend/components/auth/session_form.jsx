@@ -17,6 +17,10 @@ class SessionForm extends React.Component {
     this.goToRegister = this.goToRegister.bind(this);
   }
 
+  componentDidMount() {
+    if (App.online) App.online.unsubscribe();
+  }
+
   componentWillUnmount() {
     this.props.clearSessionErrors();
   }

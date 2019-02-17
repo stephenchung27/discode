@@ -28,15 +28,18 @@ class ChatChannelIndex extends React.Component {
     this.setState({ createModalIsOpen: false });
   }
 
+  // Refactor out fetchServerMembers
+  // ActionCable will handle this for us
+
   componentDidMount() {
-    this.props.fetchServerMembers(this.props.match.params.serverPath)
-      .then(() => this.props.fetchServerChatChannels(this.props.match.params.serverPath));
+    // this.props.fetchServerMembers(this.props.match.params.serverPath);
+    this.props.fetchServerChatChannels(this.props.match.params.serverPath);
   }
 
   componentDidUpdate(oldProps) {
     if (this.props.match.params.serverPath !== oldProps.match.params.serverPath) {
-      this.props.fetchServerMembers(this.props.match.params.serverPath)
-        .then(() => this.props.fetchServerChatChannels(this.props.match.params.serverPath));
+      // this.props.fetchServerMembers(this.props.match.params.serverPath);
+      this.props.fetchServerChatChannels(this.props.match.params.serverPath);
     }
   }
 

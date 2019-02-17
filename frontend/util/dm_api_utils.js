@@ -12,3 +12,10 @@ export const createDM = ({recipient_id}) => {
     data: { recipient_id },
   });
 };
+
+export const destroyDM = dm_id => {
+  return $.ajax({
+    method: "DELETE",
+    url: `api/dms/${dm_id}`,
+  })
+}

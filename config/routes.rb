@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
 
     # Direct messages
-    resources :dms, only: [:index, :create]
+    resources :dms, only: [:index, :create, :destroy]
 
     resources :servers, only: [:index, :show, :create, :update]
     resources :server_memberships, only: [:create, :index]

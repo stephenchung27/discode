@@ -17,4 +17,8 @@ class Api::DmsController < ApplicationController
       render :show
     end
   end
+
+  def destroy
+    @chat_channel.find()
+  end
 end

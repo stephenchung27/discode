@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { joinServer } from '../../../actions/server_actions';
+import { withRouter } from 'react-router';
 
 class JoinModal extends React.Component {
   constructor(props) {
@@ -14,12 +15,17 @@ class JoinModal extends React.Component {
   }
 
   handleSubmit(e) {
+    const currentUserId = this.props.currentUserId;
+
     e.preventDefault();
     const identifier = this.state.identifier.slice(-5);
     this.props.joinServer(identifier)
       .then(this.props.closeModal())
       .then(({ server }) => {
-        this.props.history.push(`/channels/${server.path}/${server.default_channel}`);
+        this.props.history.push({
+          pathname: `/channels/${server.path}/${server.default_channel}`,
+          state: { isNewMember: true, currentUserId },
+        });
       });
   }
 
@@ -54,8 +60,12 @@ class JoinModal extends React.Component {
   }
 };
 
+const mapStateToProps = state => ({
+  currentUserId: state.session.id,
+});
+
 const mapDispatchToProps = dispatch => ({
   joinServer: identifier => dispatch(joinServer(identifier)),
 });
 
-export default connect(null, mapDispatchToProps)(JoinModal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(JoinModal));

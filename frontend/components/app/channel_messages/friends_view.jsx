@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const FriendsView = () => {
-  return null;
-};
+class FriendView extends Component {
+  render() {
+    return null;
+  }
+}
 
-export default FriendsView;
+export default FriendView;

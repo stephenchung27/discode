@@ -21,7 +21,7 @@ class ChannelMessagesIndex extends React.Component {
     const fetchUser = this.props.fetchUser.bind(this);
     const users = this.props.users;
 
-    App.cable.subscriptions.create(
+    App.chat = App.cable.subscriptions.create(
       { channel: "ChattingChannel" },
       {
         received: data => {
@@ -103,6 +103,7 @@ const mapStateToProps = state => ({
   channelMessages: state.entities.channelMessages || [],
   users: state.entities.users,
   channel: state.ui.channel,
+  currentUserId: state.session.id,
 });
 
 const mapDispatchToProps = dispatch => ({

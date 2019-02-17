@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Server < ApplicationRecord
   validates :admin_id, :server_name, presence: true
 
@@ -25,7 +27,7 @@ class Server < ApplicationRecord
 
   def randomize_path
     begin
-      path = "%.18i" % SecureRandom.random_number(999999999999999999)
+      path = format('%.18i', SecureRandom.random_number(999_999_999_999_999_999))
     end while Server.where(path: path).exists?
     self.path ||= path
   end

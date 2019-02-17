@@ -22,8 +22,6 @@ class OnlineChannel < ApplicationCable::Channel
                   discriminator: current_user.discriminator, online: false }
     socket = { user: user_info, type: 'userUpdate' }
 
-    # debugger
-
     OnlineChannel.broadcast_to('online_presence', socket)
   end
 end

@@ -10,13 +10,23 @@ class Api::DmsController < ApplicationController
 
   def create
     @recipient = User.find(params[:recipient_id])
-    @chat_channel = ChatChannel.new(channel_name: "#{@recipient.username} - #{current_user.username}")
 
-    if @recipient && @chat_channel.save
-      recipient_subscription = ChannelSubscription.create!(user_id: @recipient.id, chat_channel_id: @chat_channel.id, is_direct_message: true)
-      sender_subscription = ChannelSubscription.create!(user_id: current_user.id, chat_channel_id: @chat_channel.id, is_direct_message: true)
+    if @recipient
+      @chat_channel = ChatChannel.where(channel_name: "#{@recipient.username} - #{current_user.username}").or(ChatChannel.where(channel_name: "#{current_user.username} - #{@recipient.username}"))
 
-      render :show
+      if @chat_channel.exists?
+        render :show
+      else
+        @chat_channel = ChatChannel.new(channel_name: "#{@recipient.username} - #{current_user.username}")
+        @chat_channel.save!
+
+        recipient_subscription = ChannelSubscription.create!(user_id: @recipient.id, chat_channel_id: @chat_channel.id, is_direct_message: true)
+        sender_subscription = ChannelSubscription.create!(user_id: current_user.id, chat_channel_id: @chat_channel.id, is_direct_message: true)
+
+        render :show
+      end
+    else
+      render json: ['User does not exist'], status: 404
     end
   end
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { createDM } from '../../../actions/dms_actions';
 
 class SearchBar extends React.Component {
@@ -15,10 +16,17 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    if (this.props.dmChannels[this.state.recipient_id]) {
-      alert("already there!");
+
+    const duplicateChannelCheck = this.props.dmChannels.filter(channel =>
+      channel.recipientId === parseInt(this.state.recipient_id));
+
+    if (duplicateChannelCheck.length > 0) {
+      this.props.history.push(`/channels/@me/${duplicateChannelCheck[0].path}`)
     } else {
-      this.props.createDM(this.state);
+      this.props.createDM(this.state).then(action => {
+        const dmPath = Object.values(action.chat_channel)[0].path
+        this.props.history.push(`/channels/@me/${dmPath}`)
+      });
     }
     this.setState({recipient_id: ""});
   }
@@ -35,11 +43,11 @@ class SearchBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  dmChannels: state.entities.dmChannels,
+  dmChannels: Object.values(state.entities.dmChannels),
 });
 
 const mapDispatchToProps = dispatch => ({
   createDM: recipientId => dispatch(createDM(recipientId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBar));

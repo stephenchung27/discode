@@ -5,7 +5,7 @@ export const fetchAllDMs = () => {
   });
 };
 
-export const createDM = ({recipient_id}) => {
+export const createDM = (recipient_id) => {
   return $.ajax({
     method: "POST",
     url: "api/dms",

@@ -25,7 +25,10 @@ class CreateModal extends React.Component {
     this.props.createServer(this.state)
       .then(this.props.closeModal())
       .then(({ server })=> {
-        this.props.history.push(`/channels/${server.path}/${server.default_channel}`);
+        this.props.history.push({
+          pathname: `/channels/${server.path}/${server.default_channel}`,
+          state: { isNewMember: true, currentUserId }
+        });
       });
   }
 

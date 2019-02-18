@@ -1,5 +1,5 @@
 import React from "react";
-import ChannelMessagesIndex from "./channel_messages_index";
+import ChannelMessagesIndex from "../channel_messages/channel_messages_index";
 import DMBar from "./dm_bar";
 
 const DirectMessagesView = () => {

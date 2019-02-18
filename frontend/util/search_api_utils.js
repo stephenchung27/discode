@@ -1,9 +1,9 @@
 export const search = searchTerm => {
   return $.ajax({
     method: "GET",
-    url: "/api/users/search",
+    url: "/api/search",
     data: {
-      search_term: searchTerm,
+      search_term: searchTerm
     }
   })
 };

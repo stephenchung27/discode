@@ -25,9 +25,9 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    @users = User.order(:id).where("username like ?", "%#{params[:search_term]}%")
-
-    render json: 'api/users/search'
+    @users = User.order(:id).where("username like ?", "%#{params[:search_term]}%").where.not(id: current_user.id)
+    
+    render :search
   end
 
   private

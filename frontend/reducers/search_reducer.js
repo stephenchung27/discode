@@ -1,4 +1,4 @@
-import { RECEIVE_RESULTS } from '../actions/search_actions';
+import { RECEIVE_RESULTS, CLEAR_RESULTS } from '../actions/search_actions';
 
 const searchReducer = (oldState = [], action ) => {
   Object.freeze(oldState);
@@ -6,6 +6,8 @@ const searchReducer = (oldState = [], action ) => {
   switch(action.type) {
     case RECEIVE_RESULTS:
       return action.results;
+    case CLEAR_RESULTS:
+      return [];
     default:
       return oldState;
   }

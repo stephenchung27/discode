@@ -11,7 +11,7 @@ const mapStateToProps = ({ errors }) => ({
 const mapDispatchToProps = dispatch => ({
   processForm: (user) => dispatch(register(user)),
   clearSessionErrors: () => dispatch(clearSessionErrors()),
-  createDM: () => dispatch(createDM({recipient_id: 1})),
+  createDM: () => dispatch(createDM(1)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);

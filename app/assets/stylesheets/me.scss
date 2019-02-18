@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 240px;
-  background-color: #2E3136;
+  background-color: #2e3136;
   flex-shrink: 0;
 }
 
@@ -19,11 +19,43 @@
     height: 32px;
     padding: 2px 9px 0px;
     font-size: 12px;
-    color: rgba(255, 255, 255, .5);
+    color: rgba(255, 255, 255, 0.5);
     border-radius: 4px;
-    background: rgba(0,0,0,.2);
-    border: 1px solid rgba(0,0,0,.1);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     width: 100%;
+  }
+  .search-results {
+    position: absolute;
+    left: 50%;
+    top: 47px;
+    transform: translateX(-50%);
+    width: 240px;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    z-index: 5;
+    li {
+      display: flex;
+      align-items: center;
+      opacity: 1;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 12px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #202225;
+      background-color: #2d3136;
+      width: 100%;
+      padding: 10px;
+      span {
+        color: #fff;
+      }
+      .user-avatar-global {
+        margin-right: 10px;
+      }
+      &.selected {
+        background-color: #42464D;
+      }
+    }
   }
 }
 
@@ -43,7 +75,7 @@
   font-weight: 700;
   line-height: 14px;
   padding: 8px 11px;
-  background-color: #DEA731;
+  background-color: #dea731;
   color: #000;
   white-space: nowrap;
   z-index: 2;
@@ -51,15 +83,15 @@
 }
 
 .under-construction::before {
-  content: '';
+  content: "";
   position: absolute;
   top: -10px;
   left: 50%;
   transform: translateX(-50%);
-  width: 0; 
-  height: 0; 
+  width: 0;
+  height: 0;
   border-top: 5px solid transparent;
-  border-bottom: 5px solid #DEA731; 
+  border-bottom: 5px solid #dea731;
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
 }
@@ -77,11 +109,11 @@
     margin: 0 8px;
     padding: 8px 8px;
     svg {
-      opacity: .6;
+      opacity: 0.6;
       height: 24px;
       width: 24px;
       margin-right: 18px;
-    } 
+    }
     .friends {
       font-size: 15px;
       font-weight: 500;
@@ -91,7 +123,7 @@
   }
 
   header:hover {
-    background-color: #41464D;
+    background-color: #41464d;
     svg {
       opacity: 1;
     }
@@ -101,12 +133,12 @@
   }
 
   header .selected {
-    background-color: rgba(79,84,92,.6);
+    background-color: rgba(79, 84, 92, 0.6);
   }
 
   .direct-messages-title {
     color: #fff;
-    opacity: .3;
+    opacity: 0.3;
     padding: 9px 20px;
     font-size: 12px;
     font-weight: 500;
@@ -129,7 +161,7 @@
     .dm-info {
       display: flex;
       align-items: center;
-      
+
       .username {
         margin-left: 10px;
         color: #72767d;
@@ -144,7 +176,7 @@
       outline: none;
       height: 18px;
       width: 18px;
-      opacity: .3;
+      opacity: 0.3;
       margin-right: 6px;
       visibility: hidden;
       cursor: inherit;
@@ -159,7 +191,7 @@
   }
 
   li:hover {
-    background-color: #36393F;
+    background-color: #36393f;
     .username {
       color: #f6f6f6;
     }
@@ -169,7 +201,7 @@
   }
 
   li.active-dm {
-    background-color: rgba(79,84,92,.6);
+    background-color: rgba(79, 84, 92, 0.6);
     .username {
       color: #f6f6f6;
     }

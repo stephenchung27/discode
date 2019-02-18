@@ -5,7 +5,9 @@ class UserAvatar extends React.Component {
     const colors = ["yellow", "green", "red", "gray", "purple"];
     return (
       <div className={"user-avatar-global " + colors[this.props.user.id % colors.length]}>
-        <div className={"user-status " + (this.props.user.online ? "online" : "offline")}></div>
+        {this.props.hiddenStatus ? null :
+          <div className={"user-status " + (this.props.user.online ? "online" : "offline")}></div>
+        }
       </div>
     )
   }

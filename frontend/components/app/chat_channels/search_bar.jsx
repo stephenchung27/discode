@@ -65,7 +65,8 @@ class SearchBar extends React.Component {
           if (this.state.selectedResult > 0) {
             this.setState({
               selectedResult: this.state.selectedResult - 1,
-              searchTerm: this.props.searchResults[this.state.selectedResult - 1].username,
+              searchTerm: this.props.searchResults[this.state.selectedResult - 1].username
+                + "#" + this.props.searchResults[this.state.selectedResult - 1].discriminator,
             });
           } else if (this.state.selectedResult === 0) {
             this.setState({
@@ -79,7 +80,8 @@ class SearchBar extends React.Component {
           if (this.state.selectedResult < resultLength - 1) {
             this.setState({ 
               selectedResult: this.state.selectedResult + 1,
-              searchTerm: this.props.searchResults[this.state.selectedResult + 1].username,              
+              searchTerm: this.props.searchResults[this.state.selectedResult + 1].username
+                + "#" + this.props.searchResults[this.state.selectedResult + 1].discriminator,              
             });
           }
           break;

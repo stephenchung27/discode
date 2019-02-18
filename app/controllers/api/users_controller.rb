@@ -25,7 +25,11 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    @users = User.order(:id).where("username like ?", "%#{params[:search_term]}%").where.not(id: current_user.id)
+    search_terms = params[:search_term].split("#")
+    @users = User.order(:id).where("username like ?", "%#{search_terms[0]}%").where.not(id: current_user.id)
+    if search_terms[1]
+      @users.where("discriminator like?", "%#{search_terms[1]}%")
+    end
     
     render :search
   end

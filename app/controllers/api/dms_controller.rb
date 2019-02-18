@@ -12,12 +12,12 @@ class Api::DmsController < ApplicationController
     @recipient = User.find(params[:recipient_id])
 
     if @recipient
-      @chat_channel = ChatChannel.where(channel_name: "#{@recipient.username} - #{current_user.username}").or(ChatChannel.where(channel_name: "#{current_user.username} - #{@recipient.username}"))
+      @chat_channel = ChatChannel.where(channel_name: "#{@recipient.username}##{@recipient.discriminator} - #{current_user.username}##{current_user.discriminator}").or(ChatChannel.where(channel_name: "#{current_user.username}##{current_user.discriminator} - #{@recipient.username}##{@recipient.discriminator}"))
 
       if @chat_channel.exists?
         render :show
       else
-        @chat_channel = ChatChannel.new(channel_name: "#{@recipient.username} - #{current_user.username}")
+        @chat_channel = ChatChannel.new(channel_name: "#{@recipient.username}##{@recipient.discriminator} - #{current_user.username}##{current_user.discriminator}")
         @chat_channel.save!
 
         recipient_subscription = ChannelSubscription.create!(user_id: @recipient.id, chat_channel_id: @chat_channel.id, is_direct_message: true)

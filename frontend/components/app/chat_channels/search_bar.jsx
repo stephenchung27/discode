@@ -83,16 +83,19 @@ class SearchBar extends React.Component {
             });
           }
           break;
+        case 27:
+          document.activeElement.blur();
+          break;
       }
     }
   }
 
   focusResults() {
-    this.setState({ isFocused: true })
+    this.setState({ isFocused: true });
   }
 
   blurResults() {
-    this.setState({ isFocused: false, selectedResult: -1 })
+    this.setState({ isFocused: false, selectedResult: -1 });
   }
 
   render() {

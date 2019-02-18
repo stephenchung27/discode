@@ -43,6 +43,7 @@ class SearchBar extends React.Component {
 
     this.setState({ searchTerm: "" });
     this.props.clearResults();
+    $(".search-blur").removeClass("visible");
   }
 
   handleChange(e) {
@@ -50,6 +51,7 @@ class SearchBar extends React.Component {
     if (!e.target.value) {
       this.props.clearResults();
       this.setState({ selectedResult: -1 });
+      $(".search-blur").removeClass("visible");
     } else {
       this.props.fetchResults(e.target.value);
     }
@@ -78,10 +80,10 @@ class SearchBar extends React.Component {
         case 40:
           e.preventDefault();
           if (this.state.selectedResult < resultLength - 1) {
-            this.setState({ 
+            this.setState({
               selectedResult: this.state.selectedResult + 1,
               searchTerm: this.props.searchResults[this.state.selectedResult + 1].username
-                + "#" + this.props.searchResults[this.state.selectedResult + 1].discriminator,              
+                + "#" + this.props.searchResults[this.state.selectedResult + 1].discriminator,
             });
           }
           break;
@@ -98,16 +100,20 @@ class SearchBar extends React.Component {
 
   blurResults() {
     this.setState({ isFocused: false, selectedResult: -1 });
+    $(".search-blur").removeClass("visible");
   }
 
   render() {
-    const renderResults = this.props.searchResults.map((user, index) => {
-      return (
-        <SearchResult user={user} key={index}
-          selected={this.state.selectedResult === index} />
-      )
-    }
-    );
+    const renderResults = (
+      <ul className="search-results">{this.props.searchResults.map((user, index) => {
+        $(".search-blur").addClass("visible");
+        return (
+          <SearchResult user={user} key={index}
+            selected={this.state.selectedResult === index} />
+        )
+      })}
+      </ul>)
+      ;
 
     return <form className="search-bar" onSubmit={this.handleSubmit}>
       <input type="text" placeholder="Find or start a conversation"
@@ -116,9 +122,7 @@ class SearchBar extends React.Component {
         value={this.state.searchTerm}
         onFocus={this.focusResults}
         onBlur={this.blurResults} />
-      <ul className="search-results">
-        {this.state.isFocused ? renderResults : null}
-      </ul>
+      {this.state.isFocused ? renderResults : null}
     </form >
   }
 }

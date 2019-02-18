@@ -14,7 +14,6 @@ class MemberList extends React.Component {
 
     if (isNewServer) {
 
-
       // Unsubscribe if server members exist
       if (App.serverMembers) App.serverMembers.unsubscribe();
 

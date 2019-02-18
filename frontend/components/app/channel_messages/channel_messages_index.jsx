@@ -52,6 +52,16 @@ class ChannelMessagesIndex extends React.Component {
       this.props.fetchChannelMessages(this.props.match.params.chatChannelPath);
     }
     this.bottom.current.scrollIntoView();
+
+    if (this.props.history.location.state && this.props.history.location.state.message) {
+
+      App.chat.speak({
+        author_id: this.props.currentUserId,
+        body: this.props.history.location.state.message,
+        channel_id: this.props.channel.id,
+      });
+      this.props.history.location.state = undefined;
+    }
   }
 
   render() {

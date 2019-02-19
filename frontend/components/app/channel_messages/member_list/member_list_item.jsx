@@ -13,8 +13,10 @@ class MemberListItem extends React.Component {
   }
 
   openModal(e) {
-    this.setState({ isOpen: true });
-    e.stopPropagation();
+    this.setState({ isOpen: false });
+    setTimeout(() => {
+      this.setState({ isOpen: true });
+    });
   }
 
   closeModal() {
@@ -32,7 +34,7 @@ class MemberListItem extends React.Component {
       <div id={`member-${user.id}`} className="member" onClick={this.openModal}>
         <UserAvatar user={user} />
         <div className="member-username">{user.username}</div>
-        {this.state.isOpen ? <MemberPopout user={user} closeModal={this.closeModal} /> : null }
+        {this.state.isOpen ? <MemberPopout user={user} closeModal={this.closeModal} /> : null}
       </div>
     )
   }

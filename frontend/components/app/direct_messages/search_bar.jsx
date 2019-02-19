@@ -118,7 +118,7 @@ class SearchBar extends React.Component {
   blurResults(e) {
     setTimeout(() => {
       this.setState({ isFocused: false, selectedResult: -1 });
-    }, 100);
+    });
     $("#search-blur").removeClass("visible");
   }
 

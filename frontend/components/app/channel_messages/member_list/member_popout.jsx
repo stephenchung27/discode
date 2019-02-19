@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createDM } from '../../../actions/dms_actions';
+import { createDM } from '../../../../actions/dms_actions';
 import { withRouter } from 'react-router';
 
 class MemberPopout extends React.Component {

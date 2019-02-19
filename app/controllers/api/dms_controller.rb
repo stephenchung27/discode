@@ -15,6 +15,7 @@ class Api::DmsController < ApplicationController
       @chat_channel = ChatChannel.where(channel_name: "#{@recipient.username}##{@recipient.discriminator} - #{current_user.username}##{current_user.discriminator}").or(ChatChannel.where(channel_name: "#{current_user.username}##{current_user.discriminator} - #{@recipient.username}##{@recipient.discriminator}"))
 
       if @chat_channel.exists?
+        @chat_channel = @chat_channel.first
         render :show
       else
         @chat_channel = ChatChannel.new(channel_name: "#{@recipient.username}##{@recipient.discriminator} - #{current_user.username}##{current_user.discriminator}")

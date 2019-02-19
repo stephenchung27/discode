@@ -8,7 +8,7 @@ import DirectMessagesView from './direct_messages/direct_messages_view';
 import Me from './direct_messages/me';
 import { updateServerMember } from '../../actions/member_list_actions';
 import { stopLoading, startLoading } from '../../actions/session_actions';
-import FriendsView from '../app/channel_messages/friends_view';
+import FriendsView from './friends/friends_view';
 
 class AppView extends React.Component {
   componentWillMount() {

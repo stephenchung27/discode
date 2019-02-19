@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import CreateChatModal from './create_channel_modal';
 
 import ChatChannelItem from './chat_channel_item';
-import UserInfo from './user_info';
+import UserBar from './user_bar';
 import { fetchServerChatChannels, fetchServerMembers } from '../../../actions/chat_channel_actions';
 
 class ChatChannelIndex extends React.Component {
@@ -85,7 +85,7 @@ class ChatChannelIndex extends React.Component {
           </div>
           {renderChannels}
         </div>
-        <UserInfo />
+        <UserBar />
 
         <Modal
           isOpen={this.state.createModalIsOpen}

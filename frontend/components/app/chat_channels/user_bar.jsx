@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const UserInfo = ({ currentUser }) => {
+const UserBar = ({ currentUser }) => {
   return (
     <div id="user-info">
       <div id="user-avatar"></div>
@@ -17,4 +17,4 @@ const mapStateToProps = state => ({
   currentUser: state.entities.users[state.session.id],
 });
 
-export default connect(mapStateToProps)(UserInfo);
+export default connect(mapStateToProps)(UserBar);

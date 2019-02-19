@@ -1,5 +1,5 @@
 import React from 'react';
-import UserAvatar from '../../user_avatar';
+import UserAvatar from '../../../user_avatar';
 import MemberPopout from './member_popout';
 
 class MemberListItem extends React.Component {

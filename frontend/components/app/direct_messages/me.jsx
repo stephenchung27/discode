@@ -1,6 +1,6 @@
 import React from 'react';
 import MeList from './me_list';
-import UserInfo from '../chat_channels/user_info';
+import UserBar from '../chat_channels/user_bar';
 import SearchBar from './search_bar';
 
 const Me = () => {
@@ -8,7 +8,7 @@ const Me = () => {
     <div className="me-sidebar">
       <SearchBar />
       <MeList />
-      <UserInfo />
+      <UserBar />
     </div>
   )
 }

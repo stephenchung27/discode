@@ -11,7 +11,7 @@ class ChannelSubscription < ApplicationRecord
              foreign_key: :chat_channel_id,
              class_name: :ChatChannel
 
-  def is_direct_message?
+  def direct_message?
     is_direct_message
   end
 end

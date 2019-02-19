@@ -20,6 +20,9 @@ class SearchBar extends React.Component {
     this.focusResults = this.focusResults.bind(this);
     this.blurResults = this.blurResults.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.clickResult = this.clickResult.bind(this);
+
+    this.inputRef = React.createRef();
   }
 
   handleSubmit(e) {
@@ -43,7 +46,8 @@ class SearchBar extends React.Component {
 
     this.setState({ searchTerm: "" });
     this.props.clearResults();
-    $(".search-blur").removeClass("visible");
+    document.activeElement.blur();
+    $("#search-blur").removeClass("visible");
   }
 
   handleChange(e) {
@@ -51,7 +55,7 @@ class SearchBar extends React.Component {
     if (!e.target.value) {
       this.props.clearResults();
       this.setState({ selectedResult: -1 });
-      $(".search-blur").removeClass("visible");
+
     } else {
       this.props.fetchResults(e.target.value);
     }
@@ -91,39 +95,61 @@ class SearchBar extends React.Component {
           document.activeElement.blur();
           break;
       }
+    } else if (e.keyCode === 27) {
+      document.activeElement.blur();
     }
+  }
+
+  clickResult(index, e) {
+    this.setState({
+      selectedResult: index,
+      searchTerm: this.props.searchResults[index].username
+        + "#" + this.props.searchResults[index].discriminator
+    }, () => {
+      this.handleSubmit(e);
+    })
   }
 
   focusResults() {
     this.setState({ isFocused: true });
+    $("#search-blur").addClass("visible");
   }
 
-  blurResults() {
-    this.setState({ isFocused: false, selectedResult: -1 });
-    $(".search-blur").removeClass("visible");
+  blurResults(e) {
+    setTimeout(() => {
+      this.setState({ isFocused: false, selectedResult: -1 });
+    }, 100);
+    $("#search-blur").removeClass("visible");
   }
 
   render() {
+
     const renderResults = (
-      <ul className="search-results">{this.props.searchResults.map((user, index) => {
-        $(".search-blur").addClass("visible");
-        return (
-          <SearchResult user={user} key={index}
-            selected={this.state.selectedResult === index} />
-        )
-      })}
+      <ul className="search-results">
+        {this.props.searchResults.map((user, index) => {
+          return (
+            <SearchResult user={user} key={index}
+              selected={this.state.selectedResult === index}
+              onClick={(e) => this.clickResult(index, e)} />
+          )
+        })}
+        <li>Press the arrow keys to navigate through search results.</li>
       </ul>)
       ;
 
-    return <form className="search-bar" onSubmit={this.handleSubmit}>
-      <input type="text" placeholder="Find or start a conversation"
-        onKeyDown={this.handleKeyDown}
-        onChange={this.handleChange}
-        value={this.state.searchTerm}
-        onFocus={this.focusResults}
-        onBlur={this.blurResults} />
-      {this.state.isFocused ? renderResults : null}
-    </form >
+    return (
+      <form className="search-bar" onSubmit={this.handleSubmit}>
+
+        <input type="text" placeholder="Find or start a conversation"
+          onKeyDown={this.handleKeyDown}
+          onChange={this.handleChange}
+          value={this.state.searchTerm}
+          onFocus={this.focusResults}
+          onBlur={this.blurResults}
+          ref={this.inputRef} />
+
+        {this.state.isFocused ? renderResults : null}
+      </form>)
   }
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import MemberListItem from './member_list_item';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { receiveServerMember, receiveServerMembers } from '../../../actions/member_list_actions';
+import { receiveServerMember, receiveServerMembers } from '../../../../actions/member_list_actions';
 
 class MemberList extends React.Component {
   constructor(props) {

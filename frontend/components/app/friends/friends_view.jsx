@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import {
   fetchFriends,
   fetchFriendRequests,
-  sendFriendRequest,
 } from '../../../actions/friend_actions';
 import { clearCurrentChannel } from '../../../actions/chat_channel_actions';
 import FriendsBar from './friends_bar';
@@ -14,9 +15,11 @@ import FriendsOnline from './friends_online';
 class FriendView extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      view: "All",
-    }
+    if (this.props.history.location.state) {
+      this.state = { view: this.props.history.location.state.viewType };
+    } else {
+      this.state = { view: "All" };
+    };
 
     this.clickAll = this.clickAll.bind(this);
     this.clickOnline = this.clickOnline.bind(this);
@@ -34,11 +37,6 @@ class FriendView extends Component {
   clickPending() { this.setState({ view: "Pending" }) }
 
   render() {
-    const onlineFriends = () => {
-      // debugger
-      this.props.friends.filter(friend => friend.online);
-    }
-
     return (<div className="friends-view">
       <FriendsBar
         view={this.state.view}
@@ -80,4 +78,4 @@ const mapDispatchToProps = dispatch => ({
   fetchFriendRequests: () => dispatch(fetchFriendRequests()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendView);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FriendView));

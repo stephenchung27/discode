@@ -63,7 +63,7 @@
       .friends {
         color: #fff;
       }
-      background: #42464D;
+      background: #42464d;
     }
     svg {
       opacity: 0.6;
@@ -76,6 +76,18 @@
       font-weight: 500;
       line-height: 20px;
       color: #72767d;
+      flex-grow: 1;
+    }
+    .friends-link-notifications {
+      justify-self: end;
+      background-color: #f04747;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.25), inset 0 1px 0 hsla(0, 0%, 100%, 0.15);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 12px;
+      padding: 3px 6px;
     }
   }
 

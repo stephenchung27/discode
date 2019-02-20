@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import FriendRequest from './friend_request';
-import { 
-  acceptFriendRequest, 
+import {
+  acceptFriendRequest,
   rejectFriendRequest,
 } from '../../../actions/friend_actions';
 
@@ -38,6 +38,11 @@ class FriendsPending extends React.Component {
       <div className="friends-rows">
         {renderIncoming}
         {renderOutgoing}
+        {incoming.length + outgoing.length === 0 ?
+          <div className="empty">
+            <div className="pending-bg"></div>
+            <p>There are no pending friend requests. Here's a Wumpus for now.</p>
+          </div> : null}
       </div>
     )
   }

@@ -3,7 +3,6 @@ import React from 'react';
 class UserAvatar extends React.Component {
   render() {
     const colors = ["yellow", "green", "red", "gray", "purple"];
-    console.log(this.props.user.id % colors.length);
     return (
       <div className={"user-avatar-global " + colors[this.props.user.id % colors.length]}>
         {this.props.hiddenStatus ? null :

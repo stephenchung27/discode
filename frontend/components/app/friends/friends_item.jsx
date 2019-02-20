@@ -1,7 +1,18 @@
 import React from 'react';
 import UserAvatar from '../../user_avatar';
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux';
+import { createDM } from '../../../actions/dms_actions';
 
-const FriendItem = ({ friend }) => {
+const FriendItem = ({ friend, createDM, history }) => {
+  const gotoDM = () => {
+    createDM(friend.id).then(action => {
+      const channel = Object.values(action.chat_channel)[0];
+
+      history.push(`/channels/@me/${channel.path}`);
+    });
+  }
+
   if (friend) {
     const status = friend.online ? "Online" : "Offline";
 
@@ -27,4 +38,8 @@ const FriendItem = ({ friend }) => {
   }
 }
 
-export default FriendItem;
+const mapDispatchToProps = dispatch => ({
+  createDM: (friendId) => dispatch(createDM(friendId)),
+})
+
+export default withRouter(connect(null, mapDispatchToProps)(FriendItem));

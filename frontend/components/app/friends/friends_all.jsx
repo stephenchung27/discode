@@ -10,7 +10,11 @@ const FriendsAll = ({ friends, users }) => {
 
   return (
     <div className="friends-rows">
-      {renderFriends}
+      {friends && friends.length > 0 ? renderFriends :
+        <div className="empty">
+          <div className="all-bg"></div>
+          <p>There are no pending friend requests. Here's a wumpus for now.</p>
+        </div>}
     </div>
   )
 }

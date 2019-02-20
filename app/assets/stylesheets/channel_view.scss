@@ -7,7 +7,7 @@
 .channel-bar {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #292C30;
+  border-bottom: 1px solid #292c30;
   height: 49px;
   background-color: #36393f;
   padding: 0 8px 0 12px;
@@ -16,7 +16,7 @@
     margin-right: 3px;
   }
   h1 {
-    color: #fff;    
+    color: #fff;
     font-size: 18px;
     font-weight: 600;
   }
@@ -50,22 +50,22 @@
 
 .messages-form {
   display: flex;
-  border-top: 1px solid #42454A;
+  border-top: 1px solid #42454a;
   padding: 20px 0px 30px;
   z-index: 3;
 
-  input[type=text] {
+  input[type="text"] {
     width: 100%;
     border-radius: 3px;
-    color: hsla(0,0%,100%,.7);
+    color: hsla(0, 0%, 100%, 0.7);
     padding: 10px;
     font-size: 14px;
     height: 20px;
     outline: 0;
-    background-color: rgba(114,118,125,.3);
+    background-color: rgba(114, 118, 125, 0.3);
     border: none;
   }
-  input[type=text]::placeholder {
+  input[type="text"]::placeholder {
     font-weight: 500;
   }
 }
@@ -76,6 +76,18 @@
   width: calc(100% - 10px);
   position: relative;
 
+  .user-avatar-global {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-image: image_url("users/bg.png");
+    background-size: 30px;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    background-position: 50%;
+    height: 40px;
+    width: 40px;
+  }
   header {
     display: flex;
     align-items: flex-end;
@@ -94,7 +106,7 @@
   .message-divider {
     margin: 20px 20px -20px;
     border: none;
-    border-bottom: 1px solid #3E4147;
+    border-bottom: 1px solid #3e4147;
   }
 
   .message-group {
@@ -122,21 +134,7 @@
   background-clip: padding-box;
   border: 3px solid #36393f;
   border-radius: 7px;
-	background-color: #1f2224;
-}
-
-.user-avatar {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  background-color: #6579BA;
-  background-image: image_url("users/bg.png");
-  background-size: 30px;
-  background-repeat: no-repeat;
-  border-radius: 50%;
-  background-position: 50%;
-  height: 40px;
-  width: 40px;
+  background-color: #1f2224;
 }
 
 .invite-modal {
@@ -168,15 +166,15 @@
     .input-box {
       display: flex;
       align-items: center;
-      background-color: #2B2E33;
-      border:1px solid rgba(0, 0, 0, .3);
+      background-color: #2b2e33;
+      border: 1px solid rgba(0, 0, 0, 0.3);
       color: #f6f6f7;
       border-radius: 3px;
       font-size: 16px;
       padding: 0;
-      transition: border-color .17s ease;
+      transition: border-color 0.17s ease;
 
-      input[type=text] {
+      input[type="text"] {
         background: transparent;
         border: none;
         font: inherit;
@@ -198,13 +196,13 @@
         border: none;
         font-size: 14px;
         font-weight: 500;
-        transition: background-color .17s ease;
+        transition: background-color 0.17s ease;
       }
 
-      button:hover { 
+      button:hover {
         background-color: #677bc4;
       }
-      
+
       .button-copied {
         background-color: #43b581;
       }
@@ -219,7 +217,7 @@
     }
 
     .inputer-box:hover {
-      border:1px solid #040405;
+      border: 1px solid #040405;
     }
     h4 {
       color: #b9bbbe;
@@ -229,7 +227,7 @@
   }
 }
 
-.input-box input[type=text]:focus .input-box {
+.input-box input[type="text"]:focus .input-box {
   border-color: #7289da;
 }
 
@@ -254,8 +252,8 @@
 .embed-inner {
   display: flex;
   flex-direction: column;
-  background-color: rgba(46,48,54,.3);
-  border: 1px solid rgba(46,48,54,.6);
+  background-color: rgba(46, 48, 54, 0.3);
+  border: 1px solid rgba(46, 48, 54, 0.6);
   border-radius: 0 3px 3px 0;
   padding: 8px 10px;
   span {

@@ -4,12 +4,12 @@ import {
   fetchFriends,
   fetchFriendRequests,
   sendFriendRequest,
-  acceptFriendRequest,
-  rejectFriendRequest,
 } from '../../../actions/friend_actions';
 import { clearCurrentChannel } from '../../../actions/chat_channel_actions';
 import FriendsBar from './friends_bar';
 import FriendsAll from './friends_all';
+import FriendsPending from './friends_pending';
+import FriendsOnline from './friends_online';
 
 class FriendView extends Component {
   constructor(props) {
@@ -34,6 +34,11 @@ class FriendView extends Component {
   clickPending() { this.setState({ view: "Pending" }) }
 
   render() {
+    const onlineFriends = () => {
+      // debugger
+      this.props.friends.filter(friend => friend.online);
+    }
+
     return (<div className="friends-view">
       <FriendsBar
         view={this.state.view}
@@ -50,15 +55,24 @@ class FriendView extends Component {
         <div className="friends-column-separator"></div>
       </div>
       {this.state.view === "All" ? <FriendsAll friends={this.props.friends} /> : null}
-      {this.state.view === "Online" ? <>Hello</> : null}
-      {this.state.view === "Pending" ? <>Goodbye</> : null}
+      
+      {this.state.view === "Online" ? <FriendsOnline friends={this.props.friends} /> : null}
+
+      {this.state.view === "Pending" ?
+        <FriendsPending
+          incoming={this.props.incoming}
+          outgoing={this.props.outgoing}
+          acceptFriendRequest={this.props.acceptFriendRequest}
+          rejectFriendRequest={this.props.rejectFriendRequest}
+        /> : null}
     </div>);
   }
 }
 
 const mapStateToProps = state => ({
   friends: state.friends.list,
-  
+  outgoing: state.friends.outgoing,
+  incoming: state.friends.incoming,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,0 +1,63 @@
+.friends-view {
+  height: 100%;
+  width: 100%;
+}
+
+.friends-bar {
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100%;
+  height: 46px;
+  padding: 0 14px;
+  box-shadow: 0 1px 0 rgba(32,34,37,.7), 0 2px 0 rgba(0,0,0,.06);
+  button {
+    min-width: 40px;
+    box-sizing: content-box;
+    color: #B2B3B5;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .4px;
+    line-height: 18px;
+    margin: 0 8px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-align: center;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    &:hover {
+      background-color: #2f3136;
+    }
+  }
+}
+
+.friends-header {
+  margin-top: 8px;
+  padding: 8px 30px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid hsla(0,0%,100%,.1);
+  .friends-column-separator {
+    background-color: hsla(0,0%,100%,.1);
+    height: 18px;
+    margin: 0 20px;
+    width: 1px;
+  }
+  .friends-column {
+    color: hsla(0,0%,100%,.3);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .025em;
+    text-transform: uppercase;
+    &#name {
+      width: 200px;
+    }
+    &#status {
+      width: 250px;
+    }
+    &#mutual-servers {
+      width: 200px;
+    }
+  }
+}

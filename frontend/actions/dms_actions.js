@@ -1,4 +1,4 @@
-import * as DMApiUtil from '../util/dm_api_utils';
+  import * as DMApiUtil from '../util/dm_api_utils';
 
 export const RECEIVE_ALL_DMS = "RECEIVE_ALL_DMS";
 export const RECEIVE_DM = "RECEIVE_DM";

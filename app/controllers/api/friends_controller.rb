@@ -1,4 +1,4 @@
-class FriendsController < ApplicationController
+class Api::FriendsController < ApplicationController
   before_action :set_friend, only: :destroy
 
   def index

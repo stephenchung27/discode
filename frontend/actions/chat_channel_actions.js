@@ -5,6 +5,7 @@ export const RECEIVE_SERVER_CHAT_CHANNELS = "RECEIVE_SERVER_CHAT_CHANNELS";
 export const RECEIVE_CURRENT_SERVER_MEMBERS = "RECEIVE_CURRENT_SERVER_MEMBERS";
 export const RECEIVE_CURRENT_SERVER_MEMBER = "RECEIVE_CURRENT_SERVER_MEMBER";
 export const RECEIVE_USER = "RECEIVE_USER";
+export const CLEAR_CURRENT_CHANNEL = "CLEAR_CURRENT_CHANNEL";
 
 const receiveChatChannel = chatChannel => ({
   type: RECEIVE_CHAT_CHANNEL,
@@ -32,6 +33,10 @@ const receiveUser = user => ({
   type: RECEIVE_USER,
   user,
 });
+
+export const clearCurrentChannel = () => ({
+  type: CLEAR_CURRENT_CHANNEL,
+})
 
 export const fetchServerChatChannels = serverId => dispatch => {
   return ChannelApiUtil.fetchServerChatChannels(serverId)

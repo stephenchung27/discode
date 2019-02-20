@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 
 import configureStore from './store/store';
 import Root from './components/root';
+import { fetchFriends, fetchFriendRequests, acceptFriendRequest, sendFriendRequest, rejectFriendRequest } from './util/friends_api_utils';
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
@@ -21,6 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     store = configureStore();
   }
+
+  window.fetchFriends = fetchFriends;
+  window.fetchFriendRequests = fetchFriendRequests;
+  window.sendFriendRequest = sendFriendRequest;
+  window.acceptFriendRequest = acceptFriendRequest
+  window.rejectFriendRequest = rejectFriendRequest;
 
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :friend_requests
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static_pages#root"
 
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :index, :show]
     get 'search', to: 'users#search'
     resources :friend_requests, only: [:index, :create, :update, :destroy]
+    resources :friends, only: [:index]
     
     resource :session, only: [:create, :destroy]
 

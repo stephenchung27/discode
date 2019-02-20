@@ -13,6 +13,10 @@ const FriendsOnline = ({ friends, users }) => {
   return (
     <div className="friends-rows">
       {renderFriends}
+      {renderFriends && renderFriends.length > 0 ? null : <div className="empty">
+        <div className="online-bg"></div>
+        <p>No one's around to play with Wumpus.</p>
+      </div>}
     </div>
   )
 }

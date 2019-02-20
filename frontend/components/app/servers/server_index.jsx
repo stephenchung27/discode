@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { logout } from "../../../actions/session_actions";
 import { fetchUserServers } from "../../../actions/server_actions";
+import { fetchFriends } from '../../../actions/friend_actions';
 
 import ServerIndexItem from "./server_index_item";
 import ServerModal from "./server_modal";
@@ -21,6 +22,7 @@ class ServerIndex extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchFriends();
     this.props.fetchUserServers(this.props.currentUserId);
   }
 
@@ -35,6 +37,8 @@ class ServerIndex extends React.Component {
 
   render() {
     const { serverIndex, servers, logout, match } = this.props;
+
+    const onlineFriends = this.props.friends.filter(friend => friend.online);
 
     const serverMap = serverIndex.map(id => (
       <Link
@@ -57,7 +61,7 @@ class ServerIndex extends React.Component {
             <div className="server-name">Home</div>
           </div>
         </Link>
-        <div className="friends-online">0 online</div>
+        <div className="friends-online">{onlineFriends.length} online</div>
         <div className="server-separator" />
         <ul>{serverMap}</ul>
         <button className="server-add" onClick={this.openModal}>
@@ -83,11 +87,13 @@ const mapStateToProps = state => ({
   currentUserId: state.session.id,
   servers: state.entities.servers,
   serverIndex: state.ui.server.index,
-  chatChannels: state.entities.chatChannels
+  chatChannels: state.entities.chatChannels,
+  friends: state.friends.list,
 });
 
 const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
+  fetchFriends: () => dispatch(fetchFriends()),
   fetchUserServers: currentUserId => dispatch(fetchUserServers(currentUserId))
 });
 

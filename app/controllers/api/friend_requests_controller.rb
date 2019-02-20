@@ -2,6 +2,7 @@
 
 class Api::FriendRequestsController < ApplicationController
   before_action :set_friend_request, except: %i[index create]
+  before_action :set_sent_friend_request, only: :create
 
   def index
     @incoming = FriendRequest.where(friend: current_user)
@@ -9,13 +10,17 @@ class Api::FriendRequestsController < ApplicationController
   end
 
   def create
-    @friend = User.find(params[:friend_id])
-    @friend_request = current_user.friend_requests.new(friend: @friend)
+    unless @friend_request
+      @friend = User.find(params[:friend_id])
+      @friend_request = current_user.friend_requests.new(friend: @friend)
 
-    if @friend_request.save
-      render :show
+      if @friend_request.save
+        render :show
+      else
+        render json: @friend_request.errors.full_messages, status: 422
+      end
     else
-      render json: @friend_request.errors.full_messages, status: 422
+      render json: ["Friend request already exists"], status: 422
     end
   end
 
@@ -30,6 +35,13 @@ class Api::FriendRequestsController < ApplicationController
   end
 
   private
+
+  def set_sent_friend_request
+    @friend_request = FriendRequest.where(
+      user_id: current_user.id,
+      friend_id: params[:friend_id]
+    ).first
+  end
 
   def set_friend_request
     @friend_request = FriendRequest.where(

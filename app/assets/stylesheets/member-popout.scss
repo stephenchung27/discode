@@ -92,6 +92,21 @@
         background-color: #36393f;
       }
     }
+    .sent {
+      display: flex;
+      align-items: center;
+      text-align: left;
+      box-sizing: border-box;
+      padding: 8px 10px;
+      // background-color: #43b581;
+      font-size: 16px;
+      color: #43b581;
+      font-weight: 500;
+      border-radius: 5px;
+      width: 100%;
+      border: none;
+      margin: 0 0 10px 0;
+    }
     input {
       box-sizing: border-box;
       background: #36393f;

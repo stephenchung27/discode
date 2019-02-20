@@ -9,10 +9,13 @@ import Me from './direct_messages/me';
 import { updateServerMember } from '../../actions/member_list_actions';
 import { stopLoading, startLoading } from '../../actions/session_actions';
 import FriendsView from './friends/friends_view';
+import { fetchFriends, fetchFriendRequests } from '../../actions/friend_actions';
 
 class AppView extends React.Component {
   componentWillMount() {
     this.props.startLoading();
+    this.props.fetchFriends();
+    this.props.fetchFriendRequests();
   }
 
   componentDidMount() {
@@ -68,6 +71,8 @@ const mapDispatchToProps = dispatch => ({
   startLoading: () => dispatch(startLoading()),
   updateServerMember: (member) => 
     dispatch(updateServerMember(member)),
+  fetchFriends: () => dispatch(fetchFriends()),
+  fetchFriendRequests: () => dispatch(fetchFriendRequests()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AppView);

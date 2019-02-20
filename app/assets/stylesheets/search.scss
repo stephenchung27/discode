@@ -19,7 +19,7 @@
     cursor: text;
     transition: border-color 300ms ease;
     &:focus {
-      border-color: #7289DA;
+      border-color: #7289da;
     }
   }
   .search-results {
@@ -32,7 +32,7 @@
     flex-direction: column;
     list-style: none;
     z-index: 5;
-    border-bottom: 3px solid #7289DA;
+    border-bottom: 3px solid #7289da;
     background-color: #202225;
     p {
       color: #fff;
@@ -44,19 +44,19 @@
       color: rgba(255, 255, 255, 0.5);
       font-size: 12px;
       box-sizing: border-box;
-      background: #2D3136;
+      background: #2d3136;
       margin-bottom: 1px;
       width: 100%;
       padding: 10px;
       cursor: pointer;
       &:hover {
-        background-color: #42464D;
+        background-color: #42464d;
       }
       &:last-child {
         cursor: default;
         // pointer-events: none;
         &:hover {
-          background-color: #2D3136;
+          background-color: #2d3136;
         }
       }
       span {
@@ -67,9 +67,9 @@
       }
       &.selected {
         padding: 10px 9px;
-        border-left: 1px solid #7289DA;
-        border-right: 1px solid #7289DA;
-        background-color: #42464D;
+        border-left: 1px solid #7289da;
+        border-right: 1px solid #7289da;
+        background-color: #42464d;
       }
     }
   }
@@ -88,5 +88,52 @@
   transition: opacity 300ms ease;
   &.visible {
     opacity: 1;
+  }
+}
+
+.search-result-item {
+  display: flex;
+  p {
+    flex-grow: 1;
+  }
+  .buttons {
+    position: relative;
+    display: flex;
+    svg {
+      margin-right: 8px;
+      &:hover {
+        color: #fff;
+      }
+    }
+    &:hover .description {
+      visibility: visible;
+    }
+    .description {
+      position: absolute;
+      white-space: nowrap;
+      padding: 6px 8px;
+      font-size: 12px;
+      line-height: 12px;
+      background-color: #000;
+      color: #fff;
+      top: -30px;
+      left: 9px;
+      transform: translateX(-50%);
+      border-radius: 3px;
+      visibility: hidden;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        height: 0;
+        width: 0;
+        border-top: 5px solid #000;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid transparent;
+        border-left: 5px solid transparent;
+      }
+    }
   }
 }

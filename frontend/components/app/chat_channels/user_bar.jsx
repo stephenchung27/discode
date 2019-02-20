@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import UserAvatar from '../../user_avatar';
 
 const UserBar = ({ currentUser }) => {
   return (
     <div id="user-info">
-      <div id="user-avatar"></div>
+      <UserAvatar user={currentUser} hiddenStatus={true}/>
       <div id="user-username">
         <h4>{currentUser.username}</h4>
         <h5>#{currentUser.discriminator}</h5>

@@ -1,9 +1,13 @@
 .friends-view {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
   height: 100%;
   width: 100%;
 }
 
 .friends-bar {
+  flex-shrink: 0;
   display: flex;
   box-sizing: border-box;
   align-items: center;
@@ -54,6 +58,7 @@
 }
 
 .friends-header {
+  flex-shrink: 0;
   margin-top: 8px;
   padding: 8px 30px;
   display: flex;
@@ -84,6 +89,7 @@
   }
 }
 
+
 .friends-item {
   box-sizing: border-box;
   display: flex;
@@ -99,6 +105,7 @@
       visibility: visible;
     }
   }
+  
   .friend-info {
     display: flex;
     align-items: center;
@@ -122,7 +129,7 @@
         }
       }
     }
-
+    
     .friends-item-online {
       display: flex;
       align-items: center;
@@ -145,7 +152,7 @@
       }
     }
   }
-
+  
   .friend-buttons {
     display: flex;
     align-items: center;
@@ -178,7 +185,7 @@
       }
     }
   }
-
+  
   &:first-child {
     border-top: 1px solid transparent;
   }
@@ -189,5 +196,43 @@
     box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.1);
     margin: 0 20px;
     padding: 16px 10px;
+  }
+}
+
+.friends-rows {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-self: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .all-bg {
+    width: 376px;
+    height :162px;
+    background-image: image_url("friends/allbg.svg");
+  }
+  .online-bg {
+    width: 421px;
+    height: 218px;
+    background-image: image_url("friends/onlinebg.svg");
+  }
+  .pending-bg {
+    width: 415px;
+    height: 200px;
+    background-image: image_url("friends/pendingbg.svg");
+  }
+  p {
+    margin-top: 40px;
+    color: #72767d;
+    font-size: 16px;
+    line-height: 20px;
+    text-align: center;
   }
 }

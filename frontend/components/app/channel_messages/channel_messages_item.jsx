@@ -2,6 +2,7 @@ import React from "react";
 import * as moment from "moment";
 import VideoEmbed from './video_embed';
 import reactStringReplace from 'react-string-replace';
+import UserAvatar from '../../user_avatar';
 
 const ChannelMessagesItem = ({ messages, users }) => {
 
@@ -22,8 +23,8 @@ const ChannelMessagesItem = ({ messages, users }) => {
 
   if (users[messages[0].author_id]) {
     return (
-      <li className="message-item">
-        <div className="user-avatar"></div>
+      <li className="message-item" >
+        <UserAvatar user={users[messages[0].author_id]} hiddenStatus={true}/>
         <header>
           <h1>{users[messages[0].author_id].username}</h1>
           <span>{moment(messages[0].created_at).calendar()}</span>

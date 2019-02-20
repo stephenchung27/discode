@@ -27,7 +27,7 @@ class CreateModal extends React.Component {
       .then(({ server })=> {
         this.props.history.push({
           pathname: `/channels/${server.path}/${server.default_channel}`,
-          state: { isNewMember: true, currentUserId }
+          state: { isNewMember: true, currentUserId: this.props.currentUserId }
         });
       });
   }
@@ -57,8 +57,12 @@ class CreateModal extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({
+  currentUserId: state.session.id,
+})
+
 const mapDispatchToProps = dispatch => ({
   createServer: server => dispatch(createServer(server)),
 });
 
-export default withRouter(connect(null, mapDispatchToProps)(CreateModal));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateModal));

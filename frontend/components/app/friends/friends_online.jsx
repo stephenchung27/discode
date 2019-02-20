@@ -4,11 +4,11 @@ import FriendsItem from './friends_item';
 
 
 const FriendsOnline = ({ friends, users }) => {
-  const renderFriends = friends
+  const renderFriends = friends.length > 0 ? friends
     .filter(friend => users[friend].online)
     .map((friendId, index) =>
       <FriendsItem key={index} friend={users[friendId]} />
-    );
+    ) : null;
 
   return (
     <div className="friends-rows">

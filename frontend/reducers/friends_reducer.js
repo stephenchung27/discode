@@ -27,7 +27,7 @@ const friendsReducer = (oldState = _nullState, action) => {
       newState["list"] = action.friends;
       return newState;
     case RECEIVE_FRIEND_REQUEST:
-      newState["outgoing"] = newState["outgoing"].concat(action.friendRequest);
+      newState["outgoing"] = newState["outgoing"].concat(action.friendId);
       return newState;
     case RECEIVE_FRIEND_REQUESTS:
       newState["outgoing"] = action.outgoing;

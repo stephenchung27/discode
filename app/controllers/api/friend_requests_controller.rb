@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Api::FriendRequestsController < ApplicationController
-  before_action :set_friend_request, except: [:index, :create]
+  before_action :set_friend_request, except: %i[index create]
 
   def index
     @incoming = FriendRequest.where(friend: current_user)
@@ -30,6 +32,9 @@ class Api::FriendRequestsController < ApplicationController
   private
 
   def set_friend_request
-    @friend_request = FriendRequest.find(params[:id])
+    @friend_request = FriendRequest.where(
+      user_id: params[:id],
+      friend_id: current_user.id
+    ).first
   end
 end

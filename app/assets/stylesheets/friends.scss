@@ -12,6 +12,7 @@
   padding: 0 14px;
   box-shadow: 0 1px 0 rgba(32, 34, 37, 0.7), 0 2px 0 rgba(0, 0, 0, 0.06);
   button {
+    display: flex;
     min-width: 40px;
     box-sizing: content-box;
     color: #b2b3b5;
@@ -22,10 +23,30 @@
     margin: 0 8px;
     padding: 2px 8px;
     border-radius: 4px;
-    text-align: center;
     background-color: transparent;
     border: none;
     outline: none;
+    p {
+      display: box;
+      text-align: center;
+      width: 100%;
+    }
+    &.active {
+      background-color: #fff;
+      color: #36393f;
+      pointer-events: none;
+      cursor: default;
+    }
+    .friends-bar-notifications {
+      color: #fff;
+      font-weight: 700;
+      margin-left: 4px;
+      padding: 3px 5px;
+      background-color: #f04747;
+      border-radius: 3px;
+      font-size: 12px;
+      line-height: 12px;
+    }
     &:hover {
       background-color: #2f3136;
     }

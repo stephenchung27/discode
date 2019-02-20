@@ -53,8 +53,8 @@ class Splash extends React.Component {
             </ul>
             <ul className="splash-header-nav-right">
               <li><a href="https://github.com/stephenchung27"><i className="fab fa-github"></i></a></li>
-              <li><a href=""><i className="fab fa-linkedin"></i></a></li>
-              <li><a href=""><i className="fab fa-angellist"></i></a></li>
+              <li><a href="https://www.linkedin.com/in/stephenchung27/"><i className="fab fa-linkedin"></i></a></li>
+              <li><a href="https://angel.co/stephenchung"><i className="fab fa-angellist"></i></a></li>
               <li><Link to="/login" className="splash-app-button">
                 {this.props.loggedIn ? "Open" : "Login"}
               </Link></li>
@@ -118,7 +118,9 @@ class Splash extends React.Component {
               <h2>Ready to try Discode? It's free!</h2>
               <h3>Join over 150 million players today</h3>
             </div>
-            <Link to="/login">Open Discode</Link>
+            {this.props.loggedIn ? 
+              <Link to="/channels/@me">Open Discode</Link> 
+              : <Link to="/register">Sign Up Now</Link>}
           </div>
         </footer>
       </div>

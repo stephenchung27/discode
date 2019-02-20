@@ -45,17 +45,16 @@ class FriendView extends Component {
         clickAll={this.clickAll}
         clickOnline={this.clickOnline}
         clickPending={this.clickPending}
+        incoming={this.props.incoming}
       />
       <div className="friends-header">
         <div className="friends-column" id="name">Name</div>
         <div className="friends-column-separator"></div>
         <div className="friends-column" id="status">Status</div>
         <div className="friends-column-separator"></div>
-        <div className="friends-column" id="mutual-servers">Mutual servers</div>
-        <div className="friends-column-separator"></div>
       </div>
       {this.state.view === "All" ? <FriendsAll friends={this.props.friends} /> : null}
-      
+
       {this.state.view === "Online" ? <FriendsOnline friends={this.props.friends} /> : null}
 
       {this.state.view === "Pending" ?

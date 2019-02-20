@@ -1,6 +1,7 @@
 import {
   RECEIVE_SERVER_CHAT_CHANNELS,
-  RECEIVE_CHAT_CHANNEL
+  RECEIVE_CHAT_CHANNEL,
+  CLEAR_CURRENT_CHANNEL
 } from "../actions/chat_channel_actions";
 import { RECEIVE_CHANNEL_MESSAGES } from "../actions/channel_message_actions";
 import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
@@ -41,6 +42,7 @@ const uiChannelReducer = (oldState = _nullChannel, action) => {
         name: chatChannel.username,
       });
       return newState;
+    case CLEAR_CURRENT_CHANNEL:
     case LOGOUT_CURRENT_USER:
       return _nullChannel;
     default:

@@ -16,6 +16,7 @@
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.1);
     width: 100%;
+    cursor: text;
     transition: border-color 300ms ease;
     &:focus {
       border-color: #7289DA;

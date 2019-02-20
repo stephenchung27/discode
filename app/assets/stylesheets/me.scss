@@ -47,7 +47,7 @@
   position: relative;
   height: 100%;
   padding: 20px 0px 12px;
-  header {
+  & > a {
     display: flex;
     align-items: center;
     color: #fff;
@@ -56,6 +56,15 @@
     border-radius: 3px;
     margin: 0 8px;
     padding: 8px 8px;
+    &.active {
+      svg {
+        opacity: 1;
+      }
+      .friends {
+        color: #fff;
+      }
+      background: #42464D;
+    }
     svg {
       opacity: 0.6;
       height: 24px;
@@ -70,13 +79,14 @@
     }
   }
 
-  header:hover {
+  & > a:hover {
     background-color: #41464d;
     svg {
       opacity: 1;
     }
     .friends {
-      color: #ffffff;
+      opacity: 1;
+      color: #f6f6f6;
     }
   }
 

@@ -1,16 +1,16 @@
-class FriendRequestsController < ApplicationController
+class Api::FriendRequestsController < ApplicationController
   before_action :set_friend_request, except: [:index, :create]
 
   def index
-    @incoming = FriendRequest.where(Friend: current_user)
+    @incoming = FriendRequest.where(friend: current_user)
     @outgoing = current_user.friend_requests
   end
 
   def create
-    friend = User.find(params[:friend_id])
-    @friend_request = current_user.friend_requests.new(friend: fried)
+    @friend = User.find(params[:friend_id])
+    @friend_request = current_user.friend_requests.new(friend: @friend)
 
-    if @friend_requst.save
+    if @friend_request.save
       render :show
     else
       render json: @friend_request.errors.full_messages, status: 422
@@ -23,7 +23,7 @@ class FriendRequestsController < ApplicationController
   end
 
   def destroy
-    @friend_request.destroy
+    @friend_request.destroy!
     render json: params[:id]
   end
 

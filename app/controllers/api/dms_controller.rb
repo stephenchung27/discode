@@ -12,7 +12,10 @@ class Api::DmsController < ApplicationController
     @recipient = User.find(params[:recipient_id])
 
     if @recipient
-      @chat_channel = ChatChannel.where(channel_name: "#{@recipient.username}##{@recipient.discriminator} - #{current_user.username}##{current_user.discriminator}").or(ChatChannel.where(channel_name: "#{current_user.username}##{current_user.discriminator} - #{@recipient.username}##{@recipient.discriminator}"))
+      @chat_channel = ChatChannel
+      .where(channel_name: "#{@recipient.username}##{@recipient.discriminator} - #{current_user.username}##{current_user.discriminator}")
+      .or(ChatChannel
+        .where(channel_name: "#{current_user.username}##{current_user.discriminator} - #{@recipient.username}##{@recipient.discriminator}"))
 
       if @chat_channel.exists?
         @chat_channel = @chat_channel.first

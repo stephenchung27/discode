@@ -33,10 +33,13 @@ class MemberList extends React.Component {
           addMember: function (data) { return this.perform("add_member", data) },
         }
       );
+
+      this.setState(this.state);
     }
 
     if (App.serverMembers && this.props.history.location.state && this.props.history.location.state.isNewMember) {
       App.serverMembers.addMember({ userId: this.props.history.location.state.currentUserId })
+
       // reset state so as to not run addMember again
       this.props.history.location.state = {};
     }

@@ -8,8 +8,8 @@ const FriendRequest = ({
   friend,
   status,
   acceptFriendRequest,
-  rejectFriendRequest, 
-  createDM, 
+  rejectFriendRequest,
+  createDM,
   history,
 }) => {
   const gotoDM = () => {
@@ -23,7 +23,7 @@ const FriendRequest = ({
   return <div className="friends-item" onClick={gotoDM}>
     <div className="friend-info">
       <div className="friends-item-name">
-        <UserAvatar user={friend}   />
+        <UserAvatar user={friend} hiddenStatus={true} />
         <p>{friend.username}<span>#{friend.discriminator}</span></p>
       </div>
       <div className="friends-item-online">

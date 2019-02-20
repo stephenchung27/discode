@@ -2,8 +2,7 @@ class Api::ServersController < ApplicationController
   before_action :ensure_logged_on
   
   def index
-    @current_user = current_user
-    render "api/servers/_user_servers", current_user: @current_user
+    render :index
   end
 
   def show

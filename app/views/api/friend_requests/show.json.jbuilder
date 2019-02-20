@@ -1,5 +1,5 @@
 json.friend_id @friend_request.friend.id
 
 json.user do
-  json.extract! @friend, :id, :username, :discriminator, :online
+  json.partial! "api/users/user", user: @friend
 end

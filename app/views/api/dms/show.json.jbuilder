@@ -10,6 +10,6 @@ end
 
 json.users do
   json.set! recipient.first.id do
-    json.extract! recipient.first, :id, :username, :discriminator
+    json.partial! "api/users/user", user: recipient.first
   end
 end

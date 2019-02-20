@@ -18,7 +18,7 @@ end
 json.users do
   recipients.each do |recipient|
     json.set! recipient.id do
-      json.extract! recipient, :id, :username, :discriminator
+      json.partial! "api/users/user", user: recipient
     end
   end
 end

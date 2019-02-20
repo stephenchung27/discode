@@ -25,6 +25,8 @@ class Server < ApplicationRecord
            through: :server_channels,
            source: :chat_channel
 
+  has_one_attached :avatar
+
   def randomize_path
     begin
       path = format('%.18i', SecureRandom.random_number(999_999_999_999_999_999))

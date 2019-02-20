@@ -13,13 +13,13 @@ json.outgoing outgoing_friend_ids
 json.users do
   @outgoing.each do |friend_request|
     json.set! friend_request.friend.id do
-      json.extract! friend_request.friend, :id, :username, :discriminator, :online
+      json.partial! "api/users/user", user: friend_request.friend
     end
   end
 
   @incoming.each do |friend_request|
     json.set! friend_request.user.id do
-      json.extract! friend_request.user, :id, :username, :discriminator, :online
+      json.partial! "api/users/user", user: friend_request.user
     end
   end
 end

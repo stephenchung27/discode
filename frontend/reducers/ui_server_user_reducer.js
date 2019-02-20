@@ -1,4 +1,5 @@
 import { RECEIVE_SERVER_MEMBER, UPDATE_SERVER_MEMBER, RECEIVE_SERVER_MEMBERS } from '../actions/member_list_actions';
+import { LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { merge } from 'lodash';
 
 const uiServerUserReducer = (oldState = {}, action) => {
@@ -17,6 +18,8 @@ const uiServerUserReducer = (oldState = {}, action) => {
       }
     case RECEIVE_SERVER_MEMBER:
       return merge({}, oldState, {[action.member.id]: action.member});
+    case LOGOUT_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }

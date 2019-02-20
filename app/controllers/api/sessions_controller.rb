@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Api::SessionsController < ApplicationController
   def create
     email = params[:user][:email]
@@ -8,7 +10,7 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render :create
     else
-      render json: ["Invalid username or password."], status: 401
+      render json: ['Invalid username or password.'], status: 401
     end
   end
 
@@ -16,9 +18,9 @@ class Api::SessionsController < ApplicationController
     @user = current_user
     if @user
       logout!
-      render "api/users/show"
+      render json: { partial: 'api/users/user.json.jbuilder', user: @user }
     else
-      render json: ["You are not signed in."], status: 404
+      render json: ['You are not signed in.'], status: 404
     end
   end
 end

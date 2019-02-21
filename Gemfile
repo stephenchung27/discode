@@ -37,6 +37,8 @@ gem "bootsnap", ">= 1.1.0", require: false
 gem "jquery-rails"
 gem "aws-sdk-s3"
 
+gem 'ez_download', git: 'https://github.com/OscarAlvarez8830/EZDownload.git'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -52,7 +54,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "pry-rails"
-  gem "byebug"
 end
 
 group :test do

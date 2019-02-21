@@ -18,7 +18,9 @@ export const createServer = (server) => {
   return $.ajax({
     method: "POST",
     url: "api/servers",
-    data: { server },
+    data: server,
+    contentType: false,
+    processData: false,
   });
 };
 

@@ -58,6 +58,6 @@ class Api::ServersController < ApplicationController
   private
 
   def server_params
-    params.require(:server).permit(:server_name)
+    params.require(:server).permit(:server_name, :avatar)
   end 
 end

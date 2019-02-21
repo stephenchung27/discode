@@ -61,6 +61,9 @@
   background-color: #2f3136;
   border-radius: 50%;
   transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: 50%;
 }
 
 .server-item:hover {

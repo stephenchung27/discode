@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createDM } from '../../../../actions/dms_actions';
 import { withRouter } from 'react-router';
 import { sendFriendRequest } from '../../../../actions/friend_actions';
+import UserAvatar from '../../../user_avatar';
 
 class MemberPopout extends React.Component {
   constructor(props) {
@@ -57,9 +58,7 @@ class MemberPopout extends React.Component {
     return (
       <div className="member-popout" onClick={(e) => e.stopPropagation()}>
         <header>
-          <div className={"member-avatar " + colors[user.id % colors.length]}>
-            <div className={"member-status " + (user.online ? "online" : "offline")}></div>
-          </div>
+          <UserAvatar user={user} hiddenState={true} />
           <span className="member-username">{user.username}</span>{"#" + user.discriminator}
         </header>
         {user.id === currentUserId ? null :

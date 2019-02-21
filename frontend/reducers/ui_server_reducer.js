@@ -19,6 +19,7 @@ const uiServerReducer = (oldState = _nullServer, action) => {
         id: action.server.id,
         path: action.server.path,
         name: action.server.server_name,
+        admin: action.server.admin_id,
       });
       newState["index"].push(action.server.id);
       return newState;
@@ -27,6 +28,7 @@ const uiServerReducer = (oldState = _nullServer, action) => {
         id: action.server.id,
         path: action.server.path,
         name: action.server.server_name,
+        admin_id: action.server.admin_id,
       });
       return newState;
     case LOGOUT_CURRENT_USER:

@@ -14,7 +14,7 @@
     background-clip: padding-box;
     border: 2px solid transparent;
     border-radius: 5px;
-    background-color: #24272A;
+    background-color: #24272a;
     visibility: hidden;
   }
 
@@ -24,11 +24,11 @@
 
   .members-category {
     padding: 20px 8px 0px 16px;
-    color: hsla(0,0%,100%,.4);
+    color: hsla(0, 0%, 100%, 0.4);
     font-size: 12px;
     font-weight: 500;
     height: 40px;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     line-height: 20px;
     box-sizing: border-box;
   }
@@ -47,7 +47,7 @@
   margin-right: 8px;
   cursor: pointer;
   &:hover {
-    background: #36393F;
+    background: #36393f;
     color: #fff;
   }
 }
@@ -56,4 +56,14 @@
   margin-left: 10px;
   font-weight: 500;
   font-size: 16px;
+}
+
+.admin-icon {
+  display: flex;
+  align-items: center;
+  margin-left: 4px;
+  svg {
+    margin-top: 1px;
+    height: 14px;
+  }
 }

@@ -13,10 +13,6 @@ class MemberList extends React.Component {
     const isNewServer = this.props.serverId && oldProps.serverId !== this.props.serverId
 
     if (isNewServer) {
-
-      // Unsubscribe if server members exist
-      if (App.serverMembers) App.serverMembers.unsubscribe();
-
       App.serverMembers = App.cable.subscriptions.create(
         { channel: "ServerMembersChannel", serverId: this.props.serverId },
         {
@@ -43,6 +39,10 @@ class MemberList extends React.Component {
       // reset state so as to not run addMember again
       this.props.history.location.state = {};
     }
+  }
+
+  componentWillUnmount() {
+    if (App.serverMembers) App.serverMembers.unsubscribe();
   }
 
   render() {

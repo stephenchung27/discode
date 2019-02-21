@@ -17,7 +17,7 @@ const FriendItem = ({ friend, createDM, history }) => {
     const status = friend.online ? "Online" : "Offline";
 
     return (
-      <div className="friends-item">
+      <div className="friends-item" onClick={gotoDM}>
         <div className="friend-info">
           <div className="friends-item-name">
             <UserAvatar user={friend} hiddenStatus={true} />

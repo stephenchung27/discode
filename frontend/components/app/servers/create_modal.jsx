@@ -26,7 +26,6 @@ class CreateModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    console.log(this.state);
     formData.append('server[server_name]', this.state.serverName);
     if (this.state.imageFile) {
       formData.append('server[avatar]', this.state.imageFile);
@@ -46,10 +45,7 @@ class CreateModal extends React.Component {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
 
-    // debugger
-
     reader.onloadend = () => {
-      // debugger
       this.setState({ imageUrl: reader.result, imageFile: file });
     }
 

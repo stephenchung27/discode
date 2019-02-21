@@ -3,6 +3,7 @@
 class ServerMembersChannel < ApplicationCable::Channel
   def subscribed
     stream_for "server_#{params[:serverId]}"
+
     load_members
   end
 
@@ -15,7 +16,6 @@ class ServerMembersChannel < ApplicationCable::Channel
 
   def load_members
     members = Server.find(params[:serverId]).members
-
     socket = { members: parse_members(members), type: 'serverMembers' }
 
     ServerMembersChannel.broadcast_to("server_#{params[:serverId]}", socket)

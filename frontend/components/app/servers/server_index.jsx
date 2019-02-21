@@ -36,7 +36,14 @@ class ServerIndex extends React.Component {
   }
 
   render() {
-    const { serverIndex, servers, logout, match } = this.props;
+    const { serverIndex, servers, match } = this.props;
+
+    const logout = () => {
+      App.cable.subscriptions.subscriptions.forEach(cable => {
+        cable.unsubscribe();
+      })
+      this.props.logout();
+    }
 
     const onlineFriends = this.props.friends.filter(friend => friend.online);
 

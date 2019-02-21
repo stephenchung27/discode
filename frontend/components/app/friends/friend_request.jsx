@@ -12,6 +12,7 @@ const FriendRequest = ({
   createDM,
   history,
 }) => {
+  
   const gotoDM = () => {
     createDM(friend.id).then(action => {
       const channel = Object.values(action.chat_channel)[0];

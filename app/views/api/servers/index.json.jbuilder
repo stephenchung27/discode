@@ -1,7 +1,7 @@
 json.servers do
   current_user.servers.each do |server|
     json.set! server.id do
-      json.partial! "api/servers/server.json.jbuilder", server: server
+      json.partial! "api/servers/server", server: server
     end
   end
 end

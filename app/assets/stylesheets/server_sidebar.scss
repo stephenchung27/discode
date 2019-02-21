@@ -15,8 +15,8 @@
   background-color: #2f3136;
   background-image: image_url("users/bg.png");
   background-repeat: no-repeat;
-  background-position: 8px 13px;
-  background-size: 33px, 33px;
+  background-position: center;
+  background-size: 100%;
   transition: .25s cubic-bezier(0.64, 0.57, 0.67, 1.53);
   position: relative;
 }

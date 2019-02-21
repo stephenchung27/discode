@@ -1,4 +1,4 @@
-json.extract! server, :id, :server_name, :path
+json.extract! server, :id, :server_name, :path, :admin_id
 
 if server.avatar.attached?
   json.avatarURL url_for(server.avatar)

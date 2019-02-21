@@ -2,9 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router';
 
 const ServerIndexItem = ({ server, match }) => {
-
-  // debugger
-
   const avatarURL = server.avatarURL ? 
     { backgroundImage: `url(${server.avatarURL})`} : null;
 

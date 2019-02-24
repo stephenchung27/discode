@@ -6,7 +6,7 @@ import Modal from 'react-modal';
 import CreateChatModal from './create_channel_modal';
 
 import ChatChannelItem from './chat_channel_item';
-import UserBar from './user_bar';
+import UserBar from '../user_bar/user_bar';
 import { fetchServerChatChannels, fetchServerMembers } from '../../../actions/chat_channel_actions';
 
 class ChatChannelIndex extends React.Component {

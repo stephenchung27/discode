@@ -1,6 +1,6 @@
 import React from 'react';
 import MeList from './me_list';
-import UserBar from '../chat_channels/user_bar';
+import UserBar from '../user_bar/user_bar';
 import SearchBar from './search_bar';
 
 const Me = () => {

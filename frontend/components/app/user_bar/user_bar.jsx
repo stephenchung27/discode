@@ -45,7 +45,9 @@ class UserBar extends Component {
           overlayClassName='modal-overlay'
           ariaHideApp={false}
           closeTimeoutMS={250}>
-          <UserOptions />
+          <UserOptions 
+          currentUser={currentUser}
+          closeModal={this.closeModal}/>
         </Modal>
       </div>
     )

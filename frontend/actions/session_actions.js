@@ -50,3 +50,8 @@ export const logout = () => dispatch => {
   return SessionApiUtil.logout()
     .then(user => dispatch(logoutCurrentUser(user)));
 };
+
+export const updateUser = (userId, user) => dispatch => {
+  return SessionApiUtil.updateUser(userId, user)
+    .then(user => dispatch(receiveCurrentUser(user)));
+}

@@ -7,7 +7,7 @@
   margin-top: -175px;
   box-sizing: border-box;
   width: 660px;
-  height: 350px;
+  height: 347px;
   padding: 20px;
   border-radius: 5px;
   background: #303236;
@@ -16,20 +16,117 @@
 .user-options {
   display: flex;
   flex-direction: column;
-
 }
 
 .general-options {
   display: flex;
+  height: 100%;
 }
 
 .user-avatar-upload {
   display: flex;
   flex-direction: column;
+  .avatar-preview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 128px;
+    height: 128px;
+    background-color: #677bc4;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: 100%;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 12px;
+    white-space: pre;
+    text-transform: uppercase;
+    color: #677bc4;
+    &:hover {
+      color: #fff;
+      box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.75);
+    }
+    input[type="file"] {
+      display: none;
+    }
+  }
+  p {
+    color: #87909c;
+    font-size: 10px;
+    text-align: center;
+    span {
+      font-weight: 700;
+    }
+  }
+}
+
+.user-account-options {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 20px;
+  width: 100%;
+  label {
+    width: 100%;
+    margin-bottom: 20px;
+    span {
+      padding-left: 4px;
+      color: #f04747;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+    input {
+      box-sizing: border-box;
+      background-color: rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      color: #f6f6f7;
+      height: 40px;
+      padding: 10px;
+      width: 100%;
+      border-radius: 3px;
+      font-size: 16px;
+    }
+    .username-input {
+      display: flex;
+      color: #f6f6f7;
+      font-size: 16px;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      width: 100%;
+      input {
+        border: none;
+      }
+      .username-input-divider {
+        height: 30px;
+        margin-top: 5px;
+        opacity: 0.1;
+        border-left: 1px solid #fff;
+        width: 1px;
+      }
+      .user-discriminator {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #f6f6f7;
+        width: 100px;
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+    h5 {
+      color: #b9bbbe;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 600;
+      line-height: 16px;
+      font-size: 12px;
+    }
+  }
 }
 
 .options-divider {
-  background-color: rgba(114, 118, 125, .3);
+  background-color: rgba(114, 118, 125, 0.3);
   width: 100%;
   height: 1px;
   margin: 20px 0;
@@ -45,5 +142,20 @@
     font-size: 14px;
     font-weight: 500;
     border-radius: 3px;
+    &.delete-account {
+      border-color: rgba(240, 71, 71, 0.3);
+      color: #f04747;
+      background: transparent;
+    }
+
+    &.save-account {
+      background-color: #43b581;
+      color: #fff;
+      border: none;
+      transition: background-color 0.17s ease;
+      &:hover {
+        background-color: #3ca374;
+      }
+    }
   }
 }

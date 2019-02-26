@@ -1,6 +1,6 @@
 # Discode
 
-[Live Demo](http://discode-aa.herokuapp.com "Live Demo")
+[Live Demo](http://discode.stephenchung.io/#/ "Live Demo")
 
 Discode is a full stack live chatting application designed to resemble Discord, the most popular live voice chatting client for gamers. Discode uses Ruby on Rails and PostgreSQL for it's backend API and React and Redux for its frontend. It was created in a span of 10 days.
 

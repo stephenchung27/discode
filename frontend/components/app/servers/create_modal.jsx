@@ -32,7 +32,12 @@ class CreateModal extends React.Component {
     };
 
     this.props.createServer(formData)
-      .then(this.props.closeModal())
+      .then(({ server, errors }) => {
+        if (errors === []) {
+          this.props.closeModal()
+          return server;
+        };
+      })
       .then(({ server }) => {
         this.props.history.push({
           pathname: `/channels/${server.path}/${server.default_channel}`,
@@ -70,7 +75,11 @@ class CreateModal extends React.Component {
           <h3>By creating a server, you will have access to free voice and text chat to use amongst your friends.</h3>
           <div className="create-form-container">
             <div className="server-name-form">
-              <label htmlFor="name">Server Name</label>
+              <label htmlFor="name"
+                style={this.props.errors.length > 0 ? { color: "#f04747" } : {}}>
+                Server Name
+              {this.props.errors.length > 0 ?  "- This field is required" : null}
+              </label>
               <input id="name" type="text" onChange={this.update} value={this.state.serverName}
                 placeholder="Enter a server name" />
             </div>
@@ -101,6 +110,7 @@ class CreateModal extends React.Component {
 
 const mapStateToProps = state => ({
   currentUserId: state.session.id,
+  errors: state.errors.server,
 })
 
 const mapDispatchToProps = dispatch => ({

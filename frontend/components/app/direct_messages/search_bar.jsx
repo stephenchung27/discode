@@ -27,27 +27,29 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
+    if (this.state.selectedResult >= 0) {
+      const selectedResult = this.state.selectedResult >= 0 ? this.state.selectedResult : 0;
 
-    const selectedResult = this.state.selectedResult >= 0 ? this.state.selectedResult : 0;
+      const selectedUser = this.props.searchResults[selectedResult].id
 
-    const selectedUser = this.props.searchResults[selectedResult].id
+      const duplicateChannelCheck = this.props.dmChannels.filter(channel =>
+        channel.recipientId === parseInt(selectedUser));
 
-    const duplicateChannelCheck = this.props.dmChannels.filter(channel =>
-      channel.recipientId === parseInt(selectedUser));
+      if (duplicateChannelCheck.length > 0) {
+        this.props.history.push(`/channels/@me/${duplicateChannelCheck[0].path}`)
+      } else {
+        this.props.createDM(selectedUser).then(action => {
+          const dmPath = Object.values(action.chat_channel)[0].path
+          this.props.history.push(`/channels/@me/${dmPath}`)
+        });
+      }
 
-    if (duplicateChannelCheck.length > 0) {
-      this.props.history.push(`/channels/@me/${duplicateChannelCheck[0].path}`)
-    } else {
-      this.props.createDM(selectedUser).then(action => {
-        const dmPath = Object.values(action.chat_channel)[0].path
-        this.props.history.push(`/channels/@me/${dmPath}`)
-      });
+      this.setState({ searchTerm: "" });
+      this.props.clearResults();
+      document.activeElement.blur();
+      $("#search-blur").removeClass("visible");
     }
-
-    this.setState({ searchTerm: "" });
-    this.props.clearResults();
-    document.activeElement.blur();
-    $("#search-blur").removeClass("visible");
   }
 
   handleChange(e) {
@@ -55,10 +57,9 @@ class SearchBar extends React.Component {
     if (!e.target.value) {
       this.props.clearResults();
       this.setState({ selectedResult: -1 });
-
     } else {
       this.props.fetchResults(e.target.value);
-    }
+    };
   }
 
   handleKeyDown(e) {
@@ -97,7 +98,7 @@ class SearchBar extends React.Component {
       }
     } else if (e.keyCode === 27) {
       document.activeElement.blur();
-    }
+    };
   }
 
   clickResult(index, e) {
@@ -107,7 +108,7 @@ class SearchBar extends React.Component {
         + "#" + this.props.searchResults[index].discriminator
     }, () => {
       this.handleSubmit(e);
-    })
+    });
   }
 
   focusResults() {

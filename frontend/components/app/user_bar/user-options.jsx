@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateUser } from '../../../actions/session_actions';
+import { updateUser, deleteUser } from '../../../actions/session_actions';
 
 class UserOptions extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ class UserOptions extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleUpload = this.handleUpload.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   handleChange(field) {
@@ -55,6 +56,12 @@ class UserOptions extends Component {
     }
   }
 
+  handleDelete(e) {
+    e.preventDefault();
+    
+    this.props.deleteUser(this.props.currentUser.id);
+  }
+
 
   render() {
     const { currentUser } = this.props;
@@ -87,7 +94,7 @@ class UserOptions extends Component {
                 <input type="text"
                   value={this.state.username}
                   onChange={this.handleChange("username")} />
-                  <div className='username-input-divider'></div>
+                <div className='username-input-divider'></div>
                 <div className='user-discriminator'>
                   #{currentUser.discriminator}
                 </div>
@@ -111,9 +118,10 @@ class UserOptions extends Component {
         </div>
         <div className='options-divider'></div>
         <div className='options-buttons'>
-          <button className='delete-account'>Delete Account</button>
+          <button className='delete-account'
+            onClick={this.handleDelete}>Delete Account</button>
           <button className='save-account'
-          onClick={this.handleSubmit}>Save</button>
+            onClick={this.handleSubmit}>Save</button>
         </div>
       </form>
     )
@@ -122,6 +130,7 @@ class UserOptions extends Component {
 
 const mapDispatchToProps = dispatch => ({
   updateUser: (userId, user) => dispatch(updateUser(userId, user)),
+  deleteUser: (userId) => dispatch(deleteUser(userId)),
 });
 
 export default connect(null, mapDispatchToProps)(UserOptions);

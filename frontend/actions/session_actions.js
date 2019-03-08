@@ -7,6 +7,7 @@ export const CLEAR_SESSION_ERRORS = 'CLEAR_SESSION_ERRORS';
 export const START_LOADING = 'START_LOADING';
 export const STOP_LOADING = 'STOP_LOADING';
 export const RECEIVE_USER = 'RECEIVE_USER';
+export const DELETE_USER = 'DELETE_USER';
 
 const receiveCurrentUser = (currentUser) => ({
   type: RECEIVE_CURRENT_USER,
@@ -48,10 +49,15 @@ export const login = (user) => dispatch => {
 
 export const logout = () => dispatch => {
   return SessionApiUtil.logout()
-    .then(user => dispatch(logoutCurrentUser(user)));
+    .then(() => dispatch(logoutCurrentUser()));
 };
 
 export const updateUser = (userId, user) => dispatch => {
   return SessionApiUtil.updateUser(userId, user)
     .then(user => dispatch(receiveCurrentUser(user)));
+}
+
+export const deleteUser = (userId) => dispatch => {
+  return SessionApiUtil.deleteUser(userId)
+    .then(() => dispatch(logoutCurrentUser()));
 }

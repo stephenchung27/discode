@@ -1,8 +1,9 @@
 import {
   RECEIVE_SERVER_ERRORS,
-  RECEIVE_CURRENT_USER,
   CLEAR_SERVER_ERRORS,
 } from '../actions/server_actions';
+
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const serverErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);

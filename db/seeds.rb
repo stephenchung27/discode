@@ -10,6 +10,11 @@
 
 # # Demo User
 
+User.destroy_all
+ChatChannel.destroy_all
+Server.destroy_all
+FriendRequest.destroy_all
+
 wumpus = User.new(username: "Wumpus", email: "demo@demo.com", password: "starwars")
 file = EzDownload.open('https://s3.amazonaws.com/discode/seeds/wumpus.png')
 wumpus.avatar.attach(io: file, filename: 'wumpus.png')

@@ -59,7 +59,9 @@ class UserOptions extends Component {
   handleDelete(e) {
     e.preventDefault();
     
-    this.props.deleteUser(this.props.currentUser.id);
+    if (this.props.currentUser.id !== 1) {
+      this.props.deleteUser(this.props.currentUser.id);
+    }
   }
 
 

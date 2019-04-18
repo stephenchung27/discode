@@ -33,7 +33,7 @@ class MemberListItem extends React.Component {
     const { user } = this.props;
     return (
       <div id={`member-${user.id}`} className="member" onClick={this.openModal}>
-        <UserAvatar user={user} />
+        <UserAvatar user={user}/>
         <div className="member-username">{user.username}</div>
         {this.props.admin_id === user.id ? 
         <div className="admin-icon">

@@ -58,7 +58,7 @@ class MemberPopout extends React.Component {
     return (
       <div className="member-popout" onClick={(e) => e.stopPropagation()}>
         <header>
-          <UserAvatar user={user} hiddenState={true} />
+          <UserAvatar user={user} hiddenStatus={true} />
           <span className="member-username">{user.username}</span>{"#" + user.discriminator}
         </header>
         {user.id === currentUserId ? null :

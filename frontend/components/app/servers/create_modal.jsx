@@ -32,13 +32,10 @@ class CreateModal extends React.Component {
     };
 
     this.props.createServer(formData)
-      .then(({ server, errors }) => {
-        if (errors === []) {
-          this.props.closeModal()
-          return server;
-        };
-      })
       .then(({ server }) => {
+        debugger
+
+        this.props.closeModal();
         this.props.history.push({
           pathname: `/channels/${server.path}/${server.default_channel}`,
           state: { isNewMember: true, currentUserId: this.props.currentUserId }

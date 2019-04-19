@@ -33,8 +33,6 @@ class CreateModal extends React.Component {
 
     this.props.createServer(formData)
       .then(({ server }) => {
-        debugger
-
         this.props.closeModal();
         this.props.history.push({
           pathname: `/channels/${server.path}/${server.default_channel}`,
